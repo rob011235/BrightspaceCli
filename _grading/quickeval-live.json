@@ -1,0 +1,208 @@
+{
+  "scraper": "BrightspaceCli",
+  "scrapedAt": "2026-04-11T22:55:15.7667616+00:00",
+  "pageUrl": "https://mycourses.cnm.edu/d2l/le/224618/quickeval/",
+  "submissionCount": 20,
+  "submissions": [
+    {
+      "index": 0,
+      "student": "Chance Gomez",
+      "activityName": "Introduction to Interactive Server-Side Rendering (ISR)",
+      "submittedAt": "3/5/2026 9:23 PM",
+      "evaluationUrl": "/d2l/le/activities/iterator/11399235?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpNMDlVWjNwTlFTNHlNalEyTVRnLjY4ODg2\u0026cfi=sort%7EeyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "/d2l/le/activities/iterator/11399235?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpNMDlVWjNwTlFTNHlNalEyTVRnLjY4ODg2\u0026cfi=sort%7EeyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    },
+    {
+      "index": 1,
+      "student": "Dylan Ward",
+      "activityName": "Add Delete Capability",
+      "submittedAt": "3/11/2026 6:40 PM",
+      "evaluationUrl": "/d2l/le/activities/iterator/11399235?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTFxUVRWTlp5NHlNalEyTVRnLjMwMzYw\u0026cfi=sort%7EeyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "/d2l/le/activities/iterator/11399235?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTFxUVRWTlp5NHlNalEyTVRnLjMwMzYw\u0026cfi=sort%7EeyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    },
+    {
+      "index": 2,
+      "student": "Lane Brockinton",
+      "activityName": "Add Delete Capability",
+      "submittedAt": "3/13/2026 3:27 AM",
+      "evaluationUrl": "/d2l/le/activities/iterator/11399235?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTFxUVRWTlp5NHlNalEyTVRnLjc0MTI4\u0026cfi=sort%7EeyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "/d2l/le/activities/iterator/11399235?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTFxUVRWTlp5NHlNalEyTVRnLjc0MTI4\u0026cfi=sort%7EeyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    },
+    {
+      "index": 3,
+      "student": "Leslie Hinds",
+      "activityName": "JavaScript",
+      "submittedAt": "3/18/2026 10:05 PM",
+      "evaluationUrl": "/d2l/le/activities/iterator/11399235?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpNazU2UVhwT1FTNHlNalEyTVRnLjQ5MDQ5\u0026cfi=sort%7EeyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "/d2l/le/activities/iterator/11399235?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpNazU2UVhwT1FTNHlNalEyTVRnLjQ5MDQ5\u0026cfi=sort%7EeyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    },
+    {
+      "index": 4,
+      "student": "Leslie Hinds",
+      "activityName": "HTML/CSS",
+      "submittedAt": "3/18/2026 10:07 PM",
+      "evaluationUrl": "/d2l/le/activities/iterator/11399235?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpNazVxWnpWTlFTNHlNalEyTVRnLjQ5MDQ5\u0026cfi=sort%7EeyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "/d2l/le/activities/iterator/11399235?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpNazVxWnpWTlFTNHlNalEyTVRnLjQ5MDQ5\u0026cfi=sort%7EeyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    },
+    {
+      "index": 5,
+      "student": "Leslie Hinds",
+      "activityName": "Creating a .NET 10 Blazor Website",
+      "submittedAt": "3/18/2026 10:08 PM",
+      "evaluationUrl": "/d2l/le/activities/iterator/11399235?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpNMDVxV1hsT1VTNHlNalEyTVRnLjQ5MDQ5\u0026cfi=sort%7EeyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "/d2l/le/activities/iterator/11399235?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpNMDVxV1hsT1VTNHlNalEyTVRnLjQ5MDQ5\u0026cfi=sort%7EeyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    },
+    {
+      "index": 6,
+      "student": "Leslie Hinds",
+      "activityName": "Git and Github",
+      "submittedAt": "3/18/2026 10:09 PM",
+      "evaluationUrl": "/d2l/le/activities/iterator/11399235?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpNazVxWnpSUFVTNHlNalEyTVRnLjQ5MDQ5\u0026cfi=sort%7EeyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "/d2l/le/activities/iterator/11399235?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpNazVxWnpSUFVTNHlNalEyTVRnLjQ5MDQ5\u0026cfi=sort%7EeyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    },
+    {
+      "index": 7,
+      "student": "Lane Brockinton",
+      "activityName": "Authentication and Authorization Tutorials",
+      "submittedAt": "4/7/2026 2:12 AM",
+      "evaluationUrl": "/d2l/le/activities/iterator/11399235?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTVFVFhoT2R5NHlNalEyTVRnLjc0MTI4\u0026cfi=sort%7EeyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "/d2l/le/activities/iterator/11399235?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTVFVFhoT2R5NHlNalEyTVRnLjc0MTI4\u0026cfi=sort%7EeyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    },
+    {
+      "index": 8,
+      "student": "Lane Brockinton",
+      "activityName": "Authentication vs Authorization",
+      "submittedAt": "4/7/2026 2:18 AM",
+      "evaluationUrl": "/d2l/le/activities/iterator/11399235?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTVFVFhoT1p5NHlNalEyTVRnLjc0MTI4\u0026cfi=sort%7EeyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "/d2l/le/activities/iterator/11399235?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTVFVFhoT1p5NHlNalEyTVRnLjc0MTI4\u0026cfi=sort%7EeyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    },
+    {
+      "index": 9,
+      "student": "Ignacio Moreno",
+      "activityName": "Using Data Transfer Objects",
+      "submittedAt": "4/7/2026 8:40 AM",
+      "evaluationUrl": "/d2l/le/activities/iterator/11399235?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTlFWnpGUFVTNHlNalEyTVRnLjc5MDAz\u0026cfi=sort%7EeyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "/d2l/le/activities/iterator/11399235?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTlFWnpGUFVTNHlNalEyTVRnLjc5MDAz\u0026cfi=sort%7EeyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    },
+    {
+      "index": 10,
+      "student": "Joshua Madrid",
+      "activityName": "Creating a web API",
+      "submittedAt": "4/7/2026 3:27 PM",
+      "evaluationUrl": "/d2l/le/activities/iterator/11399235?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTVxUlhwT1FTNHlNalEyTVRnLjgxNTIx\u0026cfi=sort%7EeyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "/d2l/le/activities/iterator/11399235?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTVxUlhwT1FTNHlNalEyTVRnLjgxNTIx\u0026cfi=sort%7EeyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    },
+    {
+      "index": 11,
+      "student": "Joshua Madrid",
+      "activityName": "Sharing Components Between Server and Client",
+      "submittedAt": "4/7/2026 4:12 PM",
+      "evaluationUrl": "/d2l/le/activities/iterator/11399235?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTVxUlhwT1VTNHlNalEyTVRnLjgxNTIx\u0026cfi=sort%7EeyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "/d2l/le/activities/iterator/11399235?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTVxUlhwT1VTNHlNalEyTVRnLjgxNTIx\u0026cfi=sort%7EeyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    },
+    {
+      "index": 12,
+      "student": "Joshua Madrid",
+      "activityName": "Moving Badges pages from Server to Client",
+      "submittedAt": "4/7/2026 5:56 PM",
+      "evaluationUrl": "/d2l/le/activities/iterator/11399235?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTVxUlhwT1p5NHlNalEyTVRnLjgxNTIx\u0026cfi=sort%7EeyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "/d2l/le/activities/iterator/11399235?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTVxUlhwT1p5NHlNalEyTVRnLjgxNTIx\u0026cfi=sort%7EeyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    },
+    {
+      "index": 13,
+      "student": "Lauryn Bonneville",
+      "activityName": "Fixing Render Issues",
+      "submittedAt": "4/7/2026 11:59 PM",
+      "evaluationUrl": "/d2l/le/activities/iterator/11399235?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTlVVFROT1p5NHlNalEyTVRnLjcwNTU3\u0026cfi=sort%7EeyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "/d2l/le/activities/iterator/11399235?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTlVVFROT1p5NHlNalEyTVRnLjcwNTU3\u0026cfi=sort%7EeyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    },
+    {
+      "index": 14,
+      "student": "Lauryn Bonneville",
+      "activityName": "Persisting Component State",
+      "submittedAt": "4/8/2026 12:32 AM",
+      "evaluationUrl": "/d2l/le/activities/iterator/11399235?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTlVVFROT1VTNHlNalEyTVRnLjcwNTU3\u0026cfi=sort%7EeyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "/d2l/le/activities/iterator/11399235?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTlVVFROT1VTNHlNalEyTVRnLjcwNTU3\u0026cfi=sort%7EeyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    },
+    {
+      "index": 15,
+      "student": "Chance Gomez",
+      "activityName": "Automate Creating Roles and a Default Admin",
+      "submittedAt": "4/8/2026 7:48 PM",
+      "evaluationUrl": "/d2l/le/activities/iterator/11399235?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTVFVFhoUFFTNHlNalEyTVRnLjY4ODg2\u0026cfi=sort%7EeyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "/d2l/le/activities/iterator/11399235?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTVFVFhoUFFTNHlNalEyTVRnLjY4ODg2\u0026cfi=sort%7EeyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    },
+    {
+      "index": 16,
+      "student": "Chance Gomez",
+      "activityName": "User Management Data Classes",
+      "submittedAt": "4/8/2026 7:50 PM",
+      "evaluationUrl": "/d2l/le/activities/iterator/11399235?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTVFVFhoUFVTNHlNalEyTVRnLjY4ODg2\u0026cfi=sort%7EeyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "/d2l/le/activities/iterator/11399235?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTVFVFhoUFVTNHlNalEyTVRnLjY4ODg2\u0026cfi=sort%7EeyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    },
+    {
+      "index": 17,
+      "student": "Chance Gomez",
+      "activityName": "Add User Management Page",
+      "submittedAt": "4/8/2026 7:55 PM",
+      "evaluationUrl": "/d2l/le/activities/iterator/11399235?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTVFVFhsTlFTNHlNalEyTVRnLjY4ODg2\u0026cfi=sort%7EeyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "/d2l/le/activities/iterator/11399235?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTVFVFhsTlFTNHlNalEyTVRnLjY4ODg2\u0026cfi=sort%7EeyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    },
+    {
+      "index": 18,
+      "student": "Chance Gomez",
+      "activityName": "Secure Badges and Evaluator Pages",
+      "submittedAt": "4/8/2026 8:04 PM",
+      "evaluationUrl": "/d2l/le/activities/iterator/11399235?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTVFVFhsTlVTNHlNalEyTVRnLjY4ODg2\u0026cfi=sort%7EeyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "/d2l/le/activities/iterator/11399235?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTVFVFhsTlVTNHlNalEyTVRnLjY4ODg2\u0026cfi=sort%7EeyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    },
+    {
+      "index": 19,
+      "student": "Ignacio Moreno",
+      "activityName": "Persisting Component State",
+      "submittedAt": "4/9/2026 9:49 AM",
+      "evaluationUrl": "/d2l/le/activities/iterator/11399235?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTlVVFROT1VTNHlNalEyTVRnLjc5MDAz\u0026cfi=sort%7EeyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "/d2l/le/activities/iterator/11399235?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTlVVFROT1VTNHlNalEyTVRnLjc5MDAz\u0026cfi=sort%7EeyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    }
+  ]
+}

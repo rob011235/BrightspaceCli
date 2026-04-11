@@ -1,0 +1,8 @@
+{
+  "browserChannel": "msedge",
+  "quickEvalUrl": "https://mycourses.cnm.edu/d2l/le/224618/quickeval/",
+  "submissionUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/...",
+  "statePath": ".brightspace/session.json",
+  "quickEvalOutPath": "_grading/quickeval-live.json",
+  "submissionOutPath": "_grading/submission-live.json"
+}

@@ -42,9 +42,20 @@ static void PrintHelp()
             Load an individual submission/evaluation page and export comments, links, and GitHub hints.
 
         Examples
-          dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- login --url "https://mycourses.cnm.edu/d2l/le/224618/quickeval/" --state ".brightspace/session.json"
-          dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- scrape-quickeval --url "https://mycourses.cnm.edu/d2l/le/224618/quickeval/" --state ".brightspace/session.json" --out "_grading/quickeval-live.json"
-          dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- scrape-submission --url "https://mycourses.cnm.edu/d2l/le/activities/iterator/..." --state ".brightspace/session.json" --out "_grading/submission-live.json"
+          dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- login
+          dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- scrape-quickeval
+          dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- scrape-submission --url "https://mycourses.cnm.edu/d2l/le/activities/iterator/..."
+
+        Config
+          Put shared defaults in brightspacecli.json, for example:
+            {
+              "browserChannel": "msedge",
+              "quickEvalUrl": "https://mycourses.cnm.edu/d2l/le/224618/quickeval/",
+              "statePath": ".brightspace/session.json",
+              "quickEvalOutPath": "_grading/quickeval-live.json",
+              "submissionOutPath": "_grading/submission-live.json"
+            }
+          Command-line values still override config values for a single run.
         """);
 }
 
@@ -87,10 +98,14 @@ internal sealed class CommandLineOptions
 
     public string Require(string name)
         => Get(name) ?? throw new InvalidOperationException($"Missing required option --{name}");
+
+    public string GetOrDefault(string name, string? fallback)
+        => Get(name) ?? fallback ?? throw new InvalidOperationException($"Missing required option --{name}");
 }
 
 internal static class BrightspaceCli
 {
+    private static readonly AppConfig Config = AppConfig.Load();
     private static readonly JsonSerializerOptions JsonOptions = new()
     {
         WriteIndented = true,
@@ -99,15 +114,12 @@ internal static class BrightspaceCli
 
     public static async Task<int> LoginAsync(CommandLineOptions options)
     {
-        var url = options.Require("url");
-        var statePath = ResolvePath(options.Require("state"));
+        var url = options.GetOrDefault("url", Config.QuickEvalUrl);
+        var statePath = ResolvePath(options.GetOrDefault("state", Config.StatePath));
         Directory.CreateDirectory(Path.GetDirectoryName(statePath)!);
 
         using var playwright = await Playwright.CreateAsync();
-        await using var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
-        {
-            Headless = false,
-        });
+        await using var browser = await LaunchBrowserAsync(playwright, options, headless: false);
 
         var context = await browser.NewContextAsync();
         var page = await context.NewPageAsync();
@@ -126,15 +138,12 @@ internal static class BrightspaceCli
 
     public static async Task<int> ScrapeQuickEvalAsync(CommandLineOptions options)
     {
-        var url = options.Require("url");
-        var statePath = ResolvePath(options.Require("state"));
-        var outPath = ResolvePath(options.Get("out") ?? "_grading/quickeval-live.json");
+        var url = options.GetOrDefault("url", Config.QuickEvalUrl);
+        var statePath = ResolvePath(options.GetOrDefault("state", Config.StatePath));
+        var outPath = ResolvePath(options.Get("out") ?? Config.QuickEvalOutPath ?? "_grading/quickeval-live.json");
 
         using var playwright = await Playwright.CreateAsync();
-        await using var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
-        {
-            Headless = true,
-        });
+        await using var browser = await LaunchBrowserAsync(playwright, options, headless: true);
 
         var context = await browser.NewContextAsync(new BrowserNewContextOptions
         {
@@ -185,15 +194,12 @@ internal static class BrightspaceCli
 
     public static async Task<int> ScrapeSubmissionAsync(CommandLineOptions options)
     {
-        var url = options.Require("url");
-        var statePath = ResolvePath(options.Require("state"));
-        var outPath = ResolvePath(options.Get("out") ?? "_grading/submission-live.json");
+        var url = options.GetOrDefault("url", Config.SubmissionUrl);
+        var statePath = ResolvePath(options.GetOrDefault("state", Config.StatePath));
+        var outPath = ResolvePath(options.Get("out") ?? Config.SubmissionOutPath ?? "_grading/submission-live.json");
 
         using var playwright = await Playwright.CreateAsync();
-        await using var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
-        {
-            Headless = true,
-        });
+        await using var browser = await LaunchBrowserAsync(playwright, options, headless: true);
 
         var context = await browser.NewContextAsync(new BrowserNewContextOptions
         {
@@ -275,6 +281,29 @@ internal static class BrightspaceCli
             ? value["Evaluate ".Length..].Trim()
             : value.Trim();
 
+    private static async Task<IBrowser> LaunchBrowserAsync(IPlaywright playwright, CommandLineOptions options, bool headless)
+    {
+        var channel = options.Get("channel") ?? Config.BrowserChannel ?? GetDefaultBrowserChannel();
+
+        try
+        {
+            return await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
+            {
+                Headless = headless,
+                Channel = channel,
+            });
+        }
+        catch (PlaywrightException ex) when (!string.IsNullOrWhiteSpace(channel))
+        {
+            throw new InvalidOperationException(
+                $"Failed to launch browser channel '{channel}'. Pass --channel chrome or --channel msedge, or install that browser.",
+                ex);
+        }
+    }
+
+    private static string GetDefaultBrowserChannel()
+        => OperatingSystem.IsWindows() ? "msedge" : "chrome";
+
     private static string ResolvePath(string path)
         => Path.GetFullPath(path, Directory.GetCurrentDirectory());
 
@@ -282,6 +311,37 @@ internal static class BrightspaceCli
     {
         Directory.CreateDirectory(Path.GetDirectoryName(path)!);
         await File.WriteAllTextAsync(path, JsonSerializer.Serialize(value, JsonOptions));
+    }
+}
+
+internal sealed class AppConfig
+{
+    public string? BrowserChannel { get; init; }
+    public string? QuickEvalUrl { get; init; }
+    public string? SubmissionUrl { get; init; }
+    public string? StatePath { get; init; }
+    public string? QuickEvalOutPath { get; init; }
+    public string? SubmissionOutPath { get; init; }
+
+    public static AppConfig Load()
+    {
+        var path = Path.Combine(Directory.GetCurrentDirectory(), "brightspacecli.json");
+        if (!File.Exists(path))
+        {
+            return new AppConfig();
+        }
+
+        try
+        {
+            return JsonSerializer.Deserialize<AppConfig>(File.ReadAllText(path), new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true,
+            }) ?? new AppConfig();
+        }
+        catch (JsonException ex)
+        {
+            throw new InvalidOperationException($"Invalid config file: {path}", ex);
+        }
     }
 }
 
