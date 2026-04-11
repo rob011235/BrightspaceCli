@@ -10,9 +10,10 @@ Follow this branch workflow unless the user explicitly asks for something differ
 2. Create a feature branch off `dev` for each task.
 3. Make and verify changes on the feature branch.
 4. Merge feature branches back into `dev` when complete.
-5. Do not merge into `qa` or `main` unless the user explicitly asks for that step.
-6. Treat `qa` as pre-deployment validation.
-7. Treat `main` as deployment-ready.
+5. Do not start the next feature branch until the previous completed feature branch has been merged into `dev`.
+6. Do not merge into `qa` or `main` unless the user explicitly asks for that step.
+7. Treat `qa` as pre-deployment validation.
+8. Treat `main` as deployment-ready.
 
 ## Current Tool Direction
 
