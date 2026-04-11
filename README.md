@@ -12,12 +12,71 @@ This project is intended to reduce grading friction by automating the repetitive
 - scrape individual submission pages for pasted GitHub links and comments
 - export structured JSON that can be used for batch processing
 
+## First-Time Setup
+
+Run these steps before the first live test.
+
+```powershell
+cd C:\Users\Rob011235\source\repos\BrightspaceCli
+dotnet restore .\BrightspaceCli.sln
+dotnet build .\BrightspaceCli.sln
+pwsh .\bin\Debug\net10.0\playwright.ps1 install
+```
+
+If the Playwright script is not present, try:
+
+```powershell
+cd C:\Users\Rob011235\source\repos\BrightspaceCli
+playwright install
+```
+
+## Config
+
+Browser choice now comes from `brightspacecli.json` in the repo root.
+
+Example:
+
+```json
+{
+  "browserChannel": "msedge",
+  "quickEvalUrl": "https://mycourses.cnm.edu/d2l/le/224618/quickeval/",
+  "submissionUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/...",
+  "statePath": ".brightspace/session.json",
+  "quickEvalOutPath": "_grading/quickeval-live.json",
+  "submissionOutPath": "_grading/submission-live.json"
+}
+```
+
+You can change `browserChannel` to `chrome` if needed. Command-line values still override config values for a single run.
+
+## First Test
+
+After setup, the first useful smoke test is:
+
+```powershell
+cd C:\Users\Rob011235\source\repos\BrightspaceCli
+dotnet run --project . -- login
+```
+
+If you want to override the configured browser once without editing the config file:
+
+```powershell
+dotnet run --project . -- login --channel chrome
+```
+
+Then save a live Quick Eval scrape with:
+
+```powershell
+cd C:\Users\Rob011235\source\repos\BrightspaceCli
+dotnet run --project . -- scrape-quickeval
+```
+
 ## Commands
 
 ```powershell
-dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- login --url "https://mycourses.cnm.edu/d2l/le/224618/quickeval/" --state ".brightspace/session.json"
-dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- scrape-quickeval --url "https://mycourses.cnm.edu/d2l/le/224618/quickeval/" --state ".brightspace/session.json" --out "_grading/quickeval-live.json"
-dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- scrape-submission --url "https://mycourses.cnm.edu/d2l/le/activities/iterator/..." --state ".brightspace/session.json" --out "_grading/submission-live.json"
+dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- login
+dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- scrape-quickeval
+dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- scrape-submission --url "https://mycourses.cnm.edu/d2l/le/activities/iterator/..."
 ```
 
 ## Current Shape
@@ -29,8 +88,8 @@ dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- scrape-su
 ## Notes
 
 - This project depends on `Microsoft.Playwright` and needs a normal `dotnet restore` on a machine with NuGet access.
-- After restore, you will likely also need to install the Playwright browser dependencies.
 - Quick Eval list pages do not usually contain the GitHub repo URL directly. The repo URL is more likely to appear on the individual submission page.
+- The current code is ready for smoke testing, but it still needs live validation against your Brightspace workflow before it should be treated as stable.
 
 ## Next Useful Additions
 
