@@ -1,4 +1,5 @@
 using System.Text.Json;
+using System.Text.RegularExpressions;
 using Microsoft.Playwright;
 
 var command = args.FirstOrDefault()?.Trim().ToLowerInvariant();
@@ -141,6 +142,7 @@ internal static class BrightspaceCli
         var url = options.GetOrDefault("url", Config.QuickEvalUrl);
         var statePath = ResolvePath(options.GetOrDefault("state", Config.StatePath));
         var outPath = ResolvePath(options.Get("out") ?? Config.QuickEvalOutPath ?? "_grading/quickeval-live.json");
+        var pageUri = new Uri(url, UriKind.Absolute);
 
         using var playwright = await Playwright.CreateAsync();
         await using var browser = await LaunchBrowserAsync(playwright, options, headless: true);
@@ -169,7 +171,7 @@ internal static class BrightspaceCli
             var student = await ReadNamedValueAsync(nameNode);
             var activityName = await ReadNamedValueAsync(activityNode);
             var submittedAt = await ReadNamedValueAsync(dateNode);
-            var evaluationUrl = await ReadHrefAsync(evaluationNode);
+            var evaluationUrl = ToAbsoluteUrl(pageUri, await ReadHrefAsync(evaluationNode));
 
             submissions.Add(new QuickEvalSubmission(
                 i,
@@ -197,6 +199,7 @@ internal static class BrightspaceCli
         var url = options.GetOrDefault("url", Config.SubmissionUrl);
         var statePath = ResolvePath(options.GetOrDefault("state", Config.StatePath));
         var outPath = ResolvePath(options.Get("out") ?? Config.SubmissionOutPath ?? "_grading/submission-live.json");
+        var pageUri = new Uri(url, UriKind.Absolute);
 
         using var playwright = await Playwright.CreateAsync();
         await using var browser = await LaunchBrowserAsync(playwright, options, headless: true);
@@ -211,12 +214,13 @@ internal static class BrightspaceCli
         await page.WaitForLoadStateAsync(LoadState.NetworkIdle);
 
         var title = await page.TitleAsync();
-        var bodyText = await page.Locator("body").InnerTextAsync();
+        var bodyText = await ReadSubmissionTextAsync(page);
+        var previewUrl = await ReadPreviewUrlAsync(page, pageUri);
         var links = await page.Locator("a[href]").EvaluateAllAsync<string[]>(
             "nodes => nodes.map(n => n.href).filter(Boolean)");
 
         var uniqueLinks = links
-            .Where(static value => !string.IsNullOrWhiteSpace(value))
+            .Where(static value => IsUsefulUrl(value))
             .Distinct(StringComparer.OrdinalIgnoreCase)
             .ToList();
 
@@ -229,6 +233,7 @@ internal static class BrightspaceCli
             DateTimeOffset.UtcNow,
             title,
             url,
+            previewUrl,
             repoUrl,
             github.Owner,
             github.Repo,
@@ -280,6 +285,172 @@ internal static class BrightspaceCli
         => value.StartsWith("Evaluate ", StringComparison.OrdinalIgnoreCase)
             ? value["Evaluate ".Length..].Trim()
             : value.Trim();
+
+    private static string? ToAbsoluteUrl(Uri pageUri, string? href)
+    {
+        if (string.IsNullOrWhiteSpace(href))
+        {
+            return null;
+        }
+
+        return Uri.TryCreate(pageUri, href, out var absoluteUri)
+            ? absoluteUri.ToString()
+            : href;
+    }
+
+    private static bool IsUsefulUrl(string? value)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+        {
+            return false;
+        }
+
+        return !value.StartsWith("javascript:", StringComparison.OrdinalIgnoreCase)
+            && !value.StartsWith("about:", StringComparison.OrdinalIgnoreCase);
+    }
+
+    private static async Task<string> ReadSubmissionTextAsync(IPage page)
+    {
+        var submissionItem = page.Locator("d2l-consistent-evaluation-assignments-submission-item");
+        if (await submissionItem.CountAsync() > 0)
+        {
+            var commentHtml = await submissionItem.First.GetAttributeAsync("comment");
+            var commentText = ExtractTextFromHtml(commentHtml);
+            if (!string.IsNullOrWhiteSpace(commentText))
+            {
+                return commentText;
+            }
+        }
+
+        var submissionBlock = page.Locator("d2l-html-block.d2l-submission-item-text");
+        if (await submissionBlock.CountAsync() > 0)
+        {
+            var html = await submissionBlock.First.GetAttributeAsync("html");
+            var text = ExtractTextFromHtml(html);
+            if (!string.IsNullOrWhiteSpace(text))
+            {
+                return text;
+            }
+        }
+
+        var selectors = new[]
+        {
+            "d2l-html-block",
+            "d2l-assignment-submission-view",
+            "d2l-assignment-evaluation",
+            "main",
+            "body",
+        };
+
+        foreach (var selector in selectors)
+        {
+            var locator = page.Locator(selector);
+            if (await locator.CountAsync() == 0)
+            {
+                continue;
+            }
+
+            var text = NormalizeWhitespace(await locator.First.InnerTextAsync());
+            if (!string.IsNullOrWhiteSpace(text))
+            {
+                return text;
+            }
+        }
+
+        var fullText = await page.EvaluateAsync<string>(
+            """
+            () => {
+              const seen = new Set();
+              const parts = [];
+              const nodes = document.querySelectorAll('textarea, input[type="text"], [data-automation], [aria-label], [title]');
+
+              for (const node of nodes) {
+                const candidates = [];
+
+                if (node instanceof HTMLTextAreaElement || node instanceof HTMLInputElement) {
+                  candidates.push(node.value);
+                }
+
+                candidates.push(node.getAttribute('data-automation'));
+                candidates.push(node.getAttribute('aria-label'));
+                candidates.push(node.getAttribute('title'));
+                candidates.push(node.textContent);
+
+                for (const candidate of candidates) {
+                  const value = candidate?.trim();
+                  if (!value || seen.has(value)) {
+                    continue;
+                  }
+
+                  seen.add(value);
+                  parts.push(value);
+                }
+              }
+
+              return parts.join('\n');
+            }
+            """);
+
+        return NormalizeWhitespace(fullText);
+    }
+
+    private static async Task<string?> ReadPreviewUrlAsync(IPage page, Uri pageUri)
+    {
+        var selectors = new[]
+        {
+            "d2l-consistent-evaluation-page",
+            "consistent-evaluation-right-panel",
+        };
+
+        foreach (var selector in selectors)
+        {
+            var locator = page.Locator(selector);
+            if (await locator.CountAsync() == 0)
+            {
+                continue;
+            }
+
+            var previewPath = await locator.First.GetAttributeAsync("preview-activity-path");
+            var previewUrl = ToAbsoluteUrl(pageUri, previewPath);
+            if (!string.IsNullOrWhiteSpace(previewUrl))
+            {
+                return previewUrl;
+            }
+        }
+
+        return null;
+    }
+
+    private static string ExtractTextFromHtml(string? html)
+    {
+        if (string.IsNullOrWhiteSpace(html))
+        {
+            return string.Empty;
+        }
+
+        var decoded = System.Net.WebUtility.HtmlDecode(html);
+        if (string.IsNullOrWhiteSpace(decoded))
+        {
+            return string.Empty;
+        }
+
+        var withLineBreaks = Regex.Replace(decoded, @"<(br|/p|/div|/li)\b[^>]*>", Environment.NewLine, RegexOptions.IgnoreCase);
+        var withoutTags = Regex.Replace(withLineBreaks, "<[^>]+>", " ");
+        return NormalizeWhitespace(withoutTags);
+    }
+
+    private static string NormalizeWhitespace(string? value)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+        {
+            return string.Empty;
+        }
+
+        return string.Join(
+            Environment.NewLine,
+            value.Split(['\r', '\n'], StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
+                .Where(static line => !string.IsNullOrWhiteSpace(line)));
+    }
 
     private static async Task<IBrowser> LaunchBrowserAsync(IPlaywright playwright, CommandLineOptions options, bool headless)
     {
@@ -365,6 +536,7 @@ internal sealed record SubmissionDetailResult(
     DateTimeOffset ScrapedAt,
     string PageTitle,
     string PageUrl,
+    string? PreviewUrl,
     string? RepoUrl,
     string? Owner,
     string? Repo,
