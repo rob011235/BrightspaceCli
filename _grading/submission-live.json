@@ -1,0 +1,18 @@
+{
+  "scraper": "BrightspaceCli",
+  "scrapedAt": "2026-04-11T23:34:25.8797193+00:00",
+  "pageTitle": "Assignment Evaluation - Chance Gomez - Introduction to Interactive Server-Side Rendering (ISR)",
+  "pageUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11399079?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpNMDlVWjNwTlFTNHlNalEyTVRnLjY4ODg2\u0026cfi=sort%7EeyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+  "previewUrl": "https://mycourses.cnm.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?ou=224618\u0026db=679830\u0026grpid=0\u0026isprv=1\u0026bp=1",
+  "repoUrl": "https://github.com/CIST-2284-Spring-2026/GomezHackerspace-RJG",
+  "owner": "CIST-2284-Spring-2026",
+  "repo": "GomezHackerspace-RJG",
+  "cloneUrl": "https://github.com/CIST-2284-Spring-2026/GomezHackerspace-RJG.git",
+  "branchHint": null,
+  "subdirHint": null,
+  "urls": [
+    "https://mycourses.cnm.edu/d2l/le/224618/quickeval/?sort=eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026returningToQuickEval=true",
+    "https://github.com/CIST-2284-Spring-2026/GomezHackerspace-RJG"
+  ],
+  "rawText": "https://github.com/CIST-2284-Spring-2026/GomezHackerspace-RJG"
+}
