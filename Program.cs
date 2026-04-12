@@ -230,6 +230,8 @@ internal static class BrightspaceCli
                     submission.Index,
                     submission.Student,
                     submission.ActivityName,
+                    submission.ActivityType,
+                    submission.AssignmentKey,
                     submission.SubmittedAt,
                     submission.EvaluationUrl,
                     null,
@@ -270,6 +272,8 @@ internal static class BrightspaceCli
                 submission.Index,
                 submission.Student,
                 submission.ActivityName,
+                submission.ActivityType,
+                submission.AssignmentKey,
                 submission.SubmittedAt,
                 submission.EvaluationUrl,
                 detail?.PageTitle,
@@ -356,11 +360,15 @@ internal static class BrightspaceCli
             var activityName = await ReadNamedValueAsync(activityNode);
             var submittedAt = await ReadNamedValueAsync(dateNode);
             var evaluationUrl = ToAbsoluteUrl(pageUri, await ReadHrefAsync(evaluationNode));
+            var activityType = AssignmentClassifier.GetActivityType(activityName);
+            var assignmentKey = AssignmentClassifier.GetAssignmentKey(activityName, activityType);
 
             submissions.Add(new QuickEvalSubmission(
                 i,
                 student,
                 activityName,
+                activityType,
+                assignmentKey,
                 submittedAt,
                 evaluationUrl,
                 [.. new[] { evaluationUrl }.Where(static value => !string.IsNullOrWhiteSpace(value))!]));
@@ -796,6 +804,8 @@ internal sealed record QuickEvalSubmission(
     int Index,
     string? Student,
     string? ActivityName,
+    string ActivityType,
+    string AssignmentKey,
     string? SubmittedAt,
     string? EvaluationUrl,
     IReadOnlyList<string> Urls);
@@ -827,6 +837,8 @@ internal sealed record SubmissionMapEntry(
     int Index,
     string? Student,
     string? ActivityName,
+    string ActivityType,
+    string AssignmentKey,
     string? SubmittedAt,
     string? EvaluationUrl,
     string? PageTitle,
@@ -919,4 +931,28 @@ internal static class AssignmentPathHintParser
         var value = match.Groups[1].Value.Trim().TrimEnd('.', ',', ';', ':');
         return string.IsNullOrWhiteSpace(value) ? null : value;
     }
+}
+
+internal static class AssignmentClassifier
+{
+    public static string GetActivityType(string? activityName)
+        => ContainsProgramSignal(activityName) ? "program" : "tutorial";
+
+    public static string GetAssignmentKey(string? activityName, string activityType)
+    {
+        if (string.IsNullOrWhiteSpace(activityName))
+        {
+            return $"{activityType}-unknown";
+        }
+
+        var normalized = activityName.ToLowerInvariant();
+        normalized = Regex.Replace(normalized, @"[^a-z0-9]+", "-");
+        normalized = normalized.Trim('-');
+        return string.IsNullOrWhiteSpace(normalized) ? $"{activityType}-unknown" : $"{activityType}-{normalized}";
+    }
+
+    private static bool ContainsProgramSignal(string? activityName)
+        => !string.IsNullOrWhiteSpace(activityName)
+            && (activityName.Contains("Program", StringComparison.OrdinalIgnoreCase)
+                || activityName.Contains("Competency", StringComparison.OrdinalIgnoreCase));
 }

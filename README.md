@@ -88,6 +88,7 @@ dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- scrape-su
 - `scrape-quickeval` now attempts to page through all available Quick Eval rows by default.
 - `scrape-submission` extracts visible links and detects GitHub repo hints from an individual evaluation page.
 - `scrape-submission-map` starts from Quick Eval rows, visits each evaluation URL, and writes a merged batch export including preview URLs, repo hints, and assignment path hints when present.
+- Quick Eval rows and submission-map entries now include `activityType` and `assignmentKey` so downstream grading tools can join submissions to a course assignment registry.
 
 Use `--first-page-only` with `scrape-quickeval` or `scrape-submission-map` if you want to disable paging and only use the currently visible rows.
 
