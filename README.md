@@ -45,8 +45,10 @@ Example:
   "quickEvalOutPath": "_grading/quickeval-live.json",
   "submissionOutPath": "_grading/submission-live.json",
   "submissionMapOutPath": "_grading/submission-map.json",
-  "assignmentRegistryPath": "C:\\Users\\Rob011235\\Dropbox\\CNM\\_Curriculum\\CIST 2284 .NET II\\_grading\\assignment-registry.json",
-  "gradingWorklistOutPath": "C:\\Users\\Rob011235\\Dropbox\\CNM\\_Curriculum\\CIST 2284 .NET II\\_grading\\grading-worklist.json"
+  "assignmentRegistryPath": "C:\\grading\\assignment-registry.json",
+  "gradingWorklistOutPath": "C:\\grading\\grading-worklist.json",
+  "gradingRepoRoot": "C:\\grading\\repos",
+  "gradingRepoQueueOutPath": "C:\\grading\\grading-repo-queue.json"
 }
 ```
 
@@ -82,7 +84,8 @@ dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- scrape-qu
 dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- scrape-quickeval --first-page-only
 dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- scrape-submission --url "https://mycourses.cnm.edu/d2l/le/activities/iterator/..."
 dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- scrape-submission-map --limit 5
-dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- build-grading-worklist --registry "C:\Users\Rob011235\Dropbox\CNM\_Curriculum\CIST 2284 .NET II\_grading\assignment-registry.json"
+dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- build-grading-worklist --registry "C:\grading\assignment-registry.json"
+dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- prepare-grading-repos --limit 5
 ```
 
 ## Current Shape
@@ -93,8 +96,11 @@ dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- build-gra
 - `scrape-submission-map` starts from Quick Eval rows, visits each evaluation URL, and writes a merged batch export including preview URLs, repo hints, and assignment path hints when present.
 - Quick Eval rows and submission-map entries now include `activityType` and `assignmentKey` so downstream grading tools can join submissions to a course assignment registry.
 - `build-grading-worklist` joins `submission-map.json` with an external assignment registry and writes a grading-ready worklist.
+- `prepare-grading-repos` clones or updates repos from the grading worklist and writes a repo-ready grading queue with resolved branch and folder hints.
 
 Use `--first-page-only` with `scrape-quickeval` or `scrape-submission-map` if you want to disable paging and only use the currently visible rows.
+
+For grading runtime artifacts, prefer `C:\grading` over the course Dropbox workspace to avoid long path failures when cloning student repositories.
 
 ## Notes
 

@@ -1,5 +1,6 @@
 using System.Text.Json;
 using System.Text.RegularExpressions;
+using System.Diagnostics;
 using Microsoft.Playwright;
 
 var command = args.FirstOrDefault()?.Trim().ToLowerInvariant();
@@ -21,6 +22,7 @@ try
         "scrape-submission" => await BrightspaceCli.ScrapeSubmissionAsync(options),
         "scrape-submission-map" => await BrightspaceCli.ScrapeSubmissionMapAsync(options),
         "build-grading-worklist" => await BrightspaceCli.BuildGradingWorklistAsync(options),
+        "prepare-grading-repos" => await BrightspaceCli.PrepareGradingReposAsync(options),
         _ => Fail($"Unknown command: {command}"),
     };
 }
@@ -47,6 +49,8 @@ static void PrintHelp()
             Load the Quick Eval page, visit each evaluation URL, and export merged row plus detail data.
           build-grading-worklist
             Join a submission map with an assignment registry and export a grading worklist.
+          prepare-grading-repos
+            Clone or update repos from a grading worklist and export a repo-ready grading queue.
 
         Examples
           dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- login
@@ -55,6 +59,7 @@ static void PrintHelp()
           dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- scrape-submission --url "https://mycourses.cnm.edu/d2l/le/activities/iterator/..."
           dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- scrape-submission-map --limit 5
           dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- build-grading-worklist --registry "C:\Users\Rob011235\Dropbox\CNM\_Curriculum\CIST 2284 .NET II\_grading\assignment-registry.json"
+          dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- prepare-grading-repos --limit 5
 
         Config
           Put shared defaults in brightspacecli.json, for example:
@@ -66,7 +71,9 @@ static void PrintHelp()
               "submissionOutPath": "_grading/submission-live.json",
               "submissionMapOutPath": "_grading/submission-map.json",
               "assignmentRegistryPath": "C:\\Users\\Rob011235\\Dropbox\\CNM\\_Curriculum\\CIST 2284 .NET II\\_grading\\assignment-registry.json",
-              "gradingWorklistOutPath": "C:\\Users\\Rob011235\\Dropbox\\CNM\\_Curriculum\\CIST 2284 .NET II\\_grading\\grading-worklist.json"
+              "gradingWorklistOutPath": "C:\\Users\\Rob011235\\Dropbox\\CNM\\_Curriculum\\CIST 2284 .NET II\\_grading\\grading-worklist.json",
+              "gradingRepoRoot": "C:\\Users\\Rob011235\\Dropbox\\CNM\\_Curriculum\\CIST 2284 .NET II\\_grading\\repos",
+              "gradingRepoQueueOutPath": "C:\\Users\\Rob011235\\Dropbox\\CNM\\_Curriculum\\CIST 2284 .NET II\\_grading\\grading-repo-queue.json"
             }
           Command-line values still override config values for a single run.
         """);
@@ -374,6 +381,113 @@ internal static class BrightspaceCli
 
         await WriteJsonAsync(outPath, result);
         Console.WriteLine($"Wrote {items.Count} work items to {outPath}");
+        return 0;
+    }
+
+    public static async Task<int> PrepareGradingReposAsync(CommandLineOptions options)
+    {
+        var worklistPath = ResolvePath(options.Get("worklist") ?? Config.GradingWorklistOutPath ?? "_grading/grading-worklist.json");
+        var repoRoot = ResolvePath(options.GetOrDefault("repo-root", Config.GradingRepoRoot));
+        var outPath = ResolvePath(options.Get("out") ?? Config.GradingRepoQueueOutPath ?? "_grading/grading-repo-queue.json");
+        var limit = ParseOptionalInt(options.Get("limit"), "limit");
+
+        if (!File.Exists(worklistPath))
+        {
+            throw new InvalidOperationException($"Grading worklist not found: {worklistPath}");
+        }
+
+        Directory.CreateDirectory(repoRoot);
+
+        var worklist = await ReadJsonAsync<GradingWorklistResult>(worklistPath);
+        var items = limit.HasValue
+            ? worklist.Items.Take(limit.Value).ToList()
+            : worklist.Items.ToList();
+
+        var preparedItems = new List<PreparedRepoWorkItem>();
+
+        for (var i = 0; i < items.Count; i++)
+        {
+            var item = items[i];
+            Console.WriteLine($"Preparing repo {i + 1} of {items.Count}: {item.Student} - {item.ActivityName}");
+
+            if (string.IsNullOrWhiteSpace(item.CloneUrl))
+            {
+                preparedItems.Add(new PreparedRepoWorkItem(
+                    item.Index,
+                    item.Student,
+                    item.ActivityName,
+                    item.ActivityType,
+                    item.AssignmentKey,
+                    item.GradingMode,
+                    item.RepoUrl,
+                    item.CloneUrl,
+                    null,
+                    null,
+                    item.BranchHint,
+                    item.SubdirHint,
+                    item.AssignmentPathHint,
+                    item.SelectedFolderHint,
+                    null,
+                    "Missing clone URL."));
+                continue;
+            }
+
+            var repoPath = Path.Combine(repoRoot, GetRepoFolderName(item));
+            string? selectedBranch = null;
+            string? selectedFolderPath = null;
+            string? prepError = null;
+
+            try
+            {
+                await EnsureRepoAsync(item.CloneUrl, repoPath);
+                var branches = await GetRepoBranchesAsync(repoPath);
+                selectedBranch = ResolvePreferredBranch(item, branches);
+                if (!string.IsNullOrWhiteSpace(selectedBranch))
+                {
+                    await CheckoutBranchAsync(repoPath, selectedBranch);
+                    selectedBranch = await GetCurrentBranchAsync(repoPath);
+                }
+                else
+                {
+                    selectedBranch = await GetCurrentBranchAsync(repoPath);
+                }
+
+                selectedFolderPath = ResolveSelectedFolderPath(repoPath, item.SelectedFolderHint);
+            }
+            catch (Exception ex)
+            {
+                prepError = ex.Message;
+            }
+
+            preparedItems.Add(new PreparedRepoWorkItem(
+                item.Index,
+                item.Student,
+                item.ActivityName,
+                item.ActivityType,
+                item.AssignmentKey,
+                item.GradingMode,
+                item.RepoUrl,
+                item.CloneUrl,
+                repoPath,
+                selectedBranch,
+                item.BranchHint,
+                item.SubdirHint,
+                item.AssignmentPathHint,
+                item.SelectedFolderHint,
+                selectedFolderPath,
+                prepError));
+        }
+
+        var result = new PreparedRepoQueueResult(
+            DateTimeOffset.UtcNow,
+            worklistPath,
+            repoRoot,
+            preparedItems.Count,
+            preparedItems.Count(static item => !string.IsNullOrWhiteSpace(item.Error)),
+            preparedItems);
+
+        await WriteJsonAsync(outPath, result);
+        Console.WriteLine($"Wrote {preparedItems.Count} prepared repo items to {outPath}");
         return 0;
     }
 
@@ -809,6 +923,170 @@ internal static class BrightspaceCli
         return parsed;
     }
 
+    private static string GetRepoFolderName(GradingWorkItem item)
+    {
+        var studentPart = SanitizePathSegment(item.Student) ?? "unknown-student";
+        var assignmentPart = SanitizePathSegment(item.AssignmentKey) ?? "unknown-assignment";
+        return $"{studentPart}__{assignmentPart}";
+    }
+
+    private static string? SanitizePathSegment(string? value)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+        {
+            return null;
+        }
+
+        var sanitized = Regex.Replace(value, @"[^A-Za-z0-9._-]+", "-").Trim('-');
+        return string.IsNullOrWhiteSpace(sanitized) ? null : sanitized;
+    }
+
+    private static async Task EnsureRepoAsync(string cloneUrl, string repoPath)
+    {
+        if (!Directory.Exists(repoPath))
+        {
+            Directory.CreateDirectory(Path.GetDirectoryName(repoPath)!);
+            await RunGitAsync($"clone \"{cloneUrl}\" \"{repoPath}\"", Directory.GetCurrentDirectory());
+            return;
+        }
+
+        await RunGitAsync("fetch --all --prune", repoPath);
+    }
+
+    private static async Task<List<string>> GetRepoBranchesAsync(string repoPath)
+    {
+        var output = await RunGitAsync("branch --all --format=\"%(refname:short)\"", repoPath);
+        return output
+            .Split(['\r', '\n'], StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
+            .Where(static line => !string.IsNullOrWhiteSpace(line))
+            .Distinct(StringComparer.OrdinalIgnoreCase)
+            .ToList();
+    }
+
+    private static string? ResolvePreferredBranch(GradingWorkItem item, IReadOnlyList<string> branches)
+    {
+        var normalizedIndex = branches
+            .Select(branch => new { Branch = branch, Key = NormalizeBranchKey(branch) })
+            .ToList();
+
+        if (!string.IsNullOrWhiteSpace(item.BranchHint))
+        {
+            var hinted = normalizedIndex.FirstOrDefault(branch => branch.Key == NormalizeBranchKey(item.BranchHint));
+            if (hinted is not null)
+            {
+                return hinted.Branch;
+            }
+        }
+
+        foreach (var candidate in GetDerivedBranchCandidates(item))
+        {
+            var match = normalizedIndex.FirstOrDefault(branch => branch.Key == NormalizeBranchKey(candidate));
+            if (match is not null)
+            {
+                return match.Branch;
+            }
+        }
+
+        var head = normalizedIndex.FirstOrDefault(static branch => branch.Key == "head");
+        if (head is not null)
+        {
+            return null;
+        }
+
+        return null;
+    }
+
+    private static IEnumerable<string> GetDerivedBranchCandidates(GradingWorkItem item)
+    {
+        if (item.ActivityType == "program")
+        {
+            var numberMatch = Regex.Match(item.ActivityName ?? string.Empty, @"(program|competency)\s*(\d+)", RegexOptions.IgnoreCase);
+            if (numberMatch.Success)
+            {
+                var number = numberMatch.Groups[2].Value;
+                yield return $"program{number}";
+                yield return $"program-{number}";
+                yield return $"assignment-{number}";
+                yield return $"competency-{number}";
+            }
+        }
+
+        var assignmentKeyTail = item.AssignmentKey[(item.AssignmentKey.IndexOf('-') + 1)..];
+        if (!string.IsNullOrWhiteSpace(assignmentKeyTail))
+        {
+            yield return assignmentKeyTail;
+        }
+    }
+
+    private static string NormalizeBranchKey(string value)
+    {
+        var branch = value.Trim();
+        branch = branch.StartsWith("remotes/origin/", StringComparison.OrdinalIgnoreCase)
+            ? branch["remotes/origin/".Length..]
+            : branch;
+        return Regex.Replace(branch.ToLowerInvariant(), @"[^a-z0-9]+", string.Empty);
+    }
+
+    private static async Task CheckoutBranchAsync(string repoPath, string branch)
+    {
+        if (branch.StartsWith("remotes/origin/", StringComparison.OrdinalIgnoreCase))
+        {
+            var localBranch = branch["remotes/origin/".Length..];
+            await RunGitAsync($"switch --track -C \"{localBranch}\" \"{branch}\"", repoPath);
+            return;
+        }
+
+        await RunGitAsync($"switch \"{branch}\"", repoPath);
+    }
+
+    private static async Task<string?> GetCurrentBranchAsync(string repoPath)
+    {
+        var branch = await RunGitAsync("branch --show-current", repoPath);
+        return string.IsNullOrWhiteSpace(branch) ? null : branch;
+    }
+
+    private static string? ResolveSelectedFolderPath(string repoPath, string? selectedFolderHint)
+    {
+        if (string.IsNullOrWhiteSpace(selectedFolderHint))
+        {
+            return null;
+        }
+
+        var normalizedHint = selectedFolderHint
+            .Replace('/', Path.DirectorySeparatorChar)
+            .Replace('\\', Path.DirectorySeparatorChar);
+        var fullPath = Path.GetFullPath(normalizedHint, repoPath);
+        return fullPath.StartsWith(repoPath, StringComparison.OrdinalIgnoreCase) ? fullPath : null;
+    }
+
+    private static async Task<string> RunGitAsync(string arguments, string workingDirectory)
+    {
+        var startInfo = new ProcessStartInfo
+        {
+            FileName = "git",
+            Arguments = arguments,
+            WorkingDirectory = workingDirectory,
+            RedirectStandardOutput = true,
+            RedirectStandardError = true,
+            UseShellExecute = false,
+            CreateNoWindow = true,
+        };
+
+        using var process = Process.Start(startInfo)
+            ?? throw new InvalidOperationException("Failed to start git process.");
+        var stdout = await process.StandardOutput.ReadToEndAsync();
+        var stderr = await process.StandardError.ReadToEndAsync();
+        await process.WaitForExitAsync();
+
+        if (process.ExitCode != 0)
+        {
+            throw new InvalidOperationException(
+                $"git {arguments} failed in {workingDirectory}: {stderr.Trim()}".Trim());
+        }
+
+        return stdout.Trim();
+    }
+
     private static async Task<IBrowser> LaunchBrowserAsync(IPlaywright playwright, CommandLineOptions options, bool headless)
     {
         var channel = options.Get("channel") ?? Config.BrowserChannel ?? GetDefaultBrowserChannel();
@@ -857,6 +1135,8 @@ internal sealed class AppConfig
     public string? SubmissionMapOutPath { get; init; }
     public string? AssignmentRegistryPath { get; init; }
     public string? GradingWorklistOutPath { get; init; }
+    public string? GradingRepoRoot { get; init; }
+    public string? GradingRepoQueueOutPath { get; init; }
 
     public static AppConfig Load()
     {
@@ -991,6 +1271,32 @@ internal sealed record GradingWorklistResult(
     int ItemCount,
     int UnmappedCount,
     IReadOnlyList<GradingWorkItem> Items);
+
+internal sealed record PreparedRepoWorkItem(
+    int Index,
+    string? Student,
+    string? ActivityName,
+    string ActivityType,
+    string AssignmentKey,
+    string GradingMode,
+    string? RepoUrl,
+    string? CloneUrl,
+    string? RepoPath,
+    string? SelectedBranch,
+    string? BranchHint,
+    string? SubdirHint,
+    string? AssignmentPathHint,
+    string? SelectedFolderHint,
+    string? SelectedFolderPath,
+    string? Error);
+
+internal sealed record PreparedRepoQueueResult(
+    DateTimeOffset GeneratedAt,
+    string WorklistPath,
+    string RepoRoot,
+    int ItemCount,
+    int ErrorCount,
+    IReadOnlyList<PreparedRepoWorkItem> Items);
 
 internal sealed record GitHubHints(
     string? Owner,
