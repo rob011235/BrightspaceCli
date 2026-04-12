@@ -1,4 +1,4 @@
- # BrightspaceCli Plan
+ # InsTK Plan
 
 ## Purpose
 
@@ -23,8 +23,9 @@ The repository currently contains a first-pass Playwright-based CLI with these c
 
 Current files:
 
-- `BrightspaceCli.sln`
-- `BrightspaceCli.csproj`
+- `InsTK.sln`
+- `InsTK.CLI/InsTK.CLI.csproj`
+- `InsTK.Core/InsTK.Core.csproj`
 - `Program.cs`
 - `README.md`
 - `AGENTS.md`
@@ -81,8 +82,8 @@ Current working branch at the time this plan was written:
 
 The user already ran:
 
-1. `dotnet restore .\BrightspaceCli.sln`
-2. `dotnet build .\BrightspaceCli.sln`
+1. `dotnet restore .\InsTK.sln`
+2. `dotnet build .\InsTK.sln`
 
 The README was updated to include the next step for Playwright browser installation:
 

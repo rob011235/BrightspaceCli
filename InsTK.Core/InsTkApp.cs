@@ -1,139 +1,26 @@
+using System.Diagnostics;
 using System.Text.Json;
 using System.Text.RegularExpressions;
-using System.Diagnostics;
 using Microsoft.Playwright;
 
-var command = args.FirstOrDefault()?.Trim().ToLowerInvariant();
+namespace InsTK.Core;
 
-if (string.IsNullOrWhiteSpace(command) || command is "help" or "--help" or "-h")
+public interface ICommandOptions
 {
-    PrintHelp();
-    return 0;
+    string? Get(string name);
+    bool HasFlag(string name);
+    string Require(string name);
+    string GetOrDefault(string name, string? fallback);
 }
 
-var options = CommandLineOptions.Parse(args.Skip(1).ToArray());
-
-try
+public interface ICommandHost
 {
-    return command switch
-    {
-        "login" => await BrightspaceCli.LoginAsync(options),
-        "scrape-quickeval" => await BrightspaceCli.ScrapeQuickEvalAsync(options),
-        "scrape-submission" => await BrightspaceCli.ScrapeSubmissionAsync(options),
-        "scrape-submission-map" => await BrightspaceCli.ScrapeSubmissionMapAsync(options),
-        "build-grading-worklist" => await BrightspaceCli.BuildGradingWorklistAsync(options),
-        "prepare-grading-repos" => await BrightspaceCli.PrepareGradingReposAsync(options),
-        "build-grading-runner" => await BrightspaceCli.BuildGradingRunnerAsync(options),
-        _ => Fail($"Unknown command: {command}"),
-    };
-}
-catch (Exception ex)
-{
-    Console.Error.WriteLine(ex.Message);
-    return 1;
+    TextWriter Out { get; }
+    TextWriter Error { get; }
+    TextReader In { get; }
 }
 
-static void PrintHelp()
-{
-    Console.WriteLine(
-        """
-        Brightspace CLI
-
-        Commands
-          login
-            Open a headed browser, let you log in manually, then save session state.
-          scrape-quickeval
-            Load a Quick Eval page with a saved session and export the visible submission rows.
-          scrape-submission
-            Load an individual submission/evaluation page and export comments, links, and GitHub hints.
-          scrape-submission-map
-            Load the Quick Eval page, visit each evaluation URL, and export merged row plus detail data.
-          build-grading-worklist
-            Join a submission map with an assignment registry and export a grading worklist.
-          prepare-grading-repos
-            Clone or update repos from a grading worklist and export a repo-ready grading queue.
-          build-grading-runner
-            Build a Codex-ready grading run queue with prompts, report paths, and tutorial/spec context.
-
-        Examples
-          dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- login
-          dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- scrape-quickeval
-          dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- scrape-quickeval --first-page-only
-          dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- scrape-submission --url "https://mycourses.cnm.edu/d2l/le/activities/iterator/..."
-          dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- scrape-submission-map --limit 5
-          dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- build-grading-worklist --registry "C:\Users\Rob011235\Dropbox\CNM\_Curriculum\CIST 2284 .NET II\_grading\assignment-registry.json"
-          dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- prepare-grading-repos --limit 5
-          dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- build-grading-runner --limit 5
-
-        Config
-          Put shared defaults in brightspacecli.json, for example:
-            {
-              "browserChannel": "msedge",
-              "quickEvalUrl": "https://mycourses.cnm.edu/d2l/le/224618/quickeval/",
-              "statePath": ".brightspace/session.json",
-              "quickEvalOutPath": "_grading/quickeval-live.json",
-              "submissionOutPath": "_grading/submission-live.json",
-              "submissionMapOutPath": "_grading/submission-map.json",
-              "assignmentRegistryPath": "C:\\grading\\assignment-registry.json",
-              "gradingWorklistOutPath": "C:\\grading\\grading-worklist.json",
-              "gradingRepoRoot": "C:\\grading\\repos",
-              "gradingRepoQueueOutPath": "C:\\grading\\grading-repo-queue.json",
-              "courseRootPath": "C:\\Users\\Rob011235\\Dropbox\\CNM\\_Curriculum\\CIST 2284 .NET II",
-              "gradingRunRoot": "C:\\grading\\runs",
-              "gradingRunnerOutPath": "C:\\grading\\grading-runner.json"
-            }
-          Command-line values still override config values for a single run.
-        """);
-}
-
-static int Fail(string message)
-{
-    Console.Error.WriteLine(message);
-    return 1;
-}
-
-internal sealed class CommandLineOptions
-{
-    private readonly Dictionary<string, string> values = new(StringComparer.OrdinalIgnoreCase);
-
-    public static CommandLineOptions Parse(string[] args)
-    {
-        var options = new CommandLineOptions();
-        for (var i = 0; i < args.Length; i++)
-        {
-            var key = args[i];
-            if (!key.StartsWith("--", StringComparison.Ordinal))
-            {
-                continue;
-            }
-
-            if (i + 1 >= args.Length || args[i + 1].StartsWith("--", StringComparison.Ordinal))
-            {
-                options.values[key[2..]] = "true";
-                continue;
-            }
-
-            options.values[key[2..]] = args[i + 1];
-            i++;
-        }
-
-        return options;
-    }
-
-    public string? Get(string name)
-        => values.TryGetValue(name, out var value) ? value : null;
-
-    public bool HasFlag(string name)
-        => string.Equals(Get(name), "true", StringComparison.OrdinalIgnoreCase);
-
-    public string Require(string name)
-        => Get(name) ?? throw new InvalidOperationException($"Missing required option --{name}");
-
-    public string GetOrDefault(string name, string? fallback)
-        => Get(name) ?? fallback ?? throw new InvalidOperationException($"Missing required option --{name}");
-}
-
-internal static class BrightspaceCli
+public static class InsTkApplication
 {
     private const string ArtifactSchemaVersion = "1.0";
     private static readonly AppConfig Config = AppConfig.Load();
@@ -143,7 +30,26 @@ internal static class BrightspaceCli
         PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
     };
 
-    public static async Task<int> LoginAsync(CommandLineOptions options)
+    public static async Task<int> ExecuteAsync(string command, ICommandOptions options, ICommandHost host)
+        => command switch
+        {
+            "login" => await LoginAsync(options, host),
+            "scrape-quickeval" => await ScrapeQuickEvalAsync(options, host),
+            "scrape-submission" => await ScrapeSubmissionAsync(options, host),
+            "scrape-submission-map" => await ScrapeSubmissionMapAsync(options, host),
+            "build-grading-worklist" => await BuildGradingWorklistAsync(options, host),
+            "prepare-grading-repos" => await PrepareGradingReposAsync(options, host),
+            "build-grading-runner" => await BuildGradingRunnerAsync(options, host),
+            _ => Fail(host, $"Unknown command: {command}"),
+        };
+
+    private static int Fail(ICommandHost host, string message)
+    {
+        host.Error.WriteLine(message);
+        return 1;
+    }
+
+    public static async Task<int> LoginAsync(ICommandOptions options, ICommandHost host)
     {
         var url = options.GetOrDefault("url", Config.QuickEvalUrl);
         var statePath = ResolvePath(options.GetOrDefault("state", Config.StatePath));
@@ -155,19 +61,19 @@ internal static class BrightspaceCli
         var context = await browser.NewContextAsync();
         var page = await context.NewPageAsync();
 
-        Console.WriteLine($"Opening {url}");
+        host.Out.WriteLine($"Opening {url}");
         await page.GotoAsync(url, new PageGotoOptions { WaitUntil = WaitUntilState.NetworkIdle });
 
-        Console.WriteLine("Complete the Brightspace login in the browser, then press Enter here to save the session.");
-        Console.ReadLine();
+        host.Out.WriteLine("Complete the Brightspace login in the browser, then press Enter here to save the session.");
+        host.In.ReadLine();
 
         await context.StorageStateAsync(new BrowserContextStorageStateOptions { Path = statePath });
-        Console.WriteLine($"Saved session state to {statePath}");
+        host.Out.WriteLine($"Saved session state to {statePath}");
         await browser.CloseAsync();
         return 0;
     }
 
-    public static async Task<int> ScrapeQuickEvalAsync(CommandLineOptions options)
+    public static async Task<int> ScrapeQuickEvalAsync(ICommandOptions options, ICommandHost host)
     {
         var url = options.GetOrDefault("url", Config.QuickEvalUrl);
         var statePath = ResolvePath(options.GetOrDefault("state", Config.StatePath));
@@ -182,22 +88,22 @@ internal static class BrightspaceCli
         });
 
         var page = await context.NewPageAsync();
-        var submissions = await ScrapeQuickEvalSubmissionsAsync(page, url, scrapeAllPages);
+        var submissions = await ScrapeQuickEvalSubmissionsAsync(page, url, scrapeAllPages, host);
         var rowCount = submissions.Count;
 
         var result = new QuickEvalListResult(
-            "BrightspaceCli",
+            "InsTK",
             DateTimeOffset.UtcNow,
             url,
             rowCount,
             submissions);
 
         await WriteJsonAsync(outPath, result);
-        Console.WriteLine($"Wrote {rowCount} submissions to {outPath}");
+        host.Out.WriteLine($"Wrote {rowCount} submissions to {outPath}");
         return 0;
     }
 
-    public static async Task<int> ScrapeSubmissionAsync(CommandLineOptions options)
+    public static async Task<int> ScrapeSubmissionAsync(ICommandOptions options, ICommandHost host)
     {
         var url = options.GetOrDefault("url", Config.SubmissionUrl);
         var statePath = ResolvePath(options.GetOrDefault("state", Config.StatePath));
@@ -214,11 +120,11 @@ internal static class BrightspaceCli
         var result = await ScrapeSubmissionDetailAsync(page, url);
 
         await WriteJsonAsync(outPath, result);
-        Console.WriteLine($"Wrote submission detail to {outPath}");
+        host.Out.WriteLine($"Wrote submission detail to {outPath}");
         return 0;
     }
 
-    public static async Task<int> ScrapeSubmissionMapAsync(CommandLineOptions options)
+    public static async Task<int> ScrapeSubmissionMapAsync(ICommandOptions options, ICommandHost host)
     {
         var url = options.GetOrDefault("url", Config.QuickEvalUrl);
         var statePath = ResolvePath(options.GetOrDefault("state", Config.StatePath));
@@ -235,7 +141,7 @@ internal static class BrightspaceCli
         });
 
         var quickEvalPage = await context.NewPageAsync();
-        var quickEvalSubmissions = await ScrapeQuickEvalSubmissionsAsync(quickEvalPage, url, scrapeAllPages);
+        var quickEvalSubmissions = await ScrapeQuickEvalSubmissionsAsync(quickEvalPage, url, scrapeAllPages, host);
         var targetSubmissions = limit.HasValue
             ? quickEvalSubmissions.Take(limit.Value).ToList()
             : quickEvalSubmissions;
@@ -270,7 +176,7 @@ internal static class BrightspaceCli
                 continue;
             }
 
-            Console.WriteLine($"Scraping submission {i + 1} of {targetSubmissions.Count}: {submission.Student} - {submission.ActivityName}");
+            host.Out.WriteLine($"Scraping submission {i + 1} of {targetSubmissions.Count}: {submission.Student} - {submission.ActivityName}");
 
             var detailPage = await context.NewPageAsync();
             SubmissionDetailResult? detail = null;
@@ -313,7 +219,7 @@ internal static class BrightspaceCli
 
         var result = new SubmissionMapResult(
             ArtifactSchemaVersion,
-            "BrightspaceCli",
+            "InsTK",
             DateTimeOffset.UtcNow,
             url,
             quickEvalSubmissions.Count,
@@ -321,11 +227,11 @@ internal static class BrightspaceCli
             entries);
 
         await WriteJsonAsync(outPath, result);
-        Console.WriteLine($"Wrote {entries.Count} merged submissions to {outPath}");
+        host.Out.WriteLine($"Wrote {entries.Count} merged submissions to {outPath}");
         return 0;
     }
 
-    public static async Task<int> BuildGradingWorklistAsync(CommandLineOptions options)
+    public static async Task<int> BuildGradingWorklistAsync(ICommandOptions options, ICommandHost host)
     {
         var submissionMapPath = ResolvePath(options.Get("submission-map") ?? Config.SubmissionMapOutPath ?? "_grading/submission-map.json");
         var registryPath = ResolvePath(options.GetOrDefault("registry", Config.AssignmentRegistryPath));
@@ -390,11 +296,11 @@ internal static class BrightspaceCli
             items);
 
         await WriteJsonAsync(outPath, result);
-        Console.WriteLine($"Wrote {items.Count} work items to {outPath}");
+        host.Out.WriteLine($"Wrote {items.Count} work items to {outPath}");
         return 0;
     }
 
-    public static async Task<int> PrepareGradingReposAsync(CommandLineOptions options)
+    public static async Task<int> PrepareGradingReposAsync(ICommandOptions options, ICommandHost host)
     {
         var worklistPath = ResolvePath(options.Get("worklist") ?? Config.GradingWorklistOutPath ?? "_grading/grading-worklist.json");
         var repoRoot = ResolvePath(options.GetOrDefault("repo-root", Config.GradingRepoRoot));
@@ -418,7 +324,7 @@ internal static class BrightspaceCli
         for (var i = 0; i < items.Count; i++)
         {
             var item = items[i];
-            Console.WriteLine($"Preparing repo {i + 1} of {items.Count}: {item.Student} - {item.ActivityName}");
+            host.Out.WriteLine($"Preparing repo {i + 1} of {items.Count}: {item.Student} - {item.ActivityName}");
 
             if (string.IsNullOrWhiteSpace(item.CloneUrl))
             {
@@ -498,11 +404,11 @@ internal static class BrightspaceCli
             preparedItems);
 
         await WriteJsonAsync(outPath, result);
-        Console.WriteLine($"Wrote {preparedItems.Count} prepared repo items to {outPath}");
+        host.Out.WriteLine($"Wrote {preparedItems.Count} prepared repo items to {outPath}");
         return 0;
     }
 
-    public static async Task<int> BuildGradingRunnerAsync(CommandLineOptions options)
+    public static async Task<int> BuildGradingRunnerAsync(ICommandOptions options, ICommandHost host)
     {
         var repoQueuePath = ResolvePath(options.Get("repo-queue") ?? Config.GradingRepoQueueOutPath ?? "_grading/grading-repo-queue.json");
         var courseRoot = ResolvePath(options.GetOrDefault("course-root", Config.CourseRootPath));
@@ -553,7 +459,7 @@ internal static class BrightspaceCli
         for (var i = 0; i < items.Count; i++)
         {
             var queueItem = items[i];
-            Console.WriteLine($"Building grading run {i + 1} of {items.Count}: {queueItem.Student} - {queueItem.ActivityName}");
+            host.Out.WriteLine($"Building grading run {i + 1} of {items.Count}: {queueItem.Student} - {queueItem.ActivityName}");
 
             worklistIndex.TryGetValue(GetWorkItemKey(queueItem), out var workItem);
             AssignmentRegistryEntry? assignment = workItem?.Registry;
@@ -650,11 +556,11 @@ internal static class BrightspaceCli
             runItems);
 
         await WriteJsonAsync(outPath, result);
-        Console.WriteLine($"Wrote {runItems.Count} grading run items to {outPath}");
+        host.Out.WriteLine($"Wrote {runItems.Count} grading run items to {outPath}");
         return 0;
     }
 
-    private static async Task<List<QuickEvalSubmission>> ScrapeQuickEvalSubmissionsAsync(IPage page, string url, bool scrapeAllPages)
+    private static async Task<List<QuickEvalSubmission>> ScrapeQuickEvalSubmissionsAsync(IPage page, string url, bool scrapeAllPages, ICommandHost host)
     {
         await page.GotoAsync(url, new PageGotoOptions { WaitUntil = WaitUntilState.NetworkIdle });
         var submissions = new List<QuickEvalSubmission>();
@@ -678,7 +584,7 @@ internal static class BrightspaceCli
                 break;
             }
 
-            var moved = await TryAdvanceQuickEvalPageAsync(page, pageNumber);
+            var moved = await TryAdvanceQuickEvalPageAsync(page, pageNumber, host);
             if (!moved)
             {
                 break;
@@ -728,7 +634,7 @@ internal static class BrightspaceCli
         return submissions;
     }
 
-    private static async Task<bool> TryAdvanceQuickEvalPageAsync(IPage page, int pageNumber)
+    private static async Task<bool> TryAdvanceQuickEvalPageAsync(IPage page, int pageNumber, ICommandHost host)
     {
         var beforeSignature = await GetQuickEvalPageSignatureAsync(page);
         var beforeRowCount = await GetQuickEvalRowCountAsync(page);
@@ -753,7 +659,7 @@ internal static class BrightspaceCli
                 continue;
             }
 
-            Console.WriteLine($"Advancing Quick Eval page {pageNumber + 1} using selector {selector}");
+            host.Out.WriteLine($"Advancing Quick Eval page {pageNumber + 1} using selector {selector}");
             await candidate.ClickAsync();
 
             try
@@ -841,7 +747,7 @@ internal static class BrightspaceCli
 
         var github = GitHubHintParser.Parse(repoUrl);
         return new SubmissionDetailResult(
-            "BrightspaceCli",
+            "InsTK",
             DateTimeOffset.UtcNow,
             title,
             url,
@@ -1395,7 +1301,7 @@ internal static class BrightspaceCli
         return stdout.Trim();
     }
 
-    private static async Task<IBrowser> LaunchBrowserAsync(IPlaywright playwright, CommandLineOptions options, bool headless)
+    private static async Task<IBrowser> LaunchBrowserAsync(IPlaywright playwright, ICommandOptions options, bool headless)
     {
         var channel = options.Get("channel") ?? Config.BrowserChannel ?? GetDefaultBrowserChannel();
 
@@ -1451,10 +1357,15 @@ internal sealed class AppConfig
 
     public static AppConfig Load()
     {
-        var path = Path.Combine(Directory.GetCurrentDirectory(), "brightspacecli.json");
+        var currentDirectory = Directory.GetCurrentDirectory();
+        var path = Path.Combine(currentDirectory, "instk.json");
         if (!File.Exists(path))
         {
-            return new AppConfig();
+            path = Path.Combine(currentDirectory, "brightspacecli.json");
+            if (!File.Exists(path))
+            {
+                return new AppConfig();
+            }
         }
 
         try
