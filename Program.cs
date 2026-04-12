@@ -19,6 +19,7 @@ try
         "login" => await BrightspaceCli.LoginAsync(options),
         "scrape-quickeval" => await BrightspaceCli.ScrapeQuickEvalAsync(options),
         "scrape-submission" => await BrightspaceCli.ScrapeSubmissionAsync(options),
+        "scrape-submission-map" => await BrightspaceCli.ScrapeSubmissionMapAsync(options),
         _ => Fail($"Unknown command: {command}"),
     };
 }
@@ -41,11 +42,14 @@ static void PrintHelp()
             Load a Quick Eval page with a saved session and export the visible submission rows.
           scrape-submission
             Load an individual submission/evaluation page and export comments, links, and GitHub hints.
+          scrape-submission-map
+            Load the Quick Eval page, visit each evaluation URL, and export merged row plus detail data.
 
         Examples
           dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- login
           dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- scrape-quickeval
           dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- scrape-submission --url "https://mycourses.cnm.edu/d2l/le/activities/iterator/..."
+          dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- scrape-submission-map --limit 5
 
         Config
           Put shared defaults in brightspacecli.json, for example:
@@ -54,7 +58,8 @@ static void PrintHelp()
               "quickEvalUrl": "https://mycourses.cnm.edu/d2l/le/224618/quickeval/",
               "statePath": ".brightspace/session.json",
               "quickEvalOutPath": "_grading/quickeval-live.json",
-              "submissionOutPath": "_grading/submission-live.json"
+              "submissionOutPath": "_grading/submission-live.json",
+              "submissionMapOutPath": "_grading/submission-map.json"
             }
           Command-line values still override config values for a single run.
         """);
@@ -142,8 +147,6 @@ internal static class BrightspaceCli
         var url = options.GetOrDefault("url", Config.QuickEvalUrl);
         var statePath = ResolvePath(options.GetOrDefault("state", Config.StatePath));
         var outPath = ResolvePath(options.Get("out") ?? Config.QuickEvalOutPath ?? "_grading/quickeval-live.json");
-        var pageUri = new Uri(url, UriKind.Absolute);
-
         using var playwright = await Playwright.CreateAsync();
         await using var browser = await LaunchBrowserAsync(playwright, options, headless: true);
 
@@ -153,6 +156,146 @@ internal static class BrightspaceCli
         });
 
         var page = await context.NewPageAsync();
+        var submissions = await ScrapeQuickEvalSubmissionsAsync(page, url);
+        var rowCount = submissions.Count;
+
+        var result = new QuickEvalListResult(
+            "BrightspaceCli",
+            DateTimeOffset.UtcNow,
+            url,
+            rowCount,
+            submissions);
+
+        await WriteJsonAsync(outPath, result);
+        Console.WriteLine($"Wrote {rowCount} submissions to {outPath}");
+        return 0;
+    }
+
+    public static async Task<int> ScrapeSubmissionAsync(CommandLineOptions options)
+    {
+        var url = options.GetOrDefault("url", Config.SubmissionUrl);
+        var statePath = ResolvePath(options.GetOrDefault("state", Config.StatePath));
+        var outPath = ResolvePath(options.Get("out") ?? Config.SubmissionOutPath ?? "_grading/submission-live.json");
+        using var playwright = await Playwright.CreateAsync();
+        await using var browser = await LaunchBrowserAsync(playwright, options, headless: true);
+
+        var context = await browser.NewContextAsync(new BrowserNewContextOptions
+        {
+            StorageStatePath = statePath,
+        });
+
+        var page = await context.NewPageAsync();
+        var result = await ScrapeSubmissionDetailAsync(page, url);
+
+        await WriteJsonAsync(outPath, result);
+        Console.WriteLine($"Wrote submission detail to {outPath}");
+        return 0;
+    }
+
+    public static async Task<int> ScrapeSubmissionMapAsync(CommandLineOptions options)
+    {
+        var url = options.GetOrDefault("url", Config.QuickEvalUrl);
+        var statePath = ResolvePath(options.GetOrDefault("state", Config.StatePath));
+        var outPath = ResolvePath(options.Get("out") ?? Config.SubmissionMapOutPath ?? "_grading/submission-map.json");
+        var limit = ParseOptionalInt(options.Get("limit"), "limit");
+
+        using var playwright = await Playwright.CreateAsync();
+        await using var browser = await LaunchBrowserAsync(playwright, options, headless: true);
+
+        var context = await browser.NewContextAsync(new BrowserNewContextOptions
+        {
+            StorageStatePath = statePath,
+        });
+
+        var quickEvalPage = await context.NewPageAsync();
+        var quickEvalSubmissions = await ScrapeQuickEvalSubmissionsAsync(quickEvalPage, url);
+        var targetSubmissions = limit.HasValue
+            ? quickEvalSubmissions.Take(limit.Value).ToList()
+            : quickEvalSubmissions;
+
+        var entries = new List<SubmissionMapEntry>();
+
+        for (var i = 0; i < targetSubmissions.Count; i++)
+        {
+            var submission = targetSubmissions[i];
+            if (string.IsNullOrWhiteSpace(submission.EvaluationUrl))
+            {
+                entries.Add(new SubmissionMapEntry(
+                    submission.Index,
+                    submission.Student,
+                    submission.ActivityName,
+                    submission.SubmittedAt,
+                    submission.EvaluationUrl,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    Array.Empty<string>(),
+                    string.Empty,
+                    "Missing evaluation URL."));
+                continue;
+            }
+
+            Console.WriteLine($"Scraping submission {i + 1} of {targetSubmissions.Count}: {submission.Student} - {submission.ActivityName}");
+
+            var detailPage = await context.NewPageAsync();
+            SubmissionDetailResult? detail = null;
+            string? error = null;
+
+            try
+            {
+                detail = await ScrapeSubmissionDetailAsync(detailPage, submission.EvaluationUrl);
+            }
+            catch (Exception ex)
+            {
+                error = ex.Message;
+            }
+            finally
+            {
+                await detailPage.CloseAsync();
+            }
+
+            entries.Add(new SubmissionMapEntry(
+                submission.Index,
+                submission.Student,
+                submission.ActivityName,
+                submission.SubmittedAt,
+                submission.EvaluationUrl,
+                detail?.PageTitle,
+                detail?.PreviewUrl,
+                detail?.RepoUrl,
+                detail?.Owner,
+                detail?.Repo,
+                detail?.CloneUrl,
+                detail?.BranchHint,
+                detail?.SubdirHint,
+                detail?.AssignmentPathHint,
+                detail?.Urls ?? Array.Empty<string>(),
+                detail?.RawText ?? string.Empty,
+                error));
+        }
+
+        var result = new SubmissionMapResult(
+            "BrightspaceCli",
+            DateTimeOffset.UtcNow,
+            url,
+            quickEvalSubmissions.Count,
+            entries.Count,
+            entries);
+
+        await WriteJsonAsync(outPath, result);
+        Console.WriteLine($"Wrote {entries.Count} merged submissions to {outPath}");
+        return 0;
+    }
+
+    private static async Task<List<QuickEvalSubmission>> ScrapeQuickEvalSubmissionsAsync(IPage page, string url)
+    {
+        var pageUri = new Uri(url, UriKind.Absolute);
         await page.GotoAsync(url, new PageGotoOptions { WaitUntil = WaitUntilState.NetworkIdle });
         await page.WaitForSelectorAsync("d2l-quick-eval-submissions-table tbody > tr");
 
@@ -182,34 +325,12 @@ internal static class BrightspaceCli
                 [.. new[] { evaluationUrl }.Where(static value => !string.IsNullOrWhiteSpace(value))!]));
         }
 
-        var result = new QuickEvalListResult(
-            "BrightspaceCli",
-            DateTimeOffset.UtcNow,
-            url,
-            rowCount,
-            submissions);
-
-        await WriteJsonAsync(outPath, result);
-        Console.WriteLine($"Wrote {rowCount} submissions to {outPath}");
-        return 0;
+        return submissions;
     }
 
-    public static async Task<int> ScrapeSubmissionAsync(CommandLineOptions options)
+    private static async Task<SubmissionDetailResult> ScrapeSubmissionDetailAsync(IPage page, string url)
     {
-        var url = options.GetOrDefault("url", Config.SubmissionUrl);
-        var statePath = ResolvePath(options.GetOrDefault("state", Config.StatePath));
-        var outPath = ResolvePath(options.Get("out") ?? Config.SubmissionOutPath ?? "_grading/submission-live.json");
         var pageUri = new Uri(url, UriKind.Absolute);
-
-        using var playwright = await Playwright.CreateAsync();
-        await using var browser = await LaunchBrowserAsync(playwright, options, headless: true);
-
-        var context = await browser.NewContextAsync(new BrowserNewContextOptions
-        {
-            StorageStatePath = statePath,
-        });
-
-        var page = await context.NewPageAsync();
         await page.GotoAsync(url, new PageGotoOptions { WaitUntil = WaitUntilState.NetworkIdle });
         await page.WaitForLoadStateAsync(LoadState.NetworkIdle);
 
@@ -221,6 +342,7 @@ internal static class BrightspaceCli
 
         var uniqueLinks = links
             .Where(static value => IsUsefulUrl(value))
+            .Where(static value => !IsQuickEvalReturnUrl(value))
             .Distinct(StringComparer.OrdinalIgnoreCase)
             .ToList();
 
@@ -228,7 +350,7 @@ internal static class BrightspaceCli
             value.Contains("github.com/", StringComparison.OrdinalIgnoreCase));
 
         var github = GitHubHintParser.Parse(repoUrl);
-        var result = new SubmissionDetailResult(
+        return new SubmissionDetailResult(
             "BrightspaceCli",
             DateTimeOffset.UtcNow,
             title,
@@ -240,12 +362,9 @@ internal static class BrightspaceCli
             github.CloneUrl,
             github.BranchHint,
             github.SubdirHint,
+            AssignmentPathHintParser.Parse(bodyText),
             uniqueLinks,
             bodyText);
-
-        await WriteJsonAsync(outPath, result);
-        Console.WriteLine($"Wrote submission detail to {outPath}");
-        return 0;
     }
 
     private static async Task<string?> ReadNamedValueAsync(ILocator locator)
@@ -307,6 +426,16 @@ internal static class BrightspaceCli
 
         return !value.StartsWith("javascript:", StringComparison.OrdinalIgnoreCase)
             && !value.StartsWith("about:", StringComparison.OrdinalIgnoreCase);
+    }
+
+    private static bool IsQuickEvalReturnUrl(string value)
+    {
+        if (!Uri.TryCreate(value, UriKind.Absolute, out var uri))
+        {
+            return false;
+        }
+
+        return uri.AbsolutePath.Contains("/quickeval/", StringComparison.OrdinalIgnoreCase);
     }
 
     private static async Task<string> ReadSubmissionTextAsync(IPage page)
@@ -452,6 +581,21 @@ internal static class BrightspaceCli
                 .Where(static line => !string.IsNullOrWhiteSpace(line)));
     }
 
+    private static int? ParseOptionalInt(string? value, string optionName)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+        {
+            return null;
+        }
+
+        if (!int.TryParse(value, out var parsed) || parsed <= 0)
+        {
+            throw new InvalidOperationException($"Option --{optionName} must be a positive integer.");
+        }
+
+        return parsed;
+    }
+
     private static async Task<IBrowser> LaunchBrowserAsync(IPlaywright playwright, CommandLineOptions options, bool headless)
     {
         var channel = options.Get("channel") ?? Config.BrowserChannel ?? GetDefaultBrowserChannel();
@@ -493,6 +637,7 @@ internal sealed class AppConfig
     public string? StatePath { get; init; }
     public string? QuickEvalOutPath { get; init; }
     public string? SubmissionOutPath { get; init; }
+    public string? SubmissionMapOutPath { get; init; }
 
     public static AppConfig Load()
     {
@@ -543,8 +688,36 @@ internal sealed record SubmissionDetailResult(
     string? CloneUrl,
     string? BranchHint,
     string? SubdirHint,
+    string? AssignmentPathHint,
     IReadOnlyList<string> Urls,
     string RawText);
+
+internal sealed record SubmissionMapEntry(
+    int Index,
+    string? Student,
+    string? ActivityName,
+    string? SubmittedAt,
+    string? EvaluationUrl,
+    string? PageTitle,
+    string? PreviewUrl,
+    string? RepoUrl,
+    string? Owner,
+    string? Repo,
+    string? CloneUrl,
+    string? BranchHint,
+    string? SubdirHint,
+    string? AssignmentPathHint,
+    IReadOnlyList<string> Urls,
+    string RawText,
+    string? Error);
+
+internal sealed record SubmissionMapResult(
+    string Scraper,
+    DateTimeOffset ScrapedAt,
+    string PageUrl,
+    int QuickEvalSubmissionCount,
+    int ProcessedSubmissionCount,
+    IReadOnlyList<SubmissionMapEntry> Submissions);
 
 internal sealed record GitHubHints(
     string? Owner,
@@ -590,5 +763,29 @@ internal static class GitHubHintParser
             owner is not null && repo is not null ? $"https://github.com/{owner}/{repo}.git" : null,
             branchHint,
             subdirHint);
+    }
+}
+
+internal static class AssignmentPathHintParser
+{
+    private static readonly Regex CheckPathRegex = new(
+        @"(?:check|use|see|look\s+at)\s+([A-Za-z0-9._\-/]+)",
+        RegexOptions.IgnoreCase | RegexOptions.Compiled);
+
+    public static string? Parse(string? rawText)
+    {
+        if (string.IsNullOrWhiteSpace(rawText))
+        {
+            return null;
+        }
+
+        var match = CheckPathRegex.Match(rawText);
+        if (!match.Success)
+        {
+            return null;
+        }
+
+        var value = match.Groups[1].Value.Trim().TrimEnd('.', ',', ';', ':');
+        return string.IsNullOrWhiteSpace(value) ? null : value;
     }
 }

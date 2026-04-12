@@ -43,7 +43,8 @@ Example:
   "submissionUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/...",
   "statePath": ".brightspace/session.json",
   "quickEvalOutPath": "_grading/quickeval-live.json",
-  "submissionOutPath": "_grading/submission-live.json"
+  "submissionOutPath": "_grading/submission-live.json",
+  "submissionMapOutPath": "_grading/submission-map.json"
 }
 ```
 
@@ -77,6 +78,7 @@ dotnet run --project . -- scrape-quickeval
 dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- login
 dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- scrape-quickeval
 dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- scrape-submission --url "https://mycourses.cnm.edu/d2l/le/activities/iterator/..."
+dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- scrape-submission-map --limit 5
 ```
 
 ## Current Shape
@@ -84,6 +86,7 @@ dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- scrape-su
 - `login` opens a headed browser so you can authenticate manually and then save Playwright session state.
 - `scrape-quickeval` extracts the currently visible Quick Eval rows.
 - `scrape-submission` extracts visible links and detects GitHub repo hints from an individual evaluation page.
+- `scrape-submission-map` starts from Quick Eval rows, visits each evaluation URL, and writes a merged batch export including preview URLs, repo hints, and assignment path hints when present.
 
 ## Notes
 
