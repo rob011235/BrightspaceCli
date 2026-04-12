@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "1.0",
+  "generatedAt": "2026-04-12T20:14:00Z",
+  "repoQueuePath": "C:\\grading\\grading-repo-queue.json",
+  "worklistPath": "C:\\grading\\grading-worklist.json",
+  "registryPath": "C:\\grading\\assignment-registry.json",
+  "courseRoot": "C:\\Users\\Rob011235\\Dropbox\\CNM\\_Curriculum\\CIST 2284 .NET II",
+  "runRoot": "C:\\grading\\runs",
+  "itemCount": 1,
+  "errorCount": 1,
+  "items": [
+    {
+      "index": 0,
+      "student": "Jane Student",
+      "activityName": "Program 99 - Unknown Assignment",
+      "activityType": "program",
+      "assignmentKey": "program-99-unknown-assignment",
+      "gradingMode": "program-spec",
+      "repoUrl": "https://github.com/janestudent/CIST2284-Program99",
+      "cloneUrl": "https://github.com/janestudent/CIST2284-Program99.git",
+      "repoPath": "C:\\grading\\repos\\janestudent-CIST2284-Program99",
+      "selectedBranch": "main",
+      "selectedFolderPath": null,
+      "gradingTargetPath": "C:\\grading\\repos\\janestudent-CIST2284-Program99",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/224618/12345678",
+      "previewUrl": "https://mycourses.cnm.edu/d2l/preview/123456",
+      "tutorialUrl": null,
+      "competencyFolderPath": null,
+      "specPath": null,
+      "courseAgentsPath": "C:\\Users\\Rob011235\\Dropbox\\CNM\\_Curriculum\\CIST 2284 .NET II\\AGENTS.md",
+      "assignmentAgentsPath": null,
+      "promptPath": "C:\\grading\\runs\\prompts\\program-99-unknown-assignment\\Jane-Student.md",
+      "reportPath": "C:\\grading\\runs\\reports\\program-99-unknown-assignment\\Jane-Student.md",
+      "error": "Assignment registry entry not found for this work item."
+    }
+  ]
+}

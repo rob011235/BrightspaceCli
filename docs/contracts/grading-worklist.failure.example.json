@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "1.0",
+  "generatedAt": "2026-04-12T20:07:00Z",
+  "submissionMapPath": "C:\\grading\\submission-map.json",
+  "registryPath": "C:\\grading\\assignment-registry.json",
+  "itemCount": 1,
+  "unmappedCount": 1,
+  "items": [
+    {
+      "index": 0,
+      "student": "Jane Student",
+      "activityName": "Program 99 - Unknown Assignment",
+      "activityType": "program",
+      "assignmentKey": "program-99-unknown-assignment",
+      "gradingMode": "program-spec",
+      "repoUrl": "https://github.com/janestudent/CIST2284-Program99",
+      "cloneUrl": "https://github.com/janestudent/CIST2284-Program99.git",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/224618/12345678",
+      "previewUrl": "https://mycourses.cnm.edu/d2l/preview/123456",
+      "branchHint": null,
+      "subdirHint": null,
+      "assignmentPathHint": null,
+      "selectedFolderHint": null,
+      "rawText": "https://github.com/janestudent/CIST2284-Program99",
+      "registryMatched": false,
+      "registry": null
+    }
+  ]
+}

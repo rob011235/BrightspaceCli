@@ -9,5 +9,8 @@
   "assignmentRegistryPath": "C:\\grading\\assignment-registry.json",
   "gradingWorklistOutPath": "C:\\grading\\grading-worklist.json",
   "gradingRepoRoot": "C:\\grading\\repos",
-  "gradingRepoQueueOutPath": "C:\\grading\\grading-repo-queue.json"
+  "gradingRepoQueueOutPath": "C:\\grading\\grading-repo-queue.json",
+  "courseRootPath": "C:\\Users\\Rob011235\\Dropbox\\CNM\\_Curriculum\\CIST 2284 .NET II",
+  "gradingRunRoot": "C:\\grading\\runs",
+  "gradingRunnerOutPath": "C:\\grading\\grading-runner.json"
 }

@@ -48,7 +48,10 @@ Example:
   "assignmentRegistryPath": "C:\\grading\\assignment-registry.json",
   "gradingWorklistOutPath": "C:\\grading\\grading-worklist.json",
   "gradingRepoRoot": "C:\\grading\\repos",
-  "gradingRepoQueueOutPath": "C:\\grading\\grading-repo-queue.json"
+  "gradingRepoQueueOutPath": "C:\\grading\\grading-repo-queue.json",
+  "courseRootPath": "C:\\Users\\Rob011235\\Dropbox\\CNM\\_Curriculum\\CIST 2284 .NET II",
+  "gradingRunRoot": "C:\\grading\\runs",
+  "gradingRunnerOutPath": "C:\\grading\\grading-runner.json"
 }
 ```
 
@@ -86,6 +89,7 @@ dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- scrape-su
 dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- scrape-submission-map --limit 5
 dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- build-grading-worklist --registry "C:\grading\assignment-registry.json"
 dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- prepare-grading-repos --limit 5
+dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- build-grading-runner --limit 5
 ```
 
 ## Current Shape
@@ -97,10 +101,19 @@ dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- prepare-g
 - Quick Eval rows and submission-map entries now include `activityType` and `assignmentKey` so downstream grading tools can join submissions to a course assignment registry.
 - `build-grading-worklist` joins `submission-map.json` with an external assignment registry and writes a grading-ready worklist.
 - `prepare-grading-repos` clones or updates repos from the grading worklist and writes a repo-ready grading queue with resolved branch and folder hints.
+- `build-grading-runner` turns the prepared repo queue into a Codex-ready grading run queue with prompt files, report paths, and resolved tutorial or competency context.
 
 Use `--first-page-only` with `scrape-quickeval` or `scrape-submission-map` if you want to disable paging and only use the currently visible rows.
 
 For grading runtime artifacts, prefer `C:\grading` over the course Dropbox workspace to avoid long path failures when cloning student repositories.
+
+The grading runner writes:
+
+- `C:\grading\grading-runner.json`
+- `C:\grading\runs\prompts\...`
+- `C:\grading\runs\reports\...`
+
+Each prompt file contains the student, assignment, selected repo path, branch, selected folder, tutorial or spec context, and the required grading report format.
 
 ## Notes
 
@@ -114,3 +127,6 @@ For grading runtime artifacts, prefer `C:\grading` over the course Dropbox works
 - opening each evaluation row and scraping detail pages in sequence
 - merging list and detail data into one `submission-map.json`
 - assignment-level batch export commands
+## Contracts
+
+Canonical example pipeline artifacts and contract notes live in `docs/contracts/README.md`.

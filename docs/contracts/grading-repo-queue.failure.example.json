@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "1.0",
+  "generatedAt": "2026-04-12T20:10:00Z",
+  "worklistPath": "C:\\grading\\grading-worklist.json",
+  "repoRoot": "C:\\grading\\repos",
+  "itemCount": 1,
+  "errorCount": 1,
+  "items": [
+    {
+      "index": 0,
+      "student": "Jane Student",
+      "activityName": "Program 04 - CRUD Contacts",
+      "activityType": "program",
+      "assignmentKey": "program-04-crud-contacts",
+      "gradingMode": "program-spec",
+      "repoUrl": "https://github.com/janestudent/CIST2284-Program04/tree/main/ContactsApp",
+      "cloneUrl": "https://github.com/janestudent/CIST2284-Program04.git",
+      "repoPath": "C:\\grading\\repos\\janestudent-CIST2284-Program04",
+      "selectedBranch": "main",
+      "branchHint": "main",
+      "subdirHint": "ContactsApp",
+      "assignmentPathHint": "Unit04/Program04",
+      "selectedFolderHint": "Unit04/Program04",
+      "selectedFolderPath": null,
+      "error": "Selected folder hint could not be resolved inside the cloned repository."
+    }
+  ]
+}

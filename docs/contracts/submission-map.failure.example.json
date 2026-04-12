@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "1.0",
+  "scraper": "BrightspaceCli",
+  "scrapedAt": "2026-04-12T20:05:00Z",
+  "pageUrl": "https://mycourses.cnm.edu/d2l/le/224618/quickeval/",
+  "quickEvalSubmissionCount": 1,
+  "processedSubmissionCount": 1,
+  "submissions": [
+    {
+      "index": 0,
+      "student": "Jane Student",
+      "activityName": "Program 04 - CRUD Contacts",
+      "activityType": "program",
+      "assignmentKey": "program-04-crud-contacts",
+      "submittedAt": "Apr 11, 2026 8:14 PM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/224618/12345678",
+      "pageTitle": "Evaluate Submission - Jane Student",
+      "previewUrl": "https://mycourses.cnm.edu/d2l/preview/123456",
+      "repoUrl": null,
+      "owner": null,
+      "repo": null,
+      "cloneUrl": null,
+      "branchHint": null,
+      "subdirHint": null,
+      "assignmentPathHint": null,
+      "urls": [
+        "https://mycourses.cnm.edu/d2l/preview/123456"
+      ],
+      "rawText": "I uploaded files directly in Brightspace.",
+      "error": "No GitHub repository URL was found on the submission detail page."
+    }
+  ]
+}
