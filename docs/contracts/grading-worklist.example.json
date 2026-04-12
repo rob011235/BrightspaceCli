@@ -4,7 +4,7 @@
   "submissionMapPath": "C:\\grading\\submission-map.json",
   "registryPath": "C:\\grading\\assignment-registry.json",
   "itemCount": 42,
-  "unmatchedCount": 3,
+  "unmappedCount": 3,
   "items": [
     {
       "index": 0,

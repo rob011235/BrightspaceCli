@@ -1,10 +1,10 @@
 {
   "schemaVersion": "1.0",
   "scraper": "BrightspaceCli",
-  "scrapedAt": "2026-04-12T19:45:00Z",
+  "scrapedAt": "2026-04-12T20:05:00Z",
   "pageUrl": "https://mycourses.cnm.edu/d2l/le/224618/quickeval/",
-  "quickEvalSubmissionCount": 42,
-  "processedSubmissionCount": 42,
+  "quickEvalSubmissionCount": 1,
+  "processedSubmissionCount": 1,
   "submissions": [
     {
       "index": 0,
@@ -16,19 +16,18 @@
       "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/224618/12345678",
       "pageTitle": "Evaluate Submission - Jane Student",
       "previewUrl": "https://mycourses.cnm.edu/d2l/preview/123456",
-      "repoUrl": "https://github.com/janestudent/CIST2284-Program04/tree/main/ContactsApp",
-      "owner": "janestudent",
-      "repo": "CIST2284-Program04",
-      "cloneUrl": "https://github.com/janestudent/CIST2284-Program04.git",
-      "branchHint": "main",
-      "subdirHint": "ContactsApp",
-      "assignmentPathHint": "Unit04/Program04",
+      "repoUrl": null,
+      "owner": null,
+      "repo": null,
+      "cloneUrl": null,
+      "branchHint": null,
+      "subdirHint": null,
+      "assignmentPathHint": null,
       "urls": [
-        "https://github.com/janestudent/CIST2284-Program04/tree/main/ContactsApp",
         "https://mycourses.cnm.edu/d2l/preview/123456"
       ],
-      "rawText": "GitHub: https://github.com/janestudent/CIST2284-Program04/tree/main/ContactsApp\nFolder: Unit04/Program04",
-      "error": null
+      "rawText": "I uploaded files directly in Brightspace.",
+      "error": "No GitHub repository URL was found on the submission detail page."
     }
   ]
 }

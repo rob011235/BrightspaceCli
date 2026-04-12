@@ -135,6 +135,7 @@ internal sealed class CommandLineOptions
 
 internal static class BrightspaceCli
 {
+    private const string ArtifactSchemaVersion = "1.0";
     private static readonly AppConfig Config = AppConfig.Load();
     private static readonly JsonSerializerOptions JsonOptions = new()
     {
@@ -311,6 +312,7 @@ internal static class BrightspaceCli
         }
 
         var result = new SubmissionMapResult(
+            ArtifactSchemaVersion,
             "BrightspaceCli",
             DateTimeOffset.UtcNow,
             url,
@@ -379,6 +381,7 @@ internal static class BrightspaceCli
             .ToList();
 
         var result = new GradingWorklistResult(
+            ArtifactSchemaVersion,
             DateTimeOffset.UtcNow,
             submissionMapPath,
             registryPath,
@@ -486,6 +489,7 @@ internal static class BrightspaceCli
         }
 
         var result = new PreparedRepoQueueResult(
+            ArtifactSchemaVersion,
             DateTimeOffset.UtcNow,
             worklistPath,
             repoRoot,
@@ -634,6 +638,7 @@ internal static class BrightspaceCli
         }
 
         var result = new GradingRunnerResult(
+            ArtifactSchemaVersion,
             DateTimeOffset.UtcNow,
             repoQueuePath,
             repoQueue.WorklistPath,
@@ -1510,6 +1515,7 @@ internal sealed record SubmissionMapEntry(
     string? Error);
 
 internal sealed record SubmissionMapResult(
+    string SchemaVersion,
     string Scraper,
     DateTimeOffset ScrapedAt,
     string PageUrl,
@@ -1560,6 +1566,7 @@ internal sealed record GradingWorkItem(
     AssignmentRegistryEntry? Registry);
 
 internal sealed record GradingWorklistResult(
+    string SchemaVersion,
     DateTimeOffset GeneratedAt,
     string SubmissionMapPath,
     string RegistryPath,
@@ -1586,6 +1593,7 @@ internal sealed record PreparedRepoWorkItem(
     string? Error);
 
 internal sealed record PreparedRepoQueueResult(
+    string SchemaVersion,
     DateTimeOffset GeneratedAt,
     string WorklistPath,
     string RepoRoot,
@@ -1618,6 +1626,7 @@ internal sealed record GradingRunItem(
     string? Error);
 
 internal sealed record GradingRunnerResult(
+    string SchemaVersion,
     DateTimeOffset GeneratedAt,
     string RepoQueuePath,
     string WorklistPath,

@@ -66,3 +66,55 @@ Example:
 {
   "schemaVersion": "1.0"
 }
+```
+
+### 3. Example files must match the current code
+These examples are snapshots of the serialized runtime shape. If code changes a property name, adds or removes fields, or changes path sanitization behavior, update the matching example file in the same change.
+
+### 4. Top-level artifact fields
+
+`submission-map.example.json`
+
+- `schemaVersion`
+- `scraper`
+- `scrapedAt`
+- `pageUrl`
+- `quickEvalSubmissionCount`
+- `processedSubmissionCount`
+- `submissions`
+
+`grading-worklist.example.json`
+
+- `schemaVersion`
+- `generatedAt`
+- `submissionMapPath`
+- `registryPath`
+- `itemCount`
+- `unmappedCount`
+- `items`
+
+`grading-repo-queue.example.json`
+
+- `schemaVersion`
+- `generatedAt`
+- `worklistPath`
+- `repoRoot`
+- `itemCount`
+- `errorCount`
+- `items`
+
+`grading-runner.example.json`
+
+- `schemaVersion`
+- `generatedAt`
+- `repoQueuePath`
+- `worklistPath`
+- `registryPath`
+- `courseRoot`
+- `runRoot`
+- `itemCount`
+- `errorCount`
+- `items`
+
+### 5. Path examples should match runtime sanitization
+Prompt and report file names should reflect the current sanitization logic used by the runner. If student names are written with dashes in runtime output, the examples should show dashes too.
