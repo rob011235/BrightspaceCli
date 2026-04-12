@@ -48,6 +48,7 @@ static void PrintHelp()
         Examples
           dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- login
           dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- scrape-quickeval
+          dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- scrape-quickeval --first-page-only
           dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- scrape-submission --url "https://mycourses.cnm.edu/d2l/le/activities/iterator/..."
           dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- scrape-submission-map --limit 5
 
@@ -102,6 +103,9 @@ internal sealed class CommandLineOptions
     public string? Get(string name)
         => values.TryGetValue(name, out var value) ? value : null;
 
+    public bool HasFlag(string name)
+        => string.Equals(Get(name), "true", StringComparison.OrdinalIgnoreCase);
+
     public string Require(string name)
         => Get(name) ?? throw new InvalidOperationException($"Missing required option --{name}");
 
@@ -147,6 +151,7 @@ internal static class BrightspaceCli
         var url = options.GetOrDefault("url", Config.QuickEvalUrl);
         var statePath = ResolvePath(options.GetOrDefault("state", Config.StatePath));
         var outPath = ResolvePath(options.Get("out") ?? Config.QuickEvalOutPath ?? "_grading/quickeval-live.json");
+        var scrapeAllPages = !options.HasFlag("first-page-only");
         using var playwright = await Playwright.CreateAsync();
         await using var browser = await LaunchBrowserAsync(playwright, options, headless: true);
 
@@ -156,7 +161,7 @@ internal static class BrightspaceCli
         });
 
         var page = await context.NewPageAsync();
-        var submissions = await ScrapeQuickEvalSubmissionsAsync(page, url);
+        var submissions = await ScrapeQuickEvalSubmissionsAsync(page, url, scrapeAllPages);
         var rowCount = submissions.Count;
 
         var result = new QuickEvalListResult(
@@ -198,6 +203,7 @@ internal static class BrightspaceCli
         var statePath = ResolvePath(options.GetOrDefault("state", Config.StatePath));
         var outPath = ResolvePath(options.Get("out") ?? Config.SubmissionMapOutPath ?? "_grading/submission-map.json");
         var limit = ParseOptionalInt(options.Get("limit"), "limit");
+        var scrapeAllPages = !options.HasFlag("first-page-only");
 
         using var playwright = await Playwright.CreateAsync();
         await using var browser = await LaunchBrowserAsync(playwright, options, headless: true);
@@ -208,7 +214,7 @@ internal static class BrightspaceCli
         });
 
         var quickEvalPage = await context.NewPageAsync();
-        var quickEvalSubmissions = await ScrapeQuickEvalSubmissionsAsync(quickEvalPage, url);
+        var quickEvalSubmissions = await ScrapeQuickEvalSubmissionsAsync(quickEvalPage, url, scrapeAllPages);
         var targetSubmissions = limit.HasValue
             ? quickEvalSubmissions.Take(limit.Value).ToList()
             : quickEvalSubmissions;
@@ -293,10 +299,45 @@ internal static class BrightspaceCli
         return 0;
     }
 
-    private static async Task<List<QuickEvalSubmission>> ScrapeQuickEvalSubmissionsAsync(IPage page, string url)
+    private static async Task<List<QuickEvalSubmission>> ScrapeQuickEvalSubmissionsAsync(IPage page, string url, bool scrapeAllPages)
+    {
+        await page.GotoAsync(url, new PageGotoOptions { WaitUntil = WaitUntilState.NetworkIdle });
+        var submissions = new List<QuickEvalSubmission>();
+        var seenEvaluationUrls = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        var pageNumber = 1;
+
+        while (true)
+        {
+            var currentPageRows = await ReadQuickEvalRowsAsync(page, url);
+
+            foreach (var row in currentPageRows)
+            {
+                if (string.IsNullOrWhiteSpace(row.EvaluationUrl) || seenEvaluationUrls.Add(row.EvaluationUrl))
+                {
+                    submissions.Add(row with { Index = submissions.Count });
+                }
+            }
+
+            if (!scrapeAllPages)
+            {
+                break;
+            }
+
+            var moved = await TryAdvanceQuickEvalPageAsync(page, pageNumber);
+            if (!moved)
+            {
+                break;
+            }
+
+            pageNumber++;
+        }
+
+        return submissions;
+    }
+
+    private static async Task<List<QuickEvalSubmission>> ReadQuickEvalRowsAsync(IPage page, string url)
     {
         var pageUri = new Uri(url, UriKind.Absolute);
-        await page.GotoAsync(url, new PageGotoOptions { WaitUntil = WaitUntilState.NetworkIdle });
         await page.WaitForSelectorAsync("d2l-quick-eval-submissions-table tbody > tr");
 
         var rows = page.Locator("d2l-quick-eval-submissions-table tbody > tr");
@@ -326,6 +367,96 @@ internal static class BrightspaceCli
         }
 
         return submissions;
+    }
+
+    private static async Task<bool> TryAdvanceQuickEvalPageAsync(IPage page, int pageNumber)
+    {
+        var beforeSignature = await GetQuickEvalPageSignatureAsync(page);
+        var beforeRowCount = await GetQuickEvalRowCountAsync(page);
+        var candidates = new[]
+        {
+            "d2l-button.d2l-quick-eval-submissions-table-load-more",
+            "button:has-text('Load More')",
+            "a:has-text('Load More')",
+            "button:has-text('Load more')",
+            "a:has-text('Load more')",
+            "button:has-text('Next')",
+            "a:has-text('Next')",
+            "[aria-label='Next']",
+            "[title='Next']",
+        };
+
+        foreach (var selector in candidates)
+        {
+            var candidate = page.Locator(selector).First;
+            if (!await IsActionableAsync(candidate))
+            {
+                continue;
+            }
+
+            Console.WriteLine($"Advancing Quick Eval page {pageNumber + 1} using selector {selector}");
+            await candidate.ClickAsync();
+
+            try
+            {
+                await page.WaitForFunctionAsync(
+                    """
+                    previousRowCount => {
+                      const rows = document.querySelectorAll('d2l-quick-eval-submissions-table tbody > tr');
+                      return rows.length > previousRowCount;
+                    }
+                    """,
+                    beforeRowCount,
+                    new PageWaitForFunctionOptions { Timeout = 5000 });
+            }
+            catch (TimeoutException)
+            {
+                var afterRowCount = await GetQuickEvalRowCountAsync(page);
+                var afterSignature = await GetQuickEvalPageSignatureAsync(page);
+                if (afterRowCount <= beforeRowCount && afterSignature == beforeSignature)
+                {
+                    continue;
+                }
+            }
+
+            await page.WaitForLoadStateAsync(LoadState.NetworkIdle);
+            return true;
+        }
+
+        return false;
+    }
+
+    private static async Task<int> GetQuickEvalRowCountAsync(IPage page)
+        => await page.Locator("d2l-quick-eval-submissions-table tbody > tr").CountAsync();
+
+    private static async Task<string> GetQuickEvalPageSignatureAsync(IPage page)
+        => await page.EvaluateAsync<string>(
+            """
+            () => {
+              const rows = [...document.querySelectorAll('d2l-quick-eval-submissions-table tbody > tr')];
+              const links = rows.map(row => {
+                const anchor = row.querySelector('d2l-link.d2l-quick-eval-submissions-table-name-link a');
+                return anchor?.getAttribute('href') || '';
+              });
+
+              return links.join('|');
+            }
+            """);
+
+    private static async Task<bool> IsActionableAsync(ILocator locator)
+    {
+        if (await locator.CountAsync() == 0 || !await locator.IsVisibleAsync())
+        {
+            return false;
+        }
+
+        if (await locator.IsDisabledAsync())
+        {
+            return false;
+        }
+
+        var ariaDisabled = await locator.GetAttributeAsync("aria-disabled");
+        return !string.Equals(ariaDisabled, "true", StringComparison.OrdinalIgnoreCase);
     }
 
     private static async Task<SubmissionDetailResult> ScrapeSubmissionDetailAsync(IPage page, string url)

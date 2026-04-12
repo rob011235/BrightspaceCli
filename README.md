@@ -77,6 +77,7 @@ dotnet run --project . -- scrape-quickeval
 ```powershell
 dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- login
 dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- scrape-quickeval
+dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- scrape-quickeval --first-page-only
 dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- scrape-submission --url "https://mycourses.cnm.edu/d2l/le/activities/iterator/..."
 dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- scrape-submission-map --limit 5
 ```
@@ -84,9 +85,11 @@ dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- scrape-su
 ## Current Shape
 
 - `login` opens a headed browser so you can authenticate manually and then save Playwright session state.
-- `scrape-quickeval` extracts the currently visible Quick Eval rows.
+- `scrape-quickeval` now attempts to page through all available Quick Eval rows by default.
 - `scrape-submission` extracts visible links and detects GitHub repo hints from an individual evaluation page.
 - `scrape-submission-map` starts from Quick Eval rows, visits each evaluation URL, and writes a merged batch export including preview URLs, repo hints, and assignment path hints when present.
+
+Use `--first-page-only` with `scrape-quickeval` or `scrape-submission-map` if you want to disable paging and only use the currently visible rows.
 
 ## Notes
 
