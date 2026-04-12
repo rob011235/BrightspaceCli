@@ -1,0 +1,33 @@
+{
+  "tool": "BrightspaceCli",
+  "generatedAt": "2026-04-12T19:45:00Z",
+  "quickEvalUrl": "https://mycourses.cnm.edu/d2l/le/224618/quickeval/",
+  "scrapedCount": 42,
+  "submissionCount": 42,
+  "submissions": [
+    {
+      "index": 0,
+      "student": "Jane Student",
+      "activityName": "Program 04 - CRUD Contacts",
+      "activityType": "program",
+      "assignmentKey": "program-04-crud-contacts",
+      "submittedAt": "Apr 11, 2026 8:14 PM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/224618/12345678",
+      "pageTitle": "Evaluate Submission - Jane Student",
+      "previewUrl": "https://mycourses.cnm.edu/d2l/preview/123456",
+      "repoUrl": "https://github.com/janestudent/CIST2284-Program04/tree/main/ContactsApp",
+      "owner": "janestudent",
+      "repo": "CIST2284-Program04",
+      "cloneUrl": "https://github.com/janestudent/CIST2284-Program04.git",
+      "branchHint": "main",
+      "subdirHint": "ContactsApp",
+      "assignmentPathHint": "Unit04/Program04",
+      "urls": [
+        "https://github.com/janestudent/CIST2284-Program04/tree/main/ContactsApp",
+        "https://mycourses.cnm.edu/d2l/preview/123456"
+      ],
+      "rawText": "GitHub: https://github.com/janestudent/CIST2284-Program04/tree/main/ContactsApp\nFolder: Unit04/Program04",
+      "error": null
+    }
+  ]
+}

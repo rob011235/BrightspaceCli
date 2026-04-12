@@ -1,0 +1,36 @@
+{
+  "generatedAt": "2026-04-12T19:54:00Z",
+  "repoQueuePath": "C:\\grading\\grading-repo-queue.json",
+  "worklistPath": "C:\\grading\\grading-worklist.json",
+  "registryPath": "C:\\grading\\assignment-registry.json",
+  "courseRoot": "C:\\Users\\Rob011235\\Dropbox\\CNM\\_Curriculum\\CIST 2284 .NET II",
+  "runRoot": "C:\\grading\\runs",
+  "itemCount": 42,
+  "errorCount": 4,
+  "items": [
+    {
+      "index": 0,
+      "student": "Jane Student",
+      "activityName": "Program 04 - CRUD Contacts",
+      "activityType": "program",
+      "assignmentKey": "program-04-crud-contacts",
+      "gradingMode": "program-spec",
+      "repoUrl": "https://github.com/janestudent/CIST2284-Program04/tree/main/ContactsApp",
+      "cloneUrl": "https://github.com/janestudent/CIST2284-Program04.git",
+      "repoPath": "C:\\grading\\repos\\janestudent-CIST2284-Program04",
+      "selectedBranch": "main",
+      "selectedFolderPath": "C:\\grading\\repos\\janestudent-CIST2284-Program04\\Unit04\\Program04",
+      "gradingTargetPath": "C:\\grading\\repos\\janestudent-CIST2284-Program04\\Unit04\\Program04",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/224618/12345678",
+      "previewUrl": "https://mycourses.cnm.edu/d2l/preview/123456",
+      "tutorialUrl": "https://robgarnerblog.wordpress.com/2026/04/01/program-04-crud-contacts/",
+      "competencyFolderPath": "C:\\Users\\Rob011235\\Dropbox\\CNM\\_Curriculum\\CIST 2284 .NET II\\Competencies\\Program04",
+      "specPath": "C:\\Users\\Rob011235\\Dropbox\\CNM\\_Curriculum\\CIST 2284 .NET II\\Competencies\\Program04\\spec.md",
+      "courseAgentsPath": "C:\\Users\\Rob011235\\Dropbox\\CNM\\_Curriculum\\CIST 2284 .NET II\\AGENTS.md",
+      "assignmentAgentsPath": "C:\\Users\\Rob011235\\Dropbox\\CNM\\_Curriculum\\CIST 2284 .NET II\\Competencies\\Program04\\AGENTS.md",
+      "promptPath": "C:\\grading\\runs\\prompts\\program-04-crud-contacts\\Jane Student.md",
+      "reportPath": "C:\\grading\\runs\\reports\\program-04-crud-contacts\\Jane Student.md",
+      "error": null
+    }
+  ]
+}

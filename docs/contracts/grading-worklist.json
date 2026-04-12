@@ -1,0 +1,39 @@
+{
+  "generatedAt": "2026-04-12T19:47:00Z",
+  "submissionMapPath": "C:\\grading\\submission-map.json",
+  "registryPath": "C:\\grading\\assignment-registry.json",
+  "itemCount": 42,
+  "unmatchedCount": 3,
+  "items": [
+    {
+      "index": 0,
+      "student": "Jane Student",
+      "activityName": "Program 04 - CRUD Contacts",
+      "activityType": "program",
+      "assignmentKey": "program-04-crud-contacts",
+      "gradingMode": "program-spec",
+      "repoUrl": "https://github.com/janestudent/CIST2284-Program04/tree/main/ContactsApp",
+      "cloneUrl": "https://github.com/janestudent/CIST2284-Program04.git",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/224618/12345678",
+      "previewUrl": "https://mycourses.cnm.edu/d2l/preview/123456",
+      "branchHint": "main",
+      "subdirHint": "ContactsApp",
+      "assignmentPathHint": "Unit04/Program04",
+      "selectedFolderHint": "Unit04/Program04",
+      "rawText": "GitHub: https://github.com/janestudent/CIST2284-Program04/tree/main/ContactsApp\nFolder: Unit04/Program04",
+      "registryMatched": true,
+      "registry": {
+        "assignmentKey": "program-04-crud-contacts",
+        "tutorial": {
+          "seriesUrl": "https://robgarnerblog.wordpress.com/series/blazor/",
+          "targetUrl": "https://robgarnerblog.wordpress.com/2026/04/01/program-04-crud-contacts/"
+        },
+        "program": {
+          "name": "Program 04",
+          "competencyFolder": "Competencies\\Program04",
+          "specPath": "Competencies\\Program04\\spec.md"
+        }
+      }
+    }
+  ]
+}
