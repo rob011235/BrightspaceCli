@@ -1,0 +1,429 @@
+{
+  "scraper": "BrightspaceCli",
+  "scrapedAt": "2026-04-12T00:21:56.0546695+00:00",
+  "pageUrl": "https://mycourses.cnm.edu/d2l/le/224618/quickeval/",
+  "quickEvalSubmissionCount": 20,
+  "processedSubmissionCount": 20,
+  "submissions": [
+    {
+      "index": 0,
+      "student": "Chance Gomez",
+      "activityName": "Introduction to Interactive Server-Side Rendering (ISR)",
+      "submittedAt": "3/5/2026 9:23 PM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11399391?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpNMDlVWjNwTlFTNHlNalEyTVRnLjY4ODg2\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "pageTitle": "Assignment Evaluation - Chance Gomez - Introduction to Interactive Server-Side Rendering (ISR)",
+      "previewUrl": "https://mycourses.cnm.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?ou=224618\u0026db=679830\u0026grpid=0\u0026isprv=1\u0026bp=1",
+      "repoUrl": "https://github.com/CIST-2284-Spring-2026/GomezHackerspace-RJG",
+      "owner": "CIST-2284-Spring-2026",
+      "repo": "GomezHackerspace-RJG",
+      "cloneUrl": "https://github.com/CIST-2284-Spring-2026/GomezHackerspace-RJG.git",
+      "branchHint": null,
+      "subdirHint": null,
+      "assignmentPathHint": null,
+      "urls": [
+        "https://github.com/CIST-2284-Spring-2026/GomezHackerspace-RJG"
+      ],
+      "rawText": "https://github.com/CIST-2284-Spring-2026/GomezHackerspace-RJG",
+      "error": null
+    },
+    {
+      "index": 1,
+      "student": "Dylan Ward",
+      "activityName": "Add Delete Capability",
+      "submittedAt": "3/11/2026 6:40 PM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11399391?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTFxUVRWTlp5NHlNalEyTVRnLjMwMzYw\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "pageTitle": "Assignment Evaluation - Dylan Ward - Add Delete Capability",
+      "previewUrl": "https://mycourses.cnm.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?ou=224618\u0026db=682092\u0026grpid=0\u0026isprv=1\u0026bp=1",
+      "repoUrl": "https://github.com/CIST-2284-Spring-2026/DeleteCapabilityDW.git",
+      "owner": "CIST-2284-Spring-2026",
+      "repo": "DeleteCapabilityDW",
+      "cloneUrl": "https://github.com/CIST-2284-Spring-2026/DeleteCapabilityDW.git",
+      "branchHint": null,
+      "subdirHint": null,
+      "assignmentPathHint": null,
+      "urls": [
+        "https://github.com/CIST-2284-Spring-2026/DeleteCapabilityDW.git"
+      ],
+      "rawText": "https://github.com/CIST-2284-Spring-2026/DeleteCapabilityDW.git",
+      "error": null
+    },
+    {
+      "index": 2,
+      "student": "Lane Brockinton",
+      "activityName": "Add Delete Capability",
+      "submittedAt": "3/13/2026 3:27 AM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11399391?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTFxUVRWTlp5NHlNalEyTVRnLjc0MTI4\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "pageTitle": "Assignment Evaluation - Lane Brockinton - Add Delete Capability",
+      "previewUrl": "https://mycourses.cnm.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?ou=224618\u0026db=682092\u0026grpid=0\u0026isprv=1\u0026bp=1",
+      "repoUrl": "https://github.com/CIST-2284-Spring-2026/BlazorWebsiteMegaRepo",
+      "owner": "CIST-2284-Spring-2026",
+      "repo": "BlazorWebsiteMegaRepo",
+      "cloneUrl": "https://github.com/CIST-2284-Spring-2026/BlazorWebsiteMegaRepo.git",
+      "branchHint": null,
+      "subdirHint": null,
+      "assignmentPathHint": "Assignments/AddDeleteCapability",
+      "urls": [
+        "https://github.com/CIST-2284-Spring-2026/BlazorWebsiteMegaRepo"
+      ],
+      "rawText": "https://github.com/CIST-2284-Spring-2026/BlazorWebsiteMegaRepo\r\nCheck Assignments/AddDeleteCapability",
+      "error": null
+    },
+    {
+      "index": 3,
+      "student": "Leslie Hinds",
+      "activityName": "JavaScript",
+      "submittedAt": "3/18/2026 10:05 PM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11399391?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpNazU2UVhwT1FTNHlNalEyTVRnLjQ5MDQ5\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "pageTitle": "Assignment Evaluation - Leslie Hinds - JavaScript",
+      "previewUrl": "https://mycourses.cnm.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?ou=224618\u0026db=667034\u0026grpid=0\u0026isprv=1\u0026bp=1",
+      "repoUrl": "https://github.com/CIST-2284-Spring-2026/LHJavaScriptDemo.git",
+      "owner": "CIST-2284-Spring-2026",
+      "repo": "LHJavaScriptDemo",
+      "cloneUrl": "https://github.com/CIST-2284-Spring-2026/LHJavaScriptDemo.git",
+      "branchHint": null,
+      "subdirHint": null,
+      "assignmentPathHint": null,
+      "urls": [
+        "https://github.com/CIST-2284-Spring-2026/LHJavaScriptDemo.git"
+      ],
+      "rawText": "https://github.com/CIST-2284-Spring-2026/LHJavaScriptDemo.git",
+      "error": null
+    },
+    {
+      "index": 4,
+      "student": "Leslie Hinds",
+      "activityName": "HTML/CSS",
+      "submittedAt": "3/18/2026 10:07 PM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11399391?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpNazVxWnpWTlFTNHlNalEyTVRnLjQ5MDQ5\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "pageTitle": "Assignment Evaluation - Leslie Hinds - HTML/CSS",
+      "previewUrl": "https://mycourses.cnm.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?ou=224618\u0026db=666890\u0026grpid=0\u0026isprv=1\u0026bp=1",
+      "repoUrl": "https://github.com/CIST-2284-Spring-2026/LHHTMLCSS.git",
+      "owner": "CIST-2284-Spring-2026",
+      "repo": "LHHTMLCSS",
+      "cloneUrl": "https://github.com/CIST-2284-Spring-2026/LHHTMLCSS.git",
+      "branchHint": null,
+      "subdirHint": null,
+      "assignmentPathHint": null,
+      "urls": [
+        "https://github.com/CIST-2284-Spring-2026/LHHTMLCSS.git"
+      ],
+      "rawText": "https://github.com/CIST-2284-Spring-2026/LHHTMLCSS.git",
+      "error": null
+    },
+    {
+      "index": 5,
+      "student": "Leslie Hinds",
+      "activityName": "Creating a .NET 10 Blazor Website",
+      "submittedAt": "3/18/2026 10:08 PM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11399391?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpNMDVxV1hsT1VTNHlNalEyTVRnLjQ5MDQ5\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "pageTitle": "Assignment Evaluation - Leslie Hinds - Creating a .NET 10 Blazor Website",
+      "previewUrl": "https://mycourses.cnm.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?ou=224618\u0026db=676625\u0026grpid=0\u0026isprv=1\u0026bp=1",
+      "repoUrl": "https://github.com/CIST-2284-Spring-2026/LHindsBlazorWebsite.git",
+      "owner": "CIST-2284-Spring-2026",
+      "repo": "LHindsBlazorWebsite",
+      "cloneUrl": "https://github.com/CIST-2284-Spring-2026/LHindsBlazorWebsite.git",
+      "branchHint": null,
+      "subdirHint": null,
+      "assignmentPathHint": null,
+      "urls": [
+        "https://github.com/CIST-2284-Spring-2026/LHindsBlazorWebsite.git"
+      ],
+      "rawText": "https://github.com/CIST-2284-Spring-2026/LHindsBlazorWebsite.git",
+      "error": null
+    },
+    {
+      "index": 6,
+      "student": "Leslie Hinds",
+      "activityName": "Git and Github",
+      "submittedAt": "3/18/2026 10:09 PM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11399391?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpNazVxWnpSUFVTNHlNalEyTVRnLjQ5MDQ5\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "pageTitle": "Assignment Evaluation - Leslie Hinds - Git and Github",
+      "previewUrl": "https://mycourses.cnm.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?ou=224618\u0026db=666889\u0026grpid=0\u0026isprv=1\u0026bp=1",
+      "repoUrl": "https://github.com/CIST-2284-Spring-2026/GitHubRepo.git",
+      "owner": "CIST-2284-Spring-2026",
+      "repo": "GitHubRepo",
+      "cloneUrl": "https://github.com/CIST-2284-Spring-2026/GitHubRepo.git",
+      "branchHint": null,
+      "subdirHint": null,
+      "assignmentPathHint": null,
+      "urls": [
+        "https://github.com/CIST-2284-Spring-2026/GitHubRepo.git"
+      ],
+      "rawText": "https://github.com/CIST-2284-Spring-2026/GitHubRepo.git",
+      "error": null
+    },
+    {
+      "index": 7,
+      "student": "Lane Brockinton",
+      "activityName": "Authentication and Authorization Tutorials",
+      "submittedAt": "4/7/2026 2:12 AM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11399391?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTVFVFhoT2R5NHlNalEyTVRnLjc0MTI4\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "pageTitle": "Assignment Evaluation - Lane Brockinton - Authentication and Authorization Tutorials",
+      "previewUrl": "https://mycourses.cnm.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?ou=224618\u0026db=684317\u0026grpid=0\u0026isprv=1\u0026bp=1",
+      "repoUrl": "https://github.com/CIST-2284-Spring-2026/BlazorWebsiteMegaRepo",
+      "owner": "CIST-2284-Spring-2026",
+      "repo": "BlazorWebsiteMegaRepo",
+      "cloneUrl": "https://github.com/CIST-2284-Spring-2026/BlazorWebsiteMegaRepo.git",
+      "branchHint": null,
+      "subdirHint": null,
+      "assignmentPathHint": "Assignments/AuthenticationVsAuthorization",
+      "urls": [
+        "https://github.com/CIST-2284-Spring-2026/BlazorWebsiteMegaRepo"
+      ],
+      "rawText": "https://github.com/CIST-2284-Spring-2026/BlazorWebsiteMegaRepo\r\nCheck Assignments/AuthenticationVsAuthorization",
+      "error": null
+    },
+    {
+      "index": 8,
+      "student": "Lane Brockinton",
+      "activityName": "Authentication vs Authorization",
+      "submittedAt": "4/7/2026 2:18 AM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11399391?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTVFVFhoT1p5NHlNalEyTVRnLjc0MTI4\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "pageTitle": "Assignment Evaluation - Lane Brockinton - Authentication vs Authorization",
+      "previewUrl": "https://mycourses.cnm.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?ou=224618\u0026db=684316\u0026grpid=0\u0026isprv=1\u0026bp=1",
+      "repoUrl": "https://github.com/CIST-2284-Spring-2026/BlazorWebsiteMegaRepo",
+      "owner": "CIST-2284-Spring-2026",
+      "repo": "BlazorWebsiteMegaRepo",
+      "cloneUrl": "https://github.com/CIST-2284-Spring-2026/BlazorWebsiteMegaRepo.git",
+      "branchHint": null,
+      "subdirHint": null,
+      "assignmentPathHint": "Assignments/AuthenticationVsAuthorization",
+      "urls": [
+        "https://github.com/CIST-2284-Spring-2026/BlazorWebsiteMegaRepo"
+      ],
+      "rawText": "https://github.com/CIST-2284-Spring-2026/BlazorWebsiteMegaRepo\r\nCheck Assignments/AuthenticationVsAuthorization",
+      "error": null
+    },
+    {
+      "index": 9,
+      "student": "Ignacio Moreno",
+      "activityName": "Using Data Transfer Objects",
+      "submittedAt": "4/7/2026 8:40 AM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11399391?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTlFWnpGUFVTNHlNalEyTVRnLjc5MDAz\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "pageTitle": "Assignment Evaluation - Ignacio Moreno - Using Data Transfer Objects",
+      "previewUrl": "https://mycourses.cnm.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?ou=224618\u0026db=688859\u0026grpid=0\u0026isprv=1\u0026bp=1",
+      "repoUrl": "https://github.com/CIST-2284-Spring-2026/IMMHackerspace-RJG.git",
+      "owner": "CIST-2284-Spring-2026",
+      "repo": "IMMHackerspace-RJG",
+      "cloneUrl": "https://github.com/CIST-2284-Spring-2026/IMMHackerspace-RJG.git",
+      "branchHint": null,
+      "subdirHint": null,
+      "assignmentPathHint": null,
+      "urls": [
+        "https://github.com/CIST-2284-Spring-2026/IMMHackerspace-RJG.git"
+      ],
+      "rawText": "https://github.com/CIST-2284-Spring-2026/IMMHackerspace-RJG.git",
+      "error": null
+    },
+    {
+      "index": 10,
+      "student": "Joshua Madrid",
+      "activityName": "Creating a web API",
+      "submittedAt": "4/7/2026 3:27 PM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11399391?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTVxUlhwT1FTNHlNalEyTVRnLjgxNTIx\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "pageTitle": "Assignment Evaluation - Joshua Madrid - Creating a web API",
+      "previewUrl": "https://mycourses.cnm.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?ou=224618\u0026db=686134\u0026grpid=0\u0026isprv=1\u0026bp=1",
+      "repoUrl": "https://github.com/CIST-2284-Spring-2026/Hack-Space/tree/Creating-a-web-API/Server",
+      "owner": "CIST-2284-Spring-2026",
+      "repo": "Hack-Space",
+      "cloneUrl": "https://github.com/CIST-2284-Spring-2026/Hack-Space.git",
+      "branchHint": "Creating-a-web-API",
+      "subdirHint": "Server",
+      "assignmentPathHint": null,
+      "urls": [
+        "https://github.com/CIST-2284-Spring-2026/Hack-Space/tree/Creating-a-web-API/Server"
+      ],
+      "rawText": "https://github.com/CIST-2284-Spring-2026/Hack-Space/tree/Creating-a-web-API/Server",
+      "error": null
+    },
+    {
+      "index": 11,
+      "student": "Joshua Madrid",
+      "activityName": "Sharing Components Between Server and Client",
+      "submittedAt": "4/7/2026 4:12 PM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11399391?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTVxUlhwT1VTNHlNalEyTVRnLjgxNTIx\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "pageTitle": "Assignment Evaluation - Joshua Madrid - Sharing Components Between Server and Client",
+      "previewUrl": "https://mycourses.cnm.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?ou=224618\u0026db=686135\u0026grpid=0\u0026isprv=1\u0026bp=1",
+      "repoUrl": "https://github.com/CIST-2284-Spring-2026/Hack-Space/tree/dev/SharedComponents",
+      "owner": "CIST-2284-Spring-2026",
+      "repo": "Hack-Space",
+      "cloneUrl": "https://github.com/CIST-2284-Spring-2026/Hack-Space.git",
+      "branchHint": "dev",
+      "subdirHint": "SharedComponents",
+      "assignmentPathHint": null,
+      "urls": [
+        "https://github.com/CIST-2284-Spring-2026/Hack-Space/tree/dev/SharedComponents"
+      ],
+      "rawText": "https://github.com/CIST-2284-Spring-2026/Hack-Space/tree/dev/SharedComponents",
+      "error": null
+    },
+    {
+      "index": 12,
+      "student": "Joshua Madrid",
+      "activityName": "Moving Badges pages from Server to Client",
+      "submittedAt": "4/7/2026 5:56 PM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11399391?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTVxUlhwT1p5NHlNalEyTVRnLjgxNTIx\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "pageTitle": "Assignment Evaluation - Joshua Madrid - Moving Badges pages from Server to Client",
+      "previewUrl": "https://mycourses.cnm.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?ou=224618\u0026db=686136\u0026grpid=0\u0026isprv=1\u0026bp=1",
+      "repoUrl": "https://github.com/CIST-2284-Spring-2026/Hack-Space/tree/Moving-Badges-pages-from-Server-to-Client/Server",
+      "owner": "CIST-2284-Spring-2026",
+      "repo": "Hack-Space",
+      "cloneUrl": "https://github.com/CIST-2284-Spring-2026/Hack-Space.git",
+      "branchHint": "Moving-Badges-pages-from-Server-to-Client",
+      "subdirHint": "Server",
+      "assignmentPathHint": null,
+      "urls": [
+        "https://github.com/CIST-2284-Spring-2026/Hack-Space/tree/Moving-Badges-pages-from-Server-to-Client/Server"
+      ],
+      "rawText": "https://github.com/CIST-2284-Spring-2026/Hack-Space/tree/Moving-Badges-pages-from-Server-to-Client/Server",
+      "error": null
+    },
+    {
+      "index": 13,
+      "student": "Lauryn Bonneville",
+      "activityName": "Fixing Render Issues",
+      "submittedAt": "4/7/2026 11:59 PM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11399391?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTlVVFROT1p5NHlNalEyTVRnLjcwNTU3\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "pageTitle": "Assignment Evaluation - Lauryn Bonneville - Fixing Render Issues",
+      "previewUrl": "https://mycourses.cnm.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?ou=224618\u0026db=689376\u0026grpid=0\u0026isprv=1\u0026bp=1",
+      "repoUrl": "https://github.com/CIST-2284-Spring-2026/Bonneville-Fixing-Render-Issues",
+      "owner": "CIST-2284-Spring-2026",
+      "repo": "Bonneville-Fixing-Render-Issues",
+      "cloneUrl": "https://github.com/CIST-2284-Spring-2026/Bonneville-Fixing-Render-Issues.git",
+      "branchHint": null,
+      "subdirHint": null,
+      "assignmentPathHint": null,
+      "urls": [
+        "https://github.com/CIST-2284-Spring-2026/Bonneville-Fixing-Render-Issues"
+      ],
+      "rawText": "https://github.com/CIST-2284-Spring-2026/Bonneville-Fixing-Render-Issues",
+      "error": null
+    },
+    {
+      "index": 14,
+      "student": "Lauryn Bonneville",
+      "activityName": "Persisting Component State",
+      "submittedAt": "4/8/2026 12:32 AM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11399391?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTlVVFROT1VTNHlNalEyTVRnLjcwNTU3\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "pageTitle": "Assignment Evaluation - Lauryn Bonneville - Persisting Component State",
+      "previewUrl": "https://mycourses.cnm.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?ou=224618\u0026db=689375\u0026grpid=0\u0026isprv=1\u0026bp=1",
+      "repoUrl": "https://github.com/CIST-2284-Spring-2026/Bonneville-Persisting-Component-State",
+      "owner": "CIST-2284-Spring-2026",
+      "repo": "Bonneville-Persisting-Component-State",
+      "cloneUrl": "https://github.com/CIST-2284-Spring-2026/Bonneville-Persisting-Component-State.git",
+      "branchHint": null,
+      "subdirHint": null,
+      "assignmentPathHint": null,
+      "urls": [
+        "https://github.com/CIST-2284-Spring-2026/Bonneville-Persisting-Component-State"
+      ],
+      "rawText": "https://github.com/CIST-2284-Spring-2026/Bonneville-Persisting-Component-State",
+      "error": null
+    },
+    {
+      "index": 15,
+      "student": "Chance Gomez",
+      "activityName": "Automate Creating Roles and a Default Admin",
+      "submittedAt": "4/8/2026 7:48 PM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11399391?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTVFVFhoUFFTNHlNalEyTVRnLjY4ODg2\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "pageTitle": "Assignment Evaluation - Chance Gomez - Automate Creating Roles and a Default Admin",
+      "previewUrl": "https://mycourses.cnm.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?ou=224618\u0026db=684318\u0026grpid=0\u0026isprv=1\u0026bp=1",
+      "repoUrl": "https://github.com/CIST-2284-Spring-2026/GomezHackerspace-RJG",
+      "owner": "CIST-2284-Spring-2026",
+      "repo": "GomezHackerspace-RJG",
+      "cloneUrl": "https://github.com/CIST-2284-Spring-2026/GomezHackerspace-RJG.git",
+      "branchHint": null,
+      "subdirHint": null,
+      "assignmentPathHint": null,
+      "urls": [
+        "https://github.com/CIST-2284-Spring-2026/GomezHackerspace-RJG"
+      ],
+      "rawText": "https://github.com/CIST-2284-Spring-2026/GomezHackerspace-RJG",
+      "error": null
+    },
+    {
+      "index": 16,
+      "student": "Chance Gomez",
+      "activityName": "User Management Data Classes",
+      "submittedAt": "4/8/2026 7:50 PM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11399391?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTVFVFhoUFVTNHlNalEyTVRnLjY4ODg2\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "pageTitle": "Assignment Evaluation - Chance Gomez - User Management Data Classes",
+      "previewUrl": "https://mycourses.cnm.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?ou=224618\u0026db=684319\u0026grpid=0\u0026isprv=1\u0026bp=1",
+      "repoUrl": "https://github.com/CIST-2284-Spring-2026/GomezHackerspace-RJG",
+      "owner": "CIST-2284-Spring-2026",
+      "repo": "GomezHackerspace-RJG",
+      "cloneUrl": "https://github.com/CIST-2284-Spring-2026/GomezHackerspace-RJG.git",
+      "branchHint": null,
+      "subdirHint": null,
+      "assignmentPathHint": null,
+      "urls": [
+        "https://github.com/CIST-2284-Spring-2026/GomezHackerspace-RJG"
+      ],
+      "rawText": "https://github.com/CIST-2284-Spring-2026/GomezHackerspace-RJG",
+      "error": null
+    },
+    {
+      "index": 17,
+      "student": "Chance Gomez",
+      "activityName": "Add User Management Page",
+      "submittedAt": "4/8/2026 7:55 PM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11399391?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTVFVFhsTlFTNHlNalEyTVRnLjY4ODg2\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "pageTitle": "Assignment Evaluation - Chance Gomez - Add User Management Page",
+      "previewUrl": "https://mycourses.cnm.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?ou=224618\u0026db=684320\u0026grpid=0\u0026isprv=1\u0026bp=1",
+      "repoUrl": "https://github.com/CIST-2284-Spring-2026/GomezHackerspace-RJG",
+      "owner": "CIST-2284-Spring-2026",
+      "repo": "GomezHackerspace-RJG",
+      "cloneUrl": "https://github.com/CIST-2284-Spring-2026/GomezHackerspace-RJG.git",
+      "branchHint": null,
+      "subdirHint": null,
+      "assignmentPathHint": null,
+      "urls": [
+        "https://github.com/CIST-2284-Spring-2026/GomezHackerspace-RJG"
+      ],
+      "rawText": "https://github.com/CIST-2284-Spring-2026/GomezHackerspace-RJG",
+      "error": null
+    },
+    {
+      "index": 18,
+      "student": "Chance Gomez",
+      "activityName": "Secure Badges and Evaluator Pages",
+      "submittedAt": "4/8/2026 8:04 PM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11399391?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTVFVFhsTlVTNHlNalEyTVRnLjY4ODg2\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "pageTitle": "Assignment Evaluation - Chance Gomez - Secure Badges and Evaluator Pages",
+      "previewUrl": "https://mycourses.cnm.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?ou=224618\u0026db=684321\u0026grpid=0\u0026isprv=1\u0026bp=1",
+      "repoUrl": "https://github.com/CIST-2284-Spring-2026/GomezHackerspace-RJG",
+      "owner": "CIST-2284-Spring-2026",
+      "repo": "GomezHackerspace-RJG",
+      "cloneUrl": "https://github.com/CIST-2284-Spring-2026/GomezHackerspace-RJG.git",
+      "branchHint": null,
+      "subdirHint": null,
+      "assignmentPathHint": null,
+      "urls": [
+        "https://github.com/CIST-2284-Spring-2026/GomezHackerspace-RJG"
+      ],
+      "rawText": "https://github.com/CIST-2284-Spring-2026/GomezHackerspace-RJG",
+      "error": null
+    },
+    {
+      "index": 19,
+      "student": "Ignacio Moreno",
+      "activityName": "Persisting Component State",
+      "submittedAt": "4/9/2026 9:49 AM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11399391?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTlVVFROT1VTNHlNalEyTVRnLjc5MDAz\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "pageTitle": "Assignment Evaluation - Ignacio Moreno - Persisting Component State",
+      "previewUrl": "https://mycourses.cnm.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?ou=224618\u0026db=689375\u0026grpid=0\u0026isprv=1\u0026bp=1",
+      "repoUrl": "https://github.com/CIST-2284-Spring-2026/IMMHackerspace-RJG.git",
+      "owner": "CIST-2284-Spring-2026",
+      "repo": "IMMHackerspace-RJG",
+      "cloneUrl": "https://github.com/CIST-2284-Spring-2026/IMMHackerspace-RJG.git",
+      "branchHint": null,
+      "subdirHint": null,
+      "assignmentPathHint": null,
+      "urls": [
+        "https://github.com/CIST-2284-Spring-2026/IMMHackerspace-RJG.git"
+      ],
+      "rawText": "https://github.com/CIST-2284-Spring-2026/IMMHackerspace-RJG.git",
+      "error": null
+    }
+  ]
+}
