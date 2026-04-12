@@ -127,3 +127,6 @@ Each prompt file contains the student, assignment, selected repo path, branch, s
 - opening each evaluation row and scraping detail pages in sequence
 - merging list and detail data into one `submission-map.json`
 - assignment-level batch export commands
+## Contracts
+
+Canonical example pipeline artifacts and contract notes live in `docs/contracts/README.md`.
