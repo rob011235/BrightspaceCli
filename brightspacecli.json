@@ -5,5 +5,7 @@
   "statePath": ".brightspace/session.json",
   "quickEvalOutPath": "_grading/quickeval-live.json",
   "submissionOutPath": "_grading/submission-live.json",
-  "submissionMapOutPath": "_grading/submission-map.json"
+  "submissionMapOutPath": "_grading/submission-map.json",
+  "assignmentRegistryPath": "C:\\Users\\Rob011235\\Dropbox\\CNM\\_Curriculum\\CIST 2284 .NET II\\_grading\\assignment-registry.json",
+  "gradingWorklistOutPath": "C:\\Users\\Rob011235\\Dropbox\\CNM\\_Curriculum\\CIST 2284 .NET II\\_grading\\grading-worklist.json"
 }

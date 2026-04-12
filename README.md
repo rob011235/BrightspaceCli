@@ -44,7 +44,9 @@ Example:
   "statePath": ".brightspace/session.json",
   "quickEvalOutPath": "_grading/quickeval-live.json",
   "submissionOutPath": "_grading/submission-live.json",
-  "submissionMapOutPath": "_grading/submission-map.json"
+  "submissionMapOutPath": "_grading/submission-map.json",
+  "assignmentRegistryPath": "C:\\Users\\Rob011235\\Dropbox\\CNM\\_Curriculum\\CIST 2284 .NET II\\_grading\\assignment-registry.json",
+  "gradingWorklistOutPath": "C:\\Users\\Rob011235\\Dropbox\\CNM\\_Curriculum\\CIST 2284 .NET II\\_grading\\grading-worklist.json"
 }
 ```
 
@@ -80,6 +82,7 @@ dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- scrape-qu
 dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- scrape-quickeval --first-page-only
 dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- scrape-submission --url "https://mycourses.cnm.edu/d2l/le/activities/iterator/..."
 dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- scrape-submission-map --limit 5
+dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- build-grading-worklist --registry "C:\Users\Rob011235\Dropbox\CNM\_Curriculum\CIST 2284 .NET II\_grading\assignment-registry.json"
 ```
 
 ## Current Shape
@@ -89,6 +92,7 @@ dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- scrape-su
 - `scrape-submission` extracts visible links and detects GitHub repo hints from an individual evaluation page.
 - `scrape-submission-map` starts from Quick Eval rows, visits each evaluation URL, and writes a merged batch export including preview URLs, repo hints, and assignment path hints when present.
 - Quick Eval rows and submission-map entries now include `activityType` and `assignmentKey` so downstream grading tools can join submissions to a course assignment registry.
+- `build-grading-worklist` joins `submission-map.json` with an external assignment registry and writes a grading-ready worklist.
 
 Use `--first-page-only` with `scrape-quickeval` or `scrape-submission-map` if you want to disable paging and only use the currently visible rows.
 

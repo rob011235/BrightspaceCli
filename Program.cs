@@ -20,6 +20,7 @@ try
         "scrape-quickeval" => await BrightspaceCli.ScrapeQuickEvalAsync(options),
         "scrape-submission" => await BrightspaceCli.ScrapeSubmissionAsync(options),
         "scrape-submission-map" => await BrightspaceCli.ScrapeSubmissionMapAsync(options),
+        "build-grading-worklist" => await BrightspaceCli.BuildGradingWorklistAsync(options),
         _ => Fail($"Unknown command: {command}"),
     };
 }
@@ -44,6 +45,8 @@ static void PrintHelp()
             Load an individual submission/evaluation page and export comments, links, and GitHub hints.
           scrape-submission-map
             Load the Quick Eval page, visit each evaluation URL, and export merged row plus detail data.
+          build-grading-worklist
+            Join a submission map with an assignment registry and export a grading worklist.
 
         Examples
           dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- login
@@ -51,6 +54,7 @@ static void PrintHelp()
           dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- scrape-quickeval --first-page-only
           dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- scrape-submission --url "https://mycourses.cnm.edu/d2l/le/activities/iterator/..."
           dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- scrape-submission-map --limit 5
+          dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- build-grading-worklist --registry "C:\Users\Rob011235\Dropbox\CNM\_Curriculum\CIST 2284 .NET II\_grading\assignment-registry.json"
 
         Config
           Put shared defaults in brightspacecli.json, for example:
@@ -60,7 +64,9 @@ static void PrintHelp()
               "statePath": ".brightspace/session.json",
               "quickEvalOutPath": "_grading/quickeval-live.json",
               "submissionOutPath": "_grading/submission-live.json",
-              "submissionMapOutPath": "_grading/submission-map.json"
+              "submissionMapOutPath": "_grading/submission-map.json",
+              "assignmentRegistryPath": "C:\\Users\\Rob011235\\Dropbox\\CNM\\_Curriculum\\CIST 2284 .NET II\\_grading\\assignment-registry.json",
+              "gradingWorklistOutPath": "C:\\Users\\Rob011235\\Dropbox\\CNM\\_Curriculum\\CIST 2284 .NET II\\_grading\\grading-worklist.json"
             }
           Command-line values still override config values for a single run.
         """);
@@ -300,6 +306,74 @@ internal static class BrightspaceCli
 
         await WriteJsonAsync(outPath, result);
         Console.WriteLine($"Wrote {entries.Count} merged submissions to {outPath}");
+        return 0;
+    }
+
+    public static async Task<int> BuildGradingWorklistAsync(CommandLineOptions options)
+    {
+        var submissionMapPath = ResolvePath(options.Get("submission-map") ?? Config.SubmissionMapOutPath ?? "_grading/submission-map.json");
+        var registryPath = ResolvePath(options.GetOrDefault("registry", Config.AssignmentRegistryPath));
+        var outPath = ResolvePath(options.Get("out") ?? Config.GradingWorklistOutPath ?? "_grading/grading-worklist.json");
+
+        if (!File.Exists(submissionMapPath))
+        {
+            throw new InvalidOperationException($"Submission map not found: {submissionMapPath}");
+        }
+
+        if (!File.Exists(registryPath))
+        {
+            throw new InvalidOperationException($"Assignment registry not found: {registryPath}");
+        }
+
+        var submissionMap = await ReadJsonAsync<SubmissionMapResult>(submissionMapPath);
+        var registry = await ReadJsonAsync<AssignmentRegistry>(registryPath);
+        var assignmentIndex = registry.Assignments.ToDictionary(
+            assignment => assignment.AssignmentKey,
+            assignment => assignment,
+            StringComparer.OrdinalIgnoreCase);
+
+        var items = submissionMap.Submissions
+            .Select(submission =>
+            {
+                assignmentIndex.TryGetValue(submission.AssignmentKey, out var assignment);
+                var gradingMode = assignment is null
+                    ? "unmapped"
+                    : submission.ActivityType == "program"
+                        ? "program-spec"
+                        : "tutorial-follow";
+
+                var selectedFolderHint = submission.AssignmentPathHint ?? submission.SubdirHint;
+                return new GradingWorkItem(
+                    submission.Index,
+                    submission.Student,
+                    submission.ActivityName,
+                    submission.ActivityType,
+                    submission.AssignmentKey,
+                    gradingMode,
+                    submission.RepoUrl,
+                    submission.CloneUrl,
+                    submission.EvaluationUrl,
+                    submission.PreviewUrl,
+                    submission.BranchHint,
+                    submission.SubdirHint,
+                    submission.AssignmentPathHint,
+                    selectedFolderHint,
+                    submission.RawText,
+                    assignment is not null,
+                    assignment);
+            })
+            .ToList();
+
+        var result = new GradingWorklistResult(
+            DateTimeOffset.UtcNow,
+            submissionMapPath,
+            registryPath,
+            items.Count,
+            items.Count(static item => !item.RegistryMatched),
+            items);
+
+        await WriteJsonAsync(outPath, result);
+        Console.WriteLine($"Wrote {items.Count} work items to {outPath}");
         return 0;
     }
 
@@ -766,6 +840,10 @@ internal static class BrightspaceCli
         Directory.CreateDirectory(Path.GetDirectoryName(path)!);
         await File.WriteAllTextAsync(path, JsonSerializer.Serialize(value, JsonOptions));
     }
+
+    private static async Task<T> ReadJsonAsync<T>(string path)
+        => JsonSerializer.Deserialize<T>(await File.ReadAllTextAsync(path), JsonOptions)
+            ?? throw new InvalidOperationException($"Failed to deserialize JSON from {path}");
 }
 
 internal sealed class AppConfig
@@ -777,6 +855,8 @@ internal sealed class AppConfig
     public string? QuickEvalOutPath { get; init; }
     public string? SubmissionOutPath { get; init; }
     public string? SubmissionMapOutPath { get; init; }
+    public string? AssignmentRegistryPath { get; init; }
+    public string? GradingWorklistOutPath { get; init; }
 
     public static AppConfig Load()
     {
@@ -861,6 +941,56 @@ internal sealed record SubmissionMapResult(
     int QuickEvalSubmissionCount,
     int ProcessedSubmissionCount,
     IReadOnlyList<SubmissionMapEntry> Submissions);
+
+internal sealed record AssignmentRegistry(
+    string Course,
+    string? GeneratedFrom,
+    DateTimeOffset? GeneratedAt,
+    IReadOnlyList<AssignmentRegistryEntry> Assignments);
+
+internal sealed record AssignmentRegistryEntry(
+    string AssignmentKey,
+    string ActivityType,
+    string ActivityName,
+    TutorialAssignmentInfo? Tutorial,
+    ProgramAssignmentInfo? Program);
+
+internal sealed record TutorialAssignmentInfo(
+    string SeriesUrl,
+    string? TargetUrl,
+    string? Notes);
+
+internal sealed record ProgramAssignmentInfo(
+    string CompetencyFolder,
+    string? SpecPath,
+    string? Notes);
+
+internal sealed record GradingWorkItem(
+    int Index,
+    string? Student,
+    string? ActivityName,
+    string ActivityType,
+    string AssignmentKey,
+    string GradingMode,
+    string? RepoUrl,
+    string? CloneUrl,
+    string? EvaluationUrl,
+    string? PreviewUrl,
+    string? BranchHint,
+    string? SubdirHint,
+    string? AssignmentPathHint,
+    string? SelectedFolderHint,
+    string RawText,
+    bool RegistryMatched,
+    AssignmentRegistryEntry? Registry);
+
+internal sealed record GradingWorklistResult(
+    DateTimeOffset GeneratedAt,
+    string SubmissionMapPath,
+    string RegistryPath,
+    int ItemCount,
+    int UnmappedCount,
+    IReadOnlyList<GradingWorkItem> Items);
 
 internal sealed record GitHubHints(
     string? Owner,
