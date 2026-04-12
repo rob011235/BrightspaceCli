@@ -1218,8 +1218,19 @@ internal static class BrightspaceCli
         var normalizedHint = selectedFolderHint
             .Replace('/', Path.DirectorySeparatorChar)
             .Replace('\\', Path.DirectorySeparatorChar);
+        var normalizedRepoPath = Path.GetFullPath(repoPath)
+            .TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
+        var repoPathPrefix = normalizedRepoPath + Path.DirectorySeparatorChar;
         var fullPath = Path.GetFullPath(normalizedHint, repoPath);
-        return fullPath.StartsWith(repoPath, StringComparison.OrdinalIgnoreCase) ? fullPath : null;
+        if (!Directory.Exists(fullPath))
+        {
+            return null;
+        }
+
+        return string.Equals(fullPath, normalizedRepoPath, StringComparison.OrdinalIgnoreCase)
+            || fullPath.StartsWith(repoPathPrefix, StringComparison.OrdinalIgnoreCase)
+            ? fullPath
+            : null;
     }
 
     private static string GetWorkItemKey(GradingWorkItem item)
