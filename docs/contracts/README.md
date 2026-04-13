@@ -1,12 +1,12 @@
-# BrightspaceCli Contracts
+# InsTK Contracts
 
-This folder contains the canonical example payloads for the BrightspaceCli grading pipeline.
+This folder contains the canonical example payloads for the `InsTK` grading pipeline.
 
 These files are design-time contract references for the JSON artifacts passed between pipeline stages. They are not runtime outputs and they should not be edited casually. If an artifact shape changes intentionally, update the matching example files, the documented rules in this README, and any code that reads or writes that artifact.
 
 ## Purpose
 
-BrightspaceCli is built as a staged pipeline. Each stage writes a JSON artifact that is consumed by the next stage.
+`InsTK` is built as a staged pipeline. Each stage writes a JSON artifact that is consumed by the next stage.
 
 The goals of these contract files are:
 

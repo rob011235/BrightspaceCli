@@ -1,6 +1,6 @@
-# BrightspaceCli
+# InsTK
 
-A small C# command-line tool for live Brightspace scraping with a persisted authenticated browser session.
+`InsTK` is Instructor Tool Kit. The current repo contains a console host plus a reusable core for live Brightspace scraping, grading pipeline preparation, and later MAUI reuse.
 
 ## Purpose
 
@@ -12,14 +12,20 @@ This project is intended to reduce grading friction by automating the repetitive
 - scrape individual submission pages for pasted GitHub links and comments
 - export structured JSON that can be used for batch processing
 
+## Solution Layout
+
+- `InsTK.CLI` is the console host.
+- `InsTK.Core` contains reusable scraping and grading pipeline logic.
+- `InsTK.sln` is the renamed solution entry point.
+
 ## First-Time Setup
 
 Run these steps before the first live test.
 
 ```powershell
 cd C:\Users\Rob011235\source\repos\BrightspaceCli
-dotnet restore .\BrightspaceCli.sln
-dotnet build .\BrightspaceCli.sln
+dotnet restore .\InsTK.sln
+dotnet build .\InsTK.sln
 pwsh .\bin\Debug\net10.0\playwright.ps1 install
 ```
 
@@ -32,7 +38,7 @@ playwright install
 
 ## Config
 
-Browser choice now comes from `brightspacecli.json` in the repo root.
+Browser choice now comes from `instk.json` in the repo root. `InsTK.Core` also falls back to `brightspacecli.json` for transition compatibility.
 
 Example:
 
@@ -63,33 +69,33 @@ After setup, the first useful smoke test is:
 
 ```powershell
 cd C:\Users\Rob011235\source\repos\BrightspaceCli
-dotnet run --project . -- login
+dotnet run --project .\InsTK.CLI -- login
 ```
 
 If you want to override the configured browser once without editing the config file:
 
 ```powershell
-dotnet run --project . -- login --channel chrome
+dotnet run --project .\InsTK.CLI -- login --channel chrome
 ```
 
 Then save a live Quick Eval scrape with:
 
 ```powershell
 cd C:\Users\Rob011235\source\repos\BrightspaceCli
-dotnet run --project . -- scrape-quickeval
+dotnet run --project .\InsTK.CLI -- scrape-quickeval
 ```
 
 ## Commands
 
 ```powershell
-dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- login
-dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- scrape-quickeval
-dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- scrape-quickeval --first-page-only
-dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- scrape-submission --url "https://mycourses.cnm.edu/d2l/le/activities/iterator/..."
-dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- scrape-submission-map --limit 5
-dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- build-grading-worklist --registry "C:\grading\assignment-registry.json"
-dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- prepare-grading-repos --limit 5
-dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli -- build-grading-runner --limit 5
+dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli\InsTK.CLI -- login
+dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli\InsTK.CLI -- scrape-quickeval
+dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli\InsTK.CLI -- scrape-quickeval --first-page-only
+dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli\InsTK.CLI -- scrape-submission --url "https://mycourses.cnm.edu/d2l/le/activities/iterator/..."
+dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli\InsTK.CLI -- scrape-submission-map --limit 5
+dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli\InsTK.CLI -- build-grading-worklist --registry "C:\grading\assignment-registry.json"
+dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli\InsTK.CLI -- prepare-grading-repos --limit 5
+dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli\InsTK.CLI -- build-grading-runner --limit 5
 ```
 
 ## Current Shape

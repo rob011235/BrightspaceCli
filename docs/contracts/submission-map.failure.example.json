@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0",
-  "scraper": "BrightspaceCli",
+  "scraper": "InsTK",
   "scrapedAt": "2026-04-12T20:05:00Z",
   "pageUrl": "https://mycourses.cnm.edu/d2l/le/224618/quickeval/",
   "quickEvalSubmissionCount": 1,

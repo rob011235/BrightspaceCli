@@ -14,5 +14,6 @@ artifacts/
 playwright-report/
 .browser/
 .brightspace/
+.dotnet/
 
 .fake
