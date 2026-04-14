@@ -38,6 +38,29 @@ internal sealed class RepoPreparationService : IRepoPreparationService
             var item = items[i];
             host.Out.WriteLine($"Preparing repo {i + 1} of {items.Count}: {item.Student} - {item.ActivityName}");
 
+            if (!string.Equals(item.SubmissionStatus, "ready-to-grade", StringComparison.OrdinalIgnoreCase))
+            {
+                preparedItems.Add(new PreparedRepoWorkItem(
+                    item.Index,
+                    item.Student,
+                    item.ActivityName,
+                    item.ActivityType,
+                    item.AssignmentKey,
+                    item.SubmissionStatus,
+                    item.GradingMode,
+                    item.RepoUrl,
+                    item.CloneUrl,
+                    null,
+                    null,
+                    item.BranchHint,
+                    item.SubdirHint,
+                    item.AssignmentPathHint,
+                    item.SelectedFolderHint,
+                    null,
+                    null));
+                continue;
+            }
+
             if (string.IsNullOrWhiteSpace(item.CloneUrl))
             {
                 preparedItems.Add(new PreparedRepoWorkItem(
@@ -46,6 +69,7 @@ internal sealed class RepoPreparationService : IRepoPreparationService
                     item.ActivityName,
                     item.ActivityType,
                     item.AssignmentKey,
+                    item.SubmissionStatus,
                     item.GradingMode,
                     item.RepoUrl,
                     item.CloneUrl,
@@ -64,6 +88,7 @@ internal sealed class RepoPreparationService : IRepoPreparationService
             string? selectedBranch = null;
             string? selectedFolderPath = null;
             string? prepError = null;
+            var submissionStatus = item.SubmissionStatus;
 
             try
             {
@@ -85,6 +110,7 @@ internal sealed class RepoPreparationService : IRepoPreparationService
             catch (Exception ex)
             {
                 prepError = ex.Message;
+                submissionStatus = SubmissionStatusClassifier.ClassifyCloneFailure(item.SubmissionStatus, prepError);
             }
 
             preparedItems.Add(new PreparedRepoWorkItem(
@@ -93,6 +119,7 @@ internal sealed class RepoPreparationService : IRepoPreparationService
                 item.ActivityName,
                 item.ActivityType,
                 item.AssignmentKey,
+                submissionStatus,
                 item.GradingMode,
                 item.RepoUrl,
                 item.CloneUrl,

@@ -41,6 +41,8 @@ Naming convention:
 
 Recommended files:
 
+- `assignment-registry.example.json`
+- `assignment-registry.second-course.example.json`
 - `submission-map.example.json`
 - `submission-map.failure.example.json`
 - `grading-worklist.example.json`
@@ -118,3 +120,50 @@ These examples are snapshots of the serialized runtime shape. If code changes a 
 
 ### 5. Path examples should match runtime sanitization
 Prompt and report file names should reflect the current sanitization logic used by the runner. If student names are written with dashes in runtime output, the examples should show dashes too.
+
+### 6. Tutorial assignments may use different source types
+Tutorial registry entries can now describe source material with a typed source object instead of assuming a blog URL.
+
+Supported source types currently include:
+
+- `blog-url`
+- `brightspace-doc`
+- `local-file`
+
+`grading-runner` items preserve the resolved tutorial source with:
+
+- `tutorialUrl`
+- `tutorialSourceType`
+- `tutorialSourceLocation`
+
+### 7. Registry examples are included for multi-course authoring
+Use the registry examples in this folder as authoring templates when onboarding a new course.
+
+- `assignment-registry.example.json` shows the general shape
+- `assignment-registry.second-course.example.json` shows a course where:
+  - `P#` and `E#` names are programs
+  - other assignments are tutorials
+  - tutorials may come from Brightspace Word docs instead of blog posts
+
+### 8. Registry entries may include a rubric
+Assignment registry entries may include a `rubric` object. This lets grading prompts focus on required capabilities instead of exact framework shape.
+
+Recommended rubric fields:
+
+- `gradingApproach`
+- `summary`
+- `criteria`
+
+Each criterion may include:
+
+- `id`
+- `description`
+- `points`
+- `evidenceHints`
+- `frameworkNotes`
+
+Use rubric criteria when:
+
+- the course has shifted across Windows Forms, MVC, MAUI, or other UI stacks
+- the same assignment intent survives across multiple curriculum revisions
+- you want grading to focus on capabilities instead of exact file names or control types

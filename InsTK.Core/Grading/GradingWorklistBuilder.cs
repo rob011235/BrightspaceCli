@@ -36,7 +36,10 @@ internal sealed class GradingWorklistBuilder : IGradingWorklistBuilder
             .Select(submission =>
             {
                 assignmentIndex.TryGetValue(submission.AssignmentKey, out var assignment);
-                var gradingMode = assignment is null
+                var submissionStatus = SubmissionStatusClassifier.Classify(submission.RawText, submission.CloneUrl);
+                var gradingMode = submissionStatus == "extension-request"
+                    ? "extension-request"
+                    : assignment is null
                     ? "unmapped"
                     : submission.ActivityType == "program"
                         ? "program-spec"
@@ -49,6 +52,7 @@ internal sealed class GradingWorklistBuilder : IGradingWorklistBuilder
                     submission.ActivityName,
                     submission.ActivityType,
                     submission.AssignmentKey,
+                    submissionStatus,
                     gradingMode,
                     submission.RepoUrl,
                     submission.CloneUrl,

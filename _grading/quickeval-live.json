@@ -1,8 +1,8 @@
 {
   "scraper": "InsTK",
-  "scrapedAt": "2026-04-13T03:06:25.7657267+00:00",
+  "scrapedAt": "2026-04-14T22:27:26.7882095+00:00",
   "pageUrl": "https://mycourses.cnm.edu/d2l/le/224618/quickeval/",
-  "submissionCount": 3,
+  "submissionCount": 21,
   "submissions": [
     {
       "index": 0,
@@ -11,9 +11,9 @@
       "activityType": "program",
       "assignmentKey": "program-program-6-authentication-authorization-integration",
       "submittedAt": "4/11/2026 10:03 PM",
-      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11401772?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTVFVFhsTlp5NHlNalEyTVRnLjg1Nzk5\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11410242?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTVFVFhsTlp5NHlNalEyTVRnLjg1Nzk5\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
       "urls": [
-        "https://mycourses.cnm.edu/d2l/le/activities/iterator/11401772?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTVFVFhsTlp5NHlNalEyTVRnLjg1Nzk5\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+        "https://mycourses.cnm.edu/d2l/le/activities/iterator/11410242?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTVFVFhsTlp5NHlNalEyTVRnLjg1Nzk5\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
       ]
     },
     {
@@ -23,9 +23,9 @@
       "activityType": "tutorial",
       "assignmentKey": "tutorial-fixing-render-issues",
       "submittedAt": "4/12/2026 7:54 AM",
-      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11401772?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTlVVFROT1p5NHlNalEyTVRnLjkyOTAx\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11410242?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTlVVFROT1p5NHlNalEyTVRnLjkyOTAx\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
       "urls": [
-        "https://mycourses.cnm.edu/d2l/le/activities/iterator/11401772?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTlVVFROT1p5NHlNalEyTVRnLjkyOTAx\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+        "https://mycourses.cnm.edu/d2l/le/activities/iterator/11410242?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTlVVFROT1p5NHlNalEyTVRnLjkyOTAx\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
       ]
     },
     {
@@ -35,9 +35,225 @@
       "activityType": "tutorial",
       "assignmentKey": "tutorial-fixing-render-issues",
       "submittedAt": "4/12/2026 2:18 PM",
-      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11401772?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTlVVFROT1p5NHlNalEyTVRnLjc5MDAz\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11410242?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTlVVFROT1p5NHlNalEyTVRnLjc5MDAz\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
       "urls": [
-        "https://mycourses.cnm.edu/d2l/le/activities/iterator/11401772?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTlVVFROT1p5NHlNalEyTVRnLjc5MDAz\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+        "https://mycourses.cnm.edu/d2l/le/activities/iterator/11410242?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTlVVFROT1p5NHlNalEyTVRnLjc5MDAz\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    },
+    {
+      "index": 3,
+      "student": "Lane Brockinton",
+      "activityName": "Program 2: Accounting Toolkit",
+      "activityType": "program",
+      "assignmentKey": "program-program-2-accounting-toolkit",
+      "submittedAt": "4/13/2026 4:21 AM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11410242?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTFVVlhoT1p5NHlNalEyTVRnLjc0MTI4\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "https://mycourses.cnm.edu/d2l/le/activities/iterator/11410242?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTFVVlhoT1p5NHlNalEyTVRnLjc0MTI4\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    },
+    {
+      "index": 4,
+      "student": "Kyle Adams",
+      "activityName": "Program 7: Blazor WebAssembly Conversion for Blog \u002B Contact",
+      "activityType": "program",
+      "assignmentKey": "program-program-7-blazor-webassembly-conversion-for-blog-contact",
+      "submittedAt": "4/13/2026 7:06 AM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11410242?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpOVTFFYTNwT1FTNHlNalEyTVRnLjkyOTAx\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "https://mycourses.cnm.edu/d2l/le/activities/iterator/11410242?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpOVTFFYTNwT1FTNHlNalEyTVRnLjkyOTAx\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    },
+    {
+      "index": 5,
+      "student": "Branden Rastegari-Kirk",
+      "activityName": "Authentication and Authorization Tutorials",
+      "activityType": "tutorial",
+      "assignmentKey": "tutorial-authentication-and-authorization-tutorials",
+      "submittedAt": "4/13/2026 1:51 PM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11410242?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTVFVFhoT2R5NHlNalEyTVRnLjY0Mzk2\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "https://mycourses.cnm.edu/d2l/le/activities/iterator/11410242?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTVFVFhoT2R5NHlNalEyTVRnLjY0Mzk2\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    },
+    {
+      "index": 6,
+      "student": "Branden Rastegari-Kirk",
+      "activityName": "Automate Creating Roles and a Default Admin",
+      "activityType": "tutorial",
+      "assignmentKey": "tutorial-automate-creating-roles-and-a-default-admin",
+      "submittedAt": "4/13/2026 2:21 PM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11410242?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTVFVFhoUFFTNHlNalEyTVRnLjY0Mzk2\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "https://mycourses.cnm.edu/d2l/le/activities/iterator/11410242?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTVFVFhoUFFTNHlNalEyTVRnLjY0Mzk2\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    },
+    {
+      "index": 7,
+      "student": "Branden Rastegari-Kirk",
+      "activityName": "User Management Data Classes",
+      "activityType": "tutorial",
+      "assignmentKey": "tutorial-user-management-data-classes",
+      "submittedAt": "4/13/2026 2:23 PM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11410242?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTVFVFhoUFVTNHlNalEyTVRnLjY0Mzk2\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "https://mycourses.cnm.edu/d2l/le/activities/iterator/11410242?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTVFVFhoUFVTNHlNalEyTVRnLjY0Mzk2\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    },
+    {
+      "index": 8,
+      "student": "Branden Rastegari-Kirk",
+      "activityName": "Add User Management Page",
+      "activityType": "tutorial",
+      "assignmentKey": "tutorial-add-user-management-page",
+      "submittedAt": "4/13/2026 2:27 PM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11410242?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTVFVFhsTlFTNHlNalEyTVRnLjY0Mzk2\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "https://mycourses.cnm.edu/d2l/le/activities/iterator/11410242?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTVFVFhsTlFTNHlNalEyTVRnLjY0Mzk2\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    },
+    {
+      "index": 9,
+      "student": "Branden Rastegari-Kirk",
+      "activityName": "Secure Badges and Evaluator Pages",
+      "activityType": "tutorial",
+      "assignmentKey": "tutorial-secure-badges-and-evaluator-pages",
+      "submittedAt": "4/13/2026 2:36 PM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11410242?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTVFVFhsTlVTNHlNalEyTVRnLjY0Mzk2\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "https://mycourses.cnm.edu/d2l/le/activities/iterator/11410242?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTVFVFhsTlVTNHlNalEyTVRnLjY0Mzk2\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    },
+    {
+      "index": 10,
+      "student": "Noah Moberly",
+      "activityName": "Creating a web API",
+      "activityType": "tutorial",
+      "assignmentKey": "tutorial-creating-a-web-api",
+      "submittedAt": "4/13/2026 5:07 PM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11410242?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTVxUlhwT1FTNHlNalEyTVRnLjM4NjQ0\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "https://mycourses.cnm.edu/d2l/le/activities/iterator/11410242?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTVxUlhwT1FTNHlNalEyTVRnLjM4NjQ0\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    },
+    {
+      "index": 11,
+      "student": "Noah Moberly",
+      "activityName": "Sharing Components Between Server and Client",
+      "activityType": "tutorial",
+      "assignmentKey": "tutorial-sharing-components-between-server-and-client",
+      "submittedAt": "4/13/2026 5:26 PM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11410242?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTVxUlhwT1VTNHlNalEyTVRnLjM4NjQ0\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "https://mycourses.cnm.edu/d2l/le/activities/iterator/11410242?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTVxUlhwT1VTNHlNalEyTVRnLjM4NjQ0\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    },
+    {
+      "index": 12,
+      "student": "Dylan Ward",
+      "activityName": "Program 2: Accounting Toolkit",
+      "activityType": "program",
+      "assignmentKey": "program-program-2-accounting-toolkit",
+      "submittedAt": "4/13/2026 7:21 PM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11410242?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTFVVlhoT1p5NHlNalEyTVRnLjMwMzYw\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "https://mycourses.cnm.edu/d2l/le/activities/iterator/11410242?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTFVVlhoT1p5NHlNalEyTVRnLjMwMzYw\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    },
+    {
+      "index": 13,
+      "student": "Noah Moberly",
+      "activityName": "Moving Badges pages from Server to Client",
+      "activityType": "tutorial",
+      "assignmentKey": "tutorial-moving-badges-pages-from-server-to-client",
+      "submittedAt": "4/13/2026 10:33 PM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11410242?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTVxUlhwT1p5NHlNalEyTVRnLjM4NjQ0\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "https://mycourses.cnm.edu/d2l/le/activities/iterator/11410242?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTVxUlhwT1p5NHlNalEyTVRnLjM4NjQ0\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    },
+    {
+      "index": 14,
+      "student": "Jvante Gibbs",
+      "activityName": "Creating a web API",
+      "activityType": "tutorial",
+      "assignmentKey": "tutorial-creating-a-web-api",
+      "submittedAt": "4/14/2026 9:16 AM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11410242?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTVxUlhwT1FTNHlNalEyTVRnLjcyNzgy\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "https://mycourses.cnm.edu/d2l/le/activities/iterator/11410242?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTVxUlhwT1FTNHlNalEyTVRnLjcyNzgy\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    },
+    {
+      "index": 15,
+      "student": "Jvante Gibbs",
+      "activityName": "Sharing Components Between Server and Client",
+      "activityType": "tutorial",
+      "assignmentKey": "tutorial-sharing-components-between-server-and-client",
+      "submittedAt": "4/14/2026 9:16 AM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11410242?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTVxUlhwT1VTNHlNalEyTVRnLjcyNzgy\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "https://mycourses.cnm.edu/d2l/le/activities/iterator/11410242?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTVxUlhwT1VTNHlNalEyTVRnLjcyNzgy\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    },
+    {
+      "index": 16,
+      "student": "Jvante Gibbs",
+      "activityName": "Moving Badges pages from Server to Client",
+      "activityType": "tutorial",
+      "assignmentKey": "tutorial-moving-badges-pages-from-server-to-client",
+      "submittedAt": "4/14/2026 9:16 AM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11410242?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTVxUlhwT1p5NHlNalEyTVRnLjcyNzgy\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "https://mycourses.cnm.edu/d2l/le/activities/iterator/11410242?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTVxUlhwT1p5NHlNalEyTVRnLjcyNzgy\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    },
+    {
+      "index": 17,
+      "student": "Jvante Gibbs",
+      "activityName": "Using Data Transfer Objects",
+      "activityType": "tutorial",
+      "assignmentKey": "tutorial-using-data-transfer-objects",
+      "submittedAt": "4/14/2026 9:17 AM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11410242?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTlFWnpGUFVTNHlNalEyTVRnLjcyNzgy\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "https://mycourses.cnm.edu/d2l/le/activities/iterator/11410242?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTlFWnpGUFVTNHlNalEyTVRnLjcyNzgy\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    },
+    {
+      "index": 18,
+      "student": "Jvante Gibbs",
+      "activityName": "Persisting Component State",
+      "activityType": "tutorial",
+      "assignmentKey": "tutorial-persisting-component-state",
+      "submittedAt": "4/14/2026 9:17 AM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11410242?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTlVVFROT1VTNHlNalEyTVRnLjcyNzgy\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "https://mycourses.cnm.edu/d2l/le/activities/iterator/11410242?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTlVVFROT1VTNHlNalEyTVRnLjcyNzgy\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    },
+    {
+      "index": 19,
+      "student": "Jvante Gibbs",
+      "activityName": "Fixing Render Issues",
+      "activityType": "tutorial",
+      "assignmentKey": "tutorial-fixing-render-issues",
+      "submittedAt": "4/14/2026 9:18 AM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11410242?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTlVVFROT1p5NHlNalEyTVRnLjcyNzgy\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "https://mycourses.cnm.edu/d2l/le/activities/iterator/11410242?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTlVVFROT1p5NHlNalEyTVRnLjcyNzgy\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    },
+    {
+      "index": 20,
+      "student": "Ignacio Moreno",
+      "activityName": "Program 6 - Authentication \u0026 Authorization Integration",
+      "activityType": "program",
+      "assignmentKey": "program-program-6-authentication-authorization-integration",
+      "submittedAt": "4/14/2026 2:15 PM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11410242?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTVFVFhsTlp5NHlNalEyTVRnLjc5MDAz\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "https://mycourses.cnm.edu/d2l/le/activities/iterator/11410242?ou=224618\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpORTVFVFhsTlp5NHlNalEyTVRnLjc5MDAz\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
       ]
     }
   ]

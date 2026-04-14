@@ -76,17 +76,36 @@ internal sealed record AssignmentRegistryEntry(
     string ActivityType,
     string ActivityName,
     TutorialAssignmentInfo? Tutorial,
-    ProgramAssignmentInfo? Program);
+    ProgramAssignmentInfo? Program,
+    AssignmentRubricInfo? Rubric);
 
 internal sealed record TutorialAssignmentInfo(
-    string SeriesUrl,
+    string? SeriesUrl,
     string? TargetUrl,
+    TutorialSourceInfo? Source,
     string? Notes);
+
+internal sealed record TutorialSourceInfo(
+    string Type,
+    string Location,
+    string? Label);
 
 internal sealed record ProgramAssignmentInfo(
     string CompetencyFolder,
     string? SpecPath,
     string? Notes);
+
+internal sealed record AssignmentRubricInfo(
+    string? GradingApproach,
+    string? Summary,
+    IReadOnlyList<RubricCriterionInfo>? Criteria);
+
+internal sealed record RubricCriterionInfo(
+    string Id,
+    string Description,
+    int Points,
+    IReadOnlyList<string>? EvidenceHints,
+    string? FrameworkNotes);
 
 internal sealed record GradingWorkItem(
     int Index,
@@ -94,6 +113,7 @@ internal sealed record GradingWorkItem(
     string? ActivityName,
     string ActivityType,
     string AssignmentKey,
+    string SubmissionStatus,
     string GradingMode,
     string? RepoUrl,
     string? CloneUrl,
@@ -122,6 +142,7 @@ internal sealed record PreparedRepoWorkItem(
     string? ActivityName,
     string ActivityType,
     string AssignmentKey,
+    string SubmissionStatus,
     string GradingMode,
     string? RepoUrl,
     string? CloneUrl,
@@ -149,6 +170,7 @@ internal sealed record GradingRunItem(
     string? ActivityName,
     string ActivityType,
     string AssignmentKey,
+    string SubmissionStatus,
     string GradingMode,
     string? RepoUrl,
     string? CloneUrl,
@@ -159,8 +181,11 @@ internal sealed record GradingRunItem(
     string? EvaluationUrl,
     string? PreviewUrl,
     string? TutorialUrl,
+    string? TutorialSourceType,
+    string? TutorialSourceLocation,
     string? CompetencyFolderPath,
     string? SpecPath,
+    AssignmentRubricInfo? Rubric,
     string? CourseAgentsPath,
     string? AssignmentAgentsPath,
     string PromptPath,
@@ -252,6 +277,10 @@ internal static class AssignmentPathHintParser
 
 internal static class AssignmentClassifier
 {
+    private static readonly Regex ProgramCodePrefixRegex = new(
+        @"^\s*(?:P|E)\d+\b",
+        RegexOptions.IgnoreCase | RegexOptions.Compiled);
+
     public static string GetActivityType(string? activityName)
         => ContainsProgramSignal(activityName) ? "program" : "tutorial";
 
@@ -271,5 +300,45 @@ internal static class AssignmentClassifier
     private static bool ContainsProgramSignal(string? activityName)
         => !string.IsNullOrWhiteSpace(activityName)
             && (activityName.Contains("Program", StringComparison.OrdinalIgnoreCase)
-                || activityName.Contains("Competency", StringComparison.OrdinalIgnoreCase));
+                || activityName.Contains("Competency", StringComparison.OrdinalIgnoreCase)
+                || ProgramCodePrefixRegex.IsMatch(activityName));
+}
+
+internal static class SubmissionStatusClassifier
+{
+    private static readonly Regex ExtensionRequestRegex = new(
+        @"\b(extension|extra\s+time|more\s+time|late\s+pass|need\s+more\s+time)\b",
+        RegexOptions.IgnoreCase | RegexOptions.Compiled);
+
+    public static string Classify(string? rawText, string? cloneUrl)
+    {
+        if (IsExtensionRequest(rawText) && string.IsNullOrWhiteSpace(cloneUrl))
+        {
+            return "extension-request";
+        }
+
+        return string.IsNullOrWhiteSpace(cloneUrl)
+            ? "missing-repo-link"
+            : "ready-to-grade";
+    }
+
+    public static string ClassifyCloneFailure(string submissionStatus, string? prepError)
+    {
+        if (!string.Equals(submissionStatus, "ready-to-grade", StringComparison.OrdinalIgnoreCase))
+        {
+            return submissionStatus;
+        }
+
+        if (string.IsNullOrWhiteSpace(prepError))
+        {
+            return submissionStatus;
+        }
+
+        return prepError.Contains("repository not found", StringComparison.OrdinalIgnoreCase)
+            ? "bad-repo-link"
+            : submissionStatus;
+    }
+
+    private static bool IsExtensionRequest(string? rawText)
+        => !string.IsNullOrWhiteSpace(rawText) && ExtensionRequestRegex.IsMatch(rawText);
 }

@@ -108,6 +108,8 @@ dotnet run --project C:\Users\Rob011235\source\repos\BrightspaceCli\InsTK.CLI --
 - `build-grading-worklist` joins `submission-map.json` with an external assignment registry and writes a grading-ready worklist.
 - `prepare-grading-repos` clones or updates repos from the grading worklist and writes a repo-ready grading queue with resolved branch and folder hints.
 - `build-grading-runner` turns the prepared repo queue into a Codex-ready grading run queue with prompt files, report paths, and resolved tutorial or competency context.
+- tutorial registry entries can now point to `blog-url`, `brightspace-doc`, or `local-file` sources, so older courses do not need blog posts first.
+- assignment names that begin with `P#` or `E#` are now classified as programs in addition to names containing `Program` or `Competency`.
 
 Use `--first-page-only` with `scrape-quickeval` or `scrape-submission-map` if you want to disable paging and only use the currently visible rows.
 

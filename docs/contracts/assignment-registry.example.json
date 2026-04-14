@@ -1,0 +1,140 @@
+{
+  "course": "CIS 2284 .NET II",
+  "generatedFrom": "manual",
+  "generatedAt": "2026-04-12T21:00:00Z",
+  "assignments": [
+    {
+      "assignmentKey": "tutorial-using-data-transfer-objects",
+      "activityType": "tutorial",
+      "activityName": "Using Data Transfer Objects",
+      "tutorial": {
+        "source": {
+          "type": "blog-url",
+          "location": "https://robgarnerblog.wordpress.com/2026/04/01/using-data-transfer-objects/",
+          "label": "Instructor blog post"
+        },
+        "notes": "Grade against the final DTO workflow shown in the post."
+      },
+      "program": null,
+      "rubric": {
+        "gradingApproach": "capabilities-first",
+        "summary": "Accept equivalent implementations across UI frameworks when the DTO workflow and API/data-shaping behavior are present.",
+        "criteria": [
+          {
+            "id": "dto-classes",
+            "description": "Defines DTO classes that separate transport/data-shaping concerns from domain or EF entities.",
+            "points": 30,
+            "evidenceHints": [
+              "DTO model files",
+              "separate DTO namespace or folder",
+              "mapping code or projection"
+            ],
+            "frameworkNotes": "Do not require a specific project structure if DTO separation is clear."
+          },
+          {
+            "id": "dto-usage",
+            "description": "Uses DTOs in the application flow instead of exposing entities directly.",
+            "points": 40,
+            "evidenceHints": [
+              "controller actions",
+              "service methods",
+              "API request/response models"
+            ],
+            "frameworkNotes": "Accept MVC, API, or MAUI-connected service layers if the behavior is equivalent."
+          },
+          {
+            "id": "completeness",
+            "description": "Implements the main tutorial workflow end to end with only minor gaps.",
+            "points": 30,
+            "evidenceHints": [
+              "working feature path",
+              "related pages or routes",
+              "data flow through the app"
+            ],
+            "frameworkNotes": null
+          }
+        ]
+      }
+    },
+    {
+      "assignmentKey": "tutorial-legacy-word-doc-example",
+      "activityType": "tutorial",
+      "activityName": "Legacy Tutorial Example",
+      "tutorial": {
+        "source": {
+          "type": "brightspace-doc",
+          "location": "https://mycourses.cnm.edu/d2l/le/content/224608/viewContent/123456/View",
+          "label": "Assignment page Word document"
+        },
+        "notes": "Use the Word document attached on the Brightspace assignment page."
+      },
+      "program": null,
+      "rubric": null
+    },
+    {
+      "assignmentKey": "tutorial-local-file-example",
+      "activityType": "tutorial",
+      "activityName": "Local File Tutorial Example",
+      "tutorial": {
+        "source": {
+          "type": "local-file",
+          "location": "Tutorials\\Week03\\LocalTutorial.docx",
+          "label": "Local course document"
+        },
+        "notes": "Relative local tutorial files are resolved from courseRoot."
+      },
+      "program": null,
+      "rubric": null
+    },
+    {
+      "assignmentKey": "program-04-crud-contacts",
+      "activityType": "program",
+      "activityName": "Program 04 - CRUD Contacts",
+      "tutorial": null,
+      "program": {
+        "competencyFolder": "Competencies\\Program04",
+        "specPath": "Competencies\\Program04\\spec.md",
+        "notes": "Use the competency spec and assignment AGENTS.md when present."
+      },
+      "rubric": {
+        "gradingApproach": "capabilities-first",
+        "summary": "Grade the required CRUD and validation behavior without requiring a specific GUI stack.",
+        "criteria": [
+          {
+            "id": "core-crud",
+            "description": "Implements the primary create, read, update, and delete workflow required by the assignment.",
+            "points": 50,
+            "evidenceHints": [
+              "form or page actions",
+              "data persistence calls",
+              "list/detail refresh behavior"
+            ],
+            "frameworkNotes": "Accept WinForms, MVC, MAUI, or equivalent UI implementations."
+          },
+          {
+            "id": "validation",
+            "description": "Prevents invalid input or handles it clearly.",
+            "points": 20,
+            "evidenceHints": [
+              "input validation",
+              "error messages",
+              "guard clauses"
+            ],
+            "frameworkNotes": null
+          },
+          {
+            "id": "code-organization",
+            "description": "Keeps core business or data logic reasonably separated from UI code.",
+            "points": 30,
+            "evidenceHints": [
+              "separate classes or services",
+              "data access layer",
+              "domain models"
+            ],
+            "frameworkNotes": "Separation matters more than exact folder names."
+          }
+        ]
+      }
+    }
+  ]
+}

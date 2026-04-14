@@ -1,0 +1,100 @@
+{
+  "course": "Second Course Example",
+  "generatedFrom": "manual",
+  "generatedAt": "2026-04-12T21:15:00Z",
+  "assignments": [
+    {
+      "assignmentKey": "program-p1-intro-project",
+      "activityType": "program",
+      "activityName": "P1 Intro Project",
+      "tutorial": null,
+      "program": {
+        "competencyFolder": "Programs\\P1",
+        "specPath": "Programs\\P1\\spec.docx",
+        "notes": "Assignments whose Brightspace titles start with P# should map as programs."
+      },
+      "rubric": {
+        "gradingApproach": "capabilities-first",
+        "summary": "Grade the assignment outcomes rather than the exact GUI framework or folder layout.",
+        "criteria": [
+          {
+            "id": "core-workflow",
+            "description": "Implements the main end-to-end workflow expected by the assignment.",
+            "points": 60,
+            "evidenceHints": [
+              "main screens or pages",
+              "primary user actions",
+              "data flow"
+            ],
+            "frameworkNotes": "Accept Windows Forms, MVC, MAUI, or equivalent implementations."
+          },
+          {
+            "id": "correctness",
+            "description": "Produces correct results for the main required scenarios.",
+            "points": 40,
+            "evidenceHints": [
+              "business rules",
+              "calculations",
+              "state changes"
+            ],
+            "frameworkNotes": null
+          }
+        ]
+      }
+    },
+    {
+      "assignmentKey": "program-e1-exam-project",
+      "activityType": "program",
+      "activityName": "E1 Exam Project",
+      "tutorial": null,
+      "program": {
+        "competencyFolder": "Exams\\E1",
+        "specPath": "Exams\\E1\\spec.docx",
+        "notes": "Assignments whose Brightspace titles start with E# should map as programs."
+      },
+      "rubric": null
+    },
+    {
+      "assignmentKey": "tutorial-working-with-forms",
+      "activityType": "tutorial",
+      "activityName": "Working With Forms",
+      "tutorial": {
+        "source": {
+          "type": "brightspace-doc",
+          "location": "https://mycourses.cnm.edu/d2l/le/content/224608/viewContent/654321/View",
+          "label": "Word document linked from the assignment page"
+        },
+        "notes": "Everything that is not P# or E# is treated as tutorial in this course."
+      },
+      "program": null,
+      "rubric": {
+        "gradingApproach": "tutorial-equivalence",
+        "summary": "Check that the student accomplished the same capabilities as the tutorial, even if the UI framework changed.",
+        "criteria": [
+          {
+            "id": "tutorial-capabilities",
+            "description": "Implements the key capabilities demonstrated in the tutorial source.",
+            "points": 80,
+            "evidenceHints": [
+              "major steps from the tutorial",
+              "required models or services",
+              "expected user-facing behavior"
+            ],
+            "frameworkNotes": "Do not require exact page structure or control names."
+          },
+          {
+            "id": "code-quality",
+            "description": "Submission is organized enough to verify the work and shows reasonable implementation quality.",
+            "points": 20,
+            "evidenceHints": [
+              "readable structure",
+              "coherent naming",
+              "clear evidence of the implemented feature"
+            ],
+            "frameworkNotes": null
+          }
+        ]
+      }
+    }
+  ]
+}

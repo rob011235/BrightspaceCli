@@ -1,0 +1,248 @@
+{
+  "scraper": "InsTK",
+  "scrapedAt": "2026-04-13T03:36:02.0805625+00:00",
+  "pageUrl": "https://mycourses.cnm.edu/d2l/le/224608/quickeval/",
+  "submissionCount": 20,
+  "submissions": [
+    {
+      "index": 0,
+      "student": "Tkai Monet",
+      "activityName": "Inheritance Tutorial",
+      "activityType": "tutorial",
+      "assignmentKey": "tutorial-inheritance-tutorial",
+      "submittedAt": "3/16/2026 4:40 PM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11401858?ou=224608\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpNazlFVlRCTmR5NHlNalEyTURnLjI0MDYz\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "https://mycourses.cnm.edu/d2l/le/activities/iterator/11401858?ou=224608\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpNazlFVlRCTmR5NHlNalEyTURnLjI0MDYz\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    },
+    {
+      "index": 1,
+      "student": "Tkai Monet",
+      "activityName": "Libraries Tutorial",
+      "activityType": "tutorial",
+      "assignmentKey": "tutorial-libraries-tutorial",
+      "submittedAt": "3/16/2026 4:57 PM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11401858?ou=224608\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpNazlFVlRCT1FTNHlNalEyTURnLjI0MDYz\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "https://mycourses.cnm.edu/d2l/le/activities/iterator/11401858?ou=224608\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpNazlFVlRCT1FTNHlNalEyTURnLjI0MDYz\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    },
+    {
+      "index": 2,
+      "student": "Tkai Monet",
+      "activityName": "Object Class Demo",
+      "activityType": "tutorial",
+      "assignmentKey": "tutorial-object-class-demo",
+      "submittedAt": "3/18/2026 5:09 PM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11401858?ou=224608\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpNazlFVlRCT1VTNHlNalEyTURnLjI0MDYz\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "https://mycourses.cnm.edu/d2l/le/activities/iterator/11401858?ou=224608\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpNazlFVlRCT1VTNHlNalEyTURnLjI0MDYz\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    },
+    {
+      "index": 3,
+      "student": "Tkai Monet",
+      "activityName": "Custom Exceptions Demo",
+      "activityType": "tutorial",
+      "assignmentKey": "tutorial-custom-exceptions-demo",
+      "submittedAt": "3/18/2026 5:41 PM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11401858?ou=224608\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpNazlFVlRCT1p5NHlNalEyTURnLjI0MDYz\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "https://mycourses.cnm.edu/d2l/le/activities/iterator/11401858?ou=224608\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpNazlFVlRCT1p5NHlNalEyTURnLjI0MDYz\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    },
+    {
+      "index": 4,
+      "student": "Joaquin Wells",
+      "activityName": "Inheritance Tutorial",
+      "activityType": "tutorial",
+      "assignmentKey": "tutorial-inheritance-tutorial",
+      "submittedAt": "3/18/2026 11:55 PM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11401858?ou=224608\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpNazlFVlRCTmR5NHlNalEyTURnLjEwMTA2Mg\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "https://mycourses.cnm.edu/d2l/le/activities/iterator/11401858?ou=224608\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpNazlFVlRCTmR5NHlNalEyTURnLjEwMTA2Mg\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    },
+    {
+      "index": 5,
+      "student": "Brian Carrasco",
+      "activityName": "Abstract And Sealed Classes Tutorial",
+      "activityType": "tutorial",
+      "assignmentKey": "tutorial-abstract-and-sealed-classes-tutorial",
+      "submittedAt": "3/20/2026 1:11 PM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11401858?ou=224608\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpNazlFVlRCUFVTNHlNalEyTURnLjU2NDY0\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "https://mycourses.cnm.edu/d2l/le/activities/iterator/11401858?ou=224608\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpNazlFVlRCUFVTNHlNalEyTURnLjU2NDY0\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    },
+    {
+      "index": 6,
+      "student": "Tkai Monet",
+      "activityName": "Student Form Tutorial",
+      "activityType": "tutorial",
+      "assignmentKey": "tutorial-student-form-tutorial",
+      "submittedAt": "3/21/2026 12:53 PM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11401858?ou=224608\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpNazlFVlRCTlVTNHlNalEyTURnLjI0MDYz\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "https://mycourses.cnm.edu/d2l/le/activities/iterator/11401858?ou=224608\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpNazlFVlRCTlVTNHlNalEyTURnLjI0MDYz\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    },
+    {
+      "index": 7,
+      "student": "Tkai Monet",
+      "activityName": "E2 Debugging Inheritance",
+      "activityType": "program",
+      "assignmentKey": "program-e2-debugging-inheritance",
+      "submittedAt": "3/21/2026 1:11 PM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11401858?ou=224608\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpNazlFVlRGT1FTNHlNalEyTURnLjI0MDYz\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "https://mycourses.cnm.edu/d2l/le/activities/iterator/11401858?ou=224608\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpNazlFVlRGT1FTNHlNalEyTURnLjI0MDYz\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    },
+    {
+      "index": 8,
+      "student": "Brian Carrasco",
+      "activityName": "Interfaces Demo",
+      "activityType": "tutorial",
+      "assignmentKey": "tutorial-interfaces-demo",
+      "submittedAt": "3/23/2026 6:27 AM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11401858?ou=224608\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpNazlFVlRGTlFTNHlNalEyTURnLjU2NDY0\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "https://mycourses.cnm.edu/d2l/le/activities/iterator/11401858?ou=224608\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpNazlFVlRGTlFTNHlNalEyTURnLjU2NDY0\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    },
+    {
+      "index": 9,
+      "student": "Joaquin Wells",
+      "activityName": "Object Class Demo",
+      "activityType": "tutorial",
+      "assignmentKey": "tutorial-object-class-demo",
+      "submittedAt": "3/23/2026 11:54 PM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11401858?ou=224608\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpNazlFVlRCT1VTNHlNalEyTURnLjEwMTA2Mg\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "https://mycourses.cnm.edu/d2l/le/activities/iterator/11401858?ou=224608\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpNazlFVlRCT1VTNHlNalEyTURnLjEwMTA2Mg\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    },
+    {
+      "index": 10,
+      "student": "Joaquin Wells",
+      "activityName": "Libraries Tutorial",
+      "activityType": "tutorial",
+      "assignmentKey": "tutorial-libraries-tutorial",
+      "submittedAt": "3/24/2026 11:55 PM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11401858?ou=224608\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpNazlFVlRCT1FTNHlNalEyTURnLjEwMTA2Mg\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "https://mycourses.cnm.edu/d2l/le/activities/iterator/11401858?ou=224608\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpNazlFVlRCT1FTNHlNalEyTURnLjEwMTA2Mg\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    },
+    {
+      "index": 11,
+      "student": "Joaquin Wells",
+      "activityName": "Custom Exceptions Demo",
+      "activityType": "tutorial",
+      "assignmentKey": "tutorial-custom-exceptions-demo",
+      "submittedAt": "3/25/2026 11:36 PM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11401858?ou=224608\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpNazlFVlRCT1p5NHlNalEyTURnLjEwMTA2Mg\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "https://mycourses.cnm.edu/d2l/le/activities/iterator/11401858?ou=224608\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpNazlFVlRCT1p5NHlNalEyTURnLjEwMTA2Mg\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    },
+    {
+      "index": 12,
+      "student": "Kaylee Nicasio",
+      "activityName": "Abstract And Sealed Classes Tutorial",
+      "activityType": "tutorial",
+      "assignmentKey": "tutorial-abstract-and-sealed-classes-tutorial",
+      "submittedAt": "3/29/2026 1:51 PM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11401858?ou=224608\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpNazlFVlRCUFVTNHlNalEyTURnLjMyODc2\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "https://mycourses.cnm.edu/d2l/le/activities/iterator/11401858?ou=224608\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpNazlFVlRCUFVTNHlNalEyTURnLjMyODc2\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    },
+    {
+      "index": 13,
+      "student": "Joaquin Wells",
+      "activityName": "Data Adapter Demo",
+      "activityType": "tutorial",
+      "assignmentKey": "tutorial-data-adapter-demo",
+      "submittedAt": "3/29/2026 11:25 PM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11401858?ou=224608\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpNazlFVlRGTlVTNHlNalEyTURnLjEwMTA2Mg\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "https://mycourses.cnm.edu/d2l/le/activities/iterator/11401858?ou=224608\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpNazlFVlRGTlVTNHlNalEyTURnLjEwMTA2Mg\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    },
+    {
+      "index": 14,
+      "student": "Jamie Dowden-Duarte",
+      "activityName": "Data Adapter Demo",
+      "activityType": "tutorial",
+      "assignmentKey": "tutorial-data-adapter-demo",
+      "submittedAt": "3/31/2026 8:45 AM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11401858?ou=224608\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpNazlFVlRGTlVTNHlNalEyTURnLjczNjIy\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "https://mycourses.cnm.edu/d2l/le/activities/iterator/11401858?ou=224608\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpNazlFVlRGTlVTNHlNalEyTURnLjczNjIy\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    },
+    {
+      "index": 15,
+      "student": "Kaylee Nicasio",
+      "activityName": "Interfaces Demo",
+      "activityType": "tutorial",
+      "assignmentKey": "tutorial-interfaces-demo",
+      "submittedAt": "3/31/2026 11:07 AM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11401858?ou=224608\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpNazlFVlRGTlFTNHlNalEyTURnLjMyODc2\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "https://mycourses.cnm.edu/d2l/le/activities/iterator/11401858?ou=224608\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpNazlFVlRGTlFTNHlNalEyTURnLjMyODc2\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    },
+    {
+      "index": 16,
+      "student": "Joaquin Wells",
+      "activityName": "Abstract And Sealed Classes Tutorial",
+      "activityType": "tutorial",
+      "assignmentKey": "tutorial-abstract-and-sealed-classes-tutorial",
+      "submittedAt": "3/31/2026 9:02 PM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11401858?ou=224608\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpNazlFVlRCUFVTNHlNalEyTURnLjEwMTA2Mg\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "https://mycourses.cnm.edu/d2l/le/activities/iterator/11401858?ou=224608\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpNazlFVlRCUFVTNHlNalEyTURnLjEwMTA2Mg\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    },
+    {
+      "index": 17,
+      "student": "Joaquin Wells",
+      "activityName": "E1 Debugging a Class",
+      "activityType": "program",
+      "assignmentKey": "program-e1-debugging-a-class",
+      "submittedAt": "3/31/2026 9:42 PM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11401858?ou=224608\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpNazlFVlRGTmR5NHlNalEyTURnLjEwMTA2Mg\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "https://mycourses.cnm.edu/d2l/le/activities/iterator/11401858?ou=224608\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpNazlFVlRGTmR5NHlNalEyTURnLjEwMTA2Mg\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    },
+    {
+      "index": 18,
+      "student": "Joaquin Wells",
+      "activityName": "E2 Debugging Inheritance",
+      "activityType": "program",
+      "assignmentKey": "program-e2-debugging-inheritance",
+      "submittedAt": "3/31/2026 9:49 PM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11401858?ou=224608\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpNazlFVlRGT1FTNHlNalEyTURnLjEwMTA2Mg\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "https://mycourses.cnm.edu/d2l/le/activities/iterator/11401858?ou=224608\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpNazlFVlRGT1FTNHlNalEyTURnLjEwMTA2Mg\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    },
+    {
+      "index": 19,
+      "student": "Jamie Dowden-Duarte",
+      "activityName": "CRUD Demo",
+      "activityType": "tutorial",
+      "assignmentKey": "tutorial-crud-demo",
+      "submittedAt": "4/1/2026 9:53 AM",
+      "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/11401858?ou=224608\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpNazlFVlRGTlp5NHlNalEyTURnLjczNjIy\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe",
+      "urls": [
+        "https://mycourses.cnm.edu/d2l/le/activities/iterator/11401858?ou=224608\u0026currentActorActivityUsage=VG1wWmQwNXNPSGxOUkVGM1dIcFpNazlFVlRGTlp5NHlNalEyTURnLjczNjIy\u0026cfi=sort~eyJTb3J0cyI6W3siU29ydCI6eyJJZCI6ImZiZDhlNzRlLWMzNWUtNDIxMy1hMTAwLWVmYzRmOWVhYzUwYSJ9LCJEaXJlY3Rpb24iOjB9XX0\u0026cft=qe"
+      ]
+    }
+  ]
+}

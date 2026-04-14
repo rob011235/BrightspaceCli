@@ -60,6 +60,7 @@ internal static class JsonFileStore
     {
         WriteIndented = true,
         PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+        PropertyNameCaseInsensitive = true,
     };
 
     public static async Task WriteAsync<T>(string path, T value)

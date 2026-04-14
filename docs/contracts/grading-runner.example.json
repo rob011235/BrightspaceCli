@@ -25,6 +25,8 @@
       "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/224618/12345678",
       "previewUrl": "https://mycourses.cnm.edu/d2l/preview/123456",
       "tutorialUrl": "https://robgarnerblog.wordpress.com/2026/04/01/program-04-crud-contacts/",
+      "tutorialSourceType": "blog-url",
+      "tutorialSourceLocation": "https://robgarnerblog.wordpress.com/2026/04/01/program-04-crud-contacts/",
       "competencyFolderPath": "C:\\Users\\Rob011235\\Dropbox\\CNM\\_Curriculum\\CIST 2284 .NET II\\Competencies\\Program04",
       "specPath": "C:\\Users\\Rob011235\\Dropbox\\CNM\\_Curriculum\\CIST 2284 .NET II\\Competencies\\Program04\\spec.md",
       "courseAgentsPath": "C:\\Users\\Rob011235\\Dropbox\\CNM\\_Curriculum\\CIST 2284 .NET II\\AGENTS.md",
