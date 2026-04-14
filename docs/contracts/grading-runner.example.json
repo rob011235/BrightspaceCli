@@ -15,6 +15,7 @@
       "activityName": "Program 04 - CRUD Contacts",
       "activityType": "program",
       "assignmentKey": "program-04-crud-contacts",
+      "submissionStatus": "ready-to-grade",
       "gradingMode": "program-spec",
       "repoUrl": "https://github.com/janestudent/CIST2284-Program04/tree/main/ContactsApp",
       "cloneUrl": "https://github.com/janestudent/CIST2284-Program04.git",
@@ -24,11 +25,50 @@
       "gradingTargetPath": "C:\\grading\\repos\\janestudent-CIST2284-Program04\\Unit04\\Program04",
       "evaluationUrl": "https://mycourses.cnm.edu/d2l/le/activities/iterator/224618/12345678",
       "previewUrl": "https://mycourses.cnm.edu/d2l/preview/123456",
-      "tutorialUrl": "https://robgarnerblog.wordpress.com/2026/04/01/program-04-crud-contacts/",
-      "tutorialSourceType": "blog-url",
-      "tutorialSourceLocation": "https://robgarnerblog.wordpress.com/2026/04/01/program-04-crud-contacts/",
+      "tutorialUrl": null,
+      "tutorialSourceType": null,
+      "tutorialSourceLocation": null,
       "competencyFolderPath": "C:\\Users\\Rob011235\\Dropbox\\CNM\\_Curriculum\\CIST 2284 .NET II\\Competencies\\Program04",
       "specPath": "C:\\Users\\Rob011235\\Dropbox\\CNM\\_Curriculum\\CIST 2284 .NET II\\Competencies\\Program04\\spec.md",
+      "rubric": {
+        "gradingApproach": "capabilities-first",
+        "summary": "Grade the required CRUD and validation behavior without requiring a specific GUI stack.",
+        "criteria": [
+          {
+            "id": "core-crud",
+            "description": "Implements the primary create, read, update, and delete workflow required by the assignment.",
+            "points": 50,
+            "evidenceHints": [
+              "form or page actions",
+              "data persistence calls",
+              "list/detail refresh behavior"
+            ],
+            "frameworkNotes": "Accept WinForms, MVC, MAUI, or equivalent UI implementations."
+          },
+          {
+            "id": "validation",
+            "description": "Prevents invalid input or handles it clearly.",
+            "points": 20,
+            "evidenceHints": [
+              "input validation",
+              "error messages",
+              "guard clauses"
+            ],
+            "frameworkNotes": null
+          },
+          {
+            "id": "code-organization",
+            "description": "Keeps core business or data logic reasonably separated from UI code.",
+            "points": 30,
+            "evidenceHints": [
+              "separate classes or services",
+              "data access layer",
+              "domain models"
+            ],
+            "frameworkNotes": "Separation matters more than exact folder names."
+          }
+        ]
+      },
       "courseAgentsPath": "C:\\Users\\Rob011235\\Dropbox\\CNM\\_Curriculum\\CIST 2284 .NET II\\AGENTS.md",
       "assignmentAgentsPath": "C:\\Users\\Rob011235\\Dropbox\\CNM\\_Curriculum\\CIST 2284 .NET II\\Competencies\\Program04\\AGENTS.md",
       "promptPath": "C:\\grading\\runs\\prompts\\program-04-crud-contacts\\Jane-Student.md",
