@@ -18,6 +18,8 @@ internal sealed class BrightspaceAutomationService : IBrightspaceAutomationServi
         var statePath = CorePaths.ResolvePath(command.StatePath ?? config.StatePath ?? throw new InvalidOperationException("Missing state path."));
         Directory.CreateDirectory(Path.GetDirectoryName(statePath)!);
 
+        var driverPath = PlaywrightDriverLocator.EnsureConfigured();
+        host.Out.WriteLine(PlaywrightDriverLocator.Describe(driverPath));
         using var playwright = await Playwright.CreateAsync();
         await using var browser = await LaunchBrowserAsync(playwright, command.Channel, headless: false);
 
@@ -42,6 +44,8 @@ internal sealed class BrightspaceAutomationService : IBrightspaceAutomationServi
         var statePath = CorePaths.ResolvePath(command.StatePath ?? config.StatePath ?? throw new InvalidOperationException("Missing state path."));
         var outPath = CorePaths.ResolvePath(command.OutPath ?? config.QuickEvalOutPath ?? "_grading/quickeval-live.json");
         var scrapeAllPages = command.ScrapeAllPages;
+        var driverPath = PlaywrightDriverLocator.EnsureConfigured();
+        host.Out.WriteLine(PlaywrightDriverLocator.Describe(driverPath));
         using var playwright = await Playwright.CreateAsync();
         await using var browser = await LaunchBrowserAsync(playwright, command.Channel, headless: true);
 
@@ -71,6 +75,8 @@ internal sealed class BrightspaceAutomationService : IBrightspaceAutomationServi
         var url = command.Url ?? config.SubmissionUrl ?? throw new InvalidOperationException("Missing submission URL.");
         var statePath = CorePaths.ResolvePath(command.StatePath ?? config.StatePath ?? throw new InvalidOperationException("Missing state path."));
         var outPath = CorePaths.ResolvePath(command.OutPath ?? config.SubmissionOutPath ?? "_grading/submission-live.json");
+        var driverPath = PlaywrightDriverLocator.EnsureConfigured();
+        host.Out.WriteLine(PlaywrightDriverLocator.Describe(driverPath));
         using var playwright = await Playwright.CreateAsync();
         await using var browser = await LaunchBrowserAsync(playwright, command.Channel, headless: true);
 
@@ -95,6 +101,8 @@ internal sealed class BrightspaceAutomationService : IBrightspaceAutomationServi
         var limit = command.Limit;
         var scrapeAllPages = command.ScrapeAllPages;
 
+        var driverPath = PlaywrightDriverLocator.EnsureConfigured();
+        host.Out.WriteLine(PlaywrightDriverLocator.Describe(driverPath));
         using var playwright = await Playwright.CreateAsync();
         await using var browser = await LaunchBrowserAsync(playwright, command.Channel, headless: true);
 

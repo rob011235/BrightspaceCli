@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:InsTK.Maui"
+             x:Class="InsTK.Maui.MainPage"
+             x:DataType="viewModels:MainPageViewModel"
+             Title="InsTK">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="24"
+                             Spacing="18">
+            <Border Background="{StaticResource PanelBrush}"
+                    Padding="24"
+                    StrokeThickness="0">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="28" />
+                </Border.StrokeShape>
+                <Grid ColumnDefinitions="*,Auto"
+                      RowDefinitions="Auto,Auto,Auto"
+                      ColumnSpacing="16"
+                      RowSpacing="12">
+                    <VerticalStackLayout Grid.Row="0"
+                                         Grid.Column="0"
+                                         Spacing="6">
+                        <Label Text="Grade a Course"
+                               FontFamily="OpenSansSemibold"
+                               FontSize="30"
+                               TextColor="{StaticResource HeadlineColor}" />
+                        <Label Text="Choose a class, sign in to Brightspace, load the current submissions, and prepare grading files."
+                               FontSize="15"
+                               TextColor="{StaticResource MutedTextColor}" />
+                    </VerticalStackLayout>
+
+                    <ActivityIndicator Grid.RowSpan="2"
+                                       Grid.Column="1"
+                                       VerticalOptions="Start"
+                                       IsRunning="{Binding IsBusy}"
+                                       IsVisible="{Binding IsBusy}" />
+
+                    <Label Grid.Row="1"
+                           Grid.Column="0"
+                           Text="{Binding Status}"
+                           FontSize="14"
+                           TextColor="{StaticResource AccentWarm}" />
+
+                    <HorizontalStackLayout Grid.Row="2"
+                                           Grid.ColumnSpan="2"
+                                           Spacing="12">
+                        <Button Text="Reload App Settings"
+                                Command="{Binding ReloadWorkspaceCommand}" />
+                        <Button Text="Clear Activity Log"
+                                Command="{Binding ClearLogCommand}"
+                                BackgroundColor="{StaticResource SurfaceStrong}"
+                                TextColor="{StaticResource HeadlineColor}" />
+                    </HorizontalStackLayout>
+                </Grid>
+            </Border>
+
+            <Grid ColumnDefinitions="1.2*,0.8*"
+                  ColumnSpacing="18"
+                  RowDefinitions="Auto,Auto,Auto,Auto">
+                <Border Grid.Column="0"
+                        Padding="20"
+                        Background="{StaticResource SurfaceBrush}">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="22" />
+                    </Border.StrokeShape>
+                    <VerticalStackLayout Spacing="12">
+                        <Label Text="1. Choose the Course"
+                               FontFamily="OpenSansSemibold"
+                               FontSize="18"
+                               TextColor="{StaticResource HeadlineColor}" />
+                        <Label Text="This points InsTK at the lesson materials and grading instructions for the class you want to work on."
+                               FontSize="13"
+                               TextColor="{StaticResource MutedTextColor}" />
+                        <Picker Title="Select a course folder"
+                                ItemsSource="{Binding AvailableCourses}"
+                                SelectedItem="{Binding SelectedCourse}"
+                                ItemDisplayBinding="{Binding Name}" />
+                        <Label Text="{Binding SelectedCourseName}"
+                               FontFamily="OpenSansSemibold"
+                               FontSize="14"
+                               TextColor="{StaticResource HeadlineColor}" />
+                        <Label Text="{Binding CourseSummary}"
+                               FontSize="13"
+                               TextColor="{StaticResource MutedTextColor}" />
+                    </VerticalStackLayout>
+                </Border>
+
+                <Border Grid.Column="1"
+                        Padding="20"
+                        Background="{StaticResource SurfaceBrush}">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="22" />
+                    </Border.StrokeShape>
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="What the Buttons Mean"
+                               FontFamily="OpenSansSemibold"
+                               FontSize="18"
+                               TextColor="{StaticResource HeadlineColor}" />
+                        <Label Text="{Binding QuickEvalHelp}"
+                               FontSize="13"
+                               TextColor="{StaticResource MutedTextColor}" />
+                        <Label Text="{Binding GradingPrepHelp}"
+                               FontSize="13"
+                               TextColor="{StaticResource MutedTextColor}" />
+                    </VerticalStackLayout>
+                </Border>
+
+                <Border Grid.Row="1"
+                        Grid.ColumnSpan="2"
+                        Padding="20"
+                        Background="{StaticResource SurfaceBrush}">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="22" />
+                    </Border.StrokeShape>
+                    <VerticalStackLayout Spacing="14">
+                        <Label Text="2. Brightspace Connection"
+                               FontFamily="OpenSansSemibold"
+                               FontSize="18"
+                               TextColor="{StaticResource HeadlineColor}" />
+
+                        <Grid ColumnDefinitions="*,*"
+                              ColumnSpacing="14"
+                              RowDefinitions="Auto,Auto">
+                            <VerticalStackLayout Grid.Row="0"
+                                                 Grid.ColumnSpan="2"
+                                                 Spacing="6">
+                                <Label Text="Brightspace Quick Eval page"
+                                       FontSize="12"
+                                       TextColor="{StaticResource MutedTextColor}" />
+                                <Entry Text="{Binding QuickEvalUrl}" />
+                            </VerticalStackLayout>
+
+                            <VerticalStackLayout Grid.Row="1"
+                                                 Grid.Column="0"
+                                                 Spacing="6">
+                                <Label Text="Browser"
+                                       FontSize="12"
+                                       TextColor="{StaticResource MutedTextColor}" />
+                                <Entry Text="{Binding BrowserChannel}" />
+                            </VerticalStackLayout>
+
+                            <VerticalStackLayout Grid.Row="1"
+                                                 Grid.Column="1"
+                                                 Spacing="6">
+                                <Label Text="Saved sign-in state"
+                                       FontSize="12"
+                                       TextColor="{StaticResource MutedTextColor}" />
+                                <Entry Text="{Binding StatePath}" />
+                            </VerticalStackLayout>
+                        </Grid>
+
+                        <HorizontalStackLayout Spacing="12">
+                            <Button Text="Open Brightspace Sign-In"
+                                    Command="{Binding OpenBrightspaceLoginCommand}" />
+                            <Button Text="Load Submission List"
+                                    Command="{Binding LoadSubmissionListCommand}" />
+                            <Button Text="Continue"
+                                    Command="{Binding ContinueCommand}"
+                                    IsVisible="{Binding IsAwaitingInput}"
+                                    BackgroundColor="{StaticResource AccentWarm}"
+                                    TextColor="{StaticResource SurfaceStrong}" />
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+                </Border>
+
+                <Border Grid.Row="2"
+                        Grid.ColumnSpan="2"
+                        Padding="20"
+                        Background="{StaticResource SurfaceBrush}">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="22" />
+                    </Border.StrokeShape>
+                    <VerticalStackLayout Spacing="14">
+                        <Label Text="3. Prepare Grading Files"
+                               FontFamily="OpenSansSemibold"
+                               FontSize="18"
+                               TextColor="{StaticResource HeadlineColor}" />
+                        <Label Text="This stage matches submissions to your assignment registry, prepares local repos, and builds the final grading packet."
+                               FontSize="13"
+                               TextColor="{StaticResource MutedTextColor}" />
+
+                        <Grid ColumnDefinitions="*,*"
+                              ColumnSpacing="14"
+                              RowDefinitions="Auto,Auto,Auto,Auto">
+                            <VerticalStackLayout Grid.Row="0"
+                                                 Grid.Column="0"
+                                                 Spacing="6">
+                                <Label Text="Submission list output"
+                                       FontSize="12"
+                                       TextColor="{StaticResource MutedTextColor}" />
+                                <Entry Text="{Binding SubmissionMapPath}" />
+                            </VerticalStackLayout>
+
+                            <VerticalStackLayout Grid.Row="0"
+                                                 Grid.Column="1"
+                                                 Spacing="6">
+                                <Label Text="Assignment registry"
+                                       FontSize="12"
+                                       TextColor="{StaticResource MutedTextColor}" />
+                                <Entry Text="{Binding AssignmentRegistryPath}" />
+                            </VerticalStackLayout>
+
+                            <VerticalStackLayout Grid.Row="1"
+                                                 Grid.Column="0"
+                                                 Spacing="6">
+                                <Label Text="Matched grading worklist"
+                                       FontSize="12"
+                                       TextColor="{StaticResource MutedTextColor}" />
+                                <Entry Text="{Binding GradingWorklistPath}" />
+                            </VerticalStackLayout>
+
+                            <VerticalStackLayout Grid.Row="1"
+                                                 Grid.Column="1"
+                                                 Spacing="6">
+                                <Label Text="Local student repos"
+                                       FontSize="12"
+                                       TextColor="{StaticResource MutedTextColor}" />
+                                <Entry Text="{Binding GradingRepoRoot}" />
+                            </VerticalStackLayout>
+
+                            <VerticalStackLayout Grid.Row="2"
+                                                 Grid.Column="0"
+                                                 Spacing="6">
+                                <Label Text="Prepared repo queue"
+                                       FontSize="12"
+                                       TextColor="{StaticResource MutedTextColor}" />
+                                <Entry Text="{Binding RepoQueuePath}" />
+                            </VerticalStackLayout>
+
+                            <VerticalStackLayout Grid.Row="2"
+                                                 Grid.Column="1"
+                                                 Spacing="6">
+                                <Label Text="Course materials root"
+                                       FontSize="12"
+                                       TextColor="{StaticResource MutedTextColor}" />
+                                <Entry Text="{Binding CourseRootPath}" />
+                            </VerticalStackLayout>
+
+                            <VerticalStackLayout Grid.Row="3"
+                                                 Grid.Column="0"
+                                                 Spacing="6">
+                                <Label Text="Run folder"
+                                       FontSize="12"
+                                       TextColor="{StaticResource MutedTextColor}" />
+                                <Entry Text="{Binding GradingRunRoot}" />
+                            </VerticalStackLayout>
+
+                            <VerticalStackLayout Grid.Row="3"
+                                                 Grid.Column="1"
+                                                 Spacing="6">
+                                <Label Text="Final grading packet"
+                                       FontSize="12"
+                                       TextColor="{StaticResource MutedTextColor}" />
+                                <Entry Text="{Binding GradingRunnerOutPath}" />
+                            </VerticalStackLayout>
+                        </Grid>
+
+                        <Button Text="Prepare Grading Files"
+                                Command="{Binding PrepareGradingFilesCommand}" />
+                    </VerticalStackLayout>
+                </Border>
+
+                <Border Grid.Row="3"
+                        Grid.ColumnSpan="2"
+                        Padding="20"
+                        Background="{StaticResource SurfaceBrush}">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="22" />
+                    </Border.StrokeShape>
+                    <VerticalStackLayout Spacing="14">
+                        <Grid ColumnDefinitions="*,Auto"
+                              ColumnSpacing="12">
+                            <VerticalStackLayout Spacing="4">
+                                <Label Text="4. Ready to Grade"
+                                       FontFamily="OpenSansSemibold"
+                                       FontSize="18"
+                                       TextColor="{StaticResource HeadlineColor}" />
+                                <Label Text="{Binding GradingQueueHelp}"
+                                       FontSize="13"
+                                       TextColor="{StaticResource MutedTextColor}" />
+                            </VerticalStackLayout>
+                            <Button Grid.Column="1"
+                                    Text="Refresh Queue"
+                                    Command="{Binding RefreshGradingQueueCommand}" />
+                        </Grid>
+
+                        <Grid ColumnDefinitions="1.1*,0.9*"
+                              ColumnSpacing="14">
+                            <VerticalStackLayout Spacing="8">
+                                <Label Text="Prepared submissions"
+                                       FontSize="12"
+                                       TextColor="{StaticResource MutedTextColor}" />
+                                <CollectionView ItemsSource="{Binding GradingQueue}"
+                                                SelectionMode="Single"
+                                                SelectedItem="{Binding SelectedQueueItem}"
+                                                HeightRequest="260">
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate x:DataType="viewModels:GradingRunQueueItem">
+                                            <Border Padding="12"
+                                                    Margin="0,0,0,8"
+                                                    Background="{StaticResource SurfaceStrong}">
+                                                <Border.StrokeShape>
+                                                    <RoundRectangle CornerRadius="16" />
+                                                </Border.StrokeShape>
+                                                <VerticalStackLayout Spacing="4">
+                                                    <Label Text="{Binding DisplayName}"
+                                                           FontFamily="OpenSansSemibold"
+                                                           FontSize="14"
+                                                           TextColor="{StaticResource HeadlineColor}" />
+                                                    <Label Text="{Binding StatusSummary}"
+                                                           FontSize="12"
+                                                           TextColor="{StaticResource MutedTextColor}" />
+                                                </VerticalStackLayout>
+                                            </Border>
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
+                            </VerticalStackLayout>
+
+                            <VerticalStackLayout Grid.Column="1"
+                                                 Spacing="10">
+                                <Label Text="Selected submission"
+                                       FontSize="12"
+                                       TextColor="{StaticResource MutedTextColor}" />
+                                <Label Text="{Binding SelectedQueueItemSummary}"
+                                       FontSize="13"
+                                       TextColor="{StaticResource HeadlineColor}" />
+                                <Button Text="Open Selected for Grading"
+                                        Command="{Binding OpenSelectedForGradingCommand}" />
+                                <Button Text="Open Prompt"
+                                        Command="{Binding OpenPromptCommand}"
+                                        BackgroundColor="{StaticResource SurfaceStrong}"
+                                        TextColor="{StaticResource HeadlineColor}" />
+                                <Button Text="Open Report Draft"
+                                        Command="{Binding OpenReportCommand}"
+                                        BackgroundColor="{StaticResource SurfaceStrong}"
+                                        TextColor="{StaticResource HeadlineColor}" />
+                                <Button Text="Open Repo Folder"
+                                        Command="{Binding OpenRepoCommand}"
+                                        BackgroundColor="{StaticResource SurfaceStrong}"
+                                        TextColor="{StaticResource HeadlineColor}" />
+                                <Button Text="Open Brightspace Page"
+                                        Command="{Binding OpenBrightspaceCommand}"
+                                        BackgroundColor="{StaticResource SurfaceStrong}"
+                                        TextColor="{StaticResource HeadlineColor}" />
+                            </VerticalStackLayout>
+                        </Grid>
+                    </VerticalStackLayout>
+                </Border>
+            </Grid>
+
+            <Border Background="{StaticResource SurfaceStrong}"
+                    Padding="20">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="22" />
+                </Border.StrokeShape>
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Activity Log"
+                           FontFamily="OpenSansSemibold"
+                           FontSize="18"
+                           TextColor="{StaticResource White}" />
+                    <Editor Text="{Binding LogText}"
+                            IsReadOnly="True"
+                            AutoSize="TextChanges"
+                            MinimumHeightRequest="260"
+                            FontFamily="Consolas"
+                            TextColor="{StaticResource White}"
+                            BackgroundColor="Transparent" />
+                </VerticalStackLayout>
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
