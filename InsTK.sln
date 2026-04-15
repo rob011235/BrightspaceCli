@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InsTK.CLI", "InsTK.CLI\InsT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InsTK.Core", "InsTK.Core\InsTK.Core.csproj", "{2302A3D7-B5A1-453D-9CF3-E72603845960}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InsTK.Maui", "InsTK.Maui\InsTK.Maui.csproj", "{2D766769-04CD-4FBD-9944-239A0EF125A0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,18 @@ Global
 		{2302A3D7-B5A1-453D-9CF3-E72603845960}.Release|x64.Build.0 = Release|Any CPU
 		{2302A3D7-B5A1-453D-9CF3-E72603845960}.Release|x86.ActiveCfg = Release|Any CPU
 		{2302A3D7-B5A1-453D-9CF3-E72603845960}.Release|x86.Build.0 = Release|Any CPU
+		{2D766769-04CD-4FBD-9944-239A0EF125A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D766769-04CD-4FBD-9944-239A0EF125A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D766769-04CD-4FBD-9944-239A0EF125A0}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{2D766769-04CD-4FBD-9944-239A0EF125A0}.Debug|x64.Build.0 = Debug|Any CPU
+		{2D766769-04CD-4FBD-9944-239A0EF125A0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2D766769-04CD-4FBD-9944-239A0EF125A0}.Debug|x86.Build.0 = Debug|Any CPU
+		{2D766769-04CD-4FBD-9944-239A0EF125A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D766769-04CD-4FBD-9944-239A0EF125A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D766769-04CD-4FBD-9944-239A0EF125A0}.Release|x64.ActiveCfg = Release|Any CPU
+		{2D766769-04CD-4FBD-9944-239A0EF125A0}.Release|x64.Build.0 = Release|Any CPU
+		{2D766769-04CD-4FBD-9944-239A0EF125A0}.Release|x86.ActiveCfg = Release|Any CPU
+		{2D766769-04CD-4FBD-9944-239A0EF125A0}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
