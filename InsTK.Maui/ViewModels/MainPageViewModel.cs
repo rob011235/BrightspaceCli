@@ -1,4 +1,5 @@
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Windows.Input;
 using InsTK.Core;
 
@@ -25,6 +26,7 @@ public sealed class MainPageViewModel : ObservableObject
     private string status = "Ready to grade.";
     private string logText = "InsTK MAUI host initialized.";
     private bool isBusy;
+    private bool isAgentGrading;
     private bool isAwaitingInput;
     private CourseOption? selectedCourse;
     private GradingRunQueueItem? selectedQueueItem;
@@ -44,6 +46,9 @@ public sealed class MainPageViewModel : ObservableObject
         LoadSubmissionListCommand = new AsyncCommand(RunSubmissionMapAsync, CanUseBrightspace);
         PrepareGradingFilesCommand = new AsyncCommand(RunPrepareGradingFilesAsync, CanPrepareGradingFiles);
         RefreshGradingQueueCommand = new AsyncCommand(RefreshGradingQueueAsync, () => !IsBusy);
+        StartAgentGradingCommand = new AsyncCommand(RunSelectedAgentGradingAsync, CanStartSelectedQueueItem);
+        SelectAllQueueItemsCommand = new Command(SelectAllQueueItems, CanSelectAllQueueItems);
+        ClearQueueSelectionCommand = new Command(ClearQueueSelection, CanClearQueueSelection);
         OpenSelectedForGradingCommand = new Command(OpenSelectedForGrading, CanOpenSelectedQueueItem);
         OpenPromptCommand = new Command(OpenPrompt, CanOpenSelectedQueueItem);
         OpenRepoCommand = new Command(OpenRepo, CanOpenSelectedQueueItem);
@@ -109,7 +114,30 @@ public sealed class MainPageViewModel : ObservableObject
     public string SelectedQueueItemSummary
         => SelectedQueueItem is null
             ? "Select a prepared submission to start grading."
-            : SelectedQueueItem.StatusSummary;
+            : SelectedQueueItem.RuntimeStatus;
+
+    public string QueueSelectionSummary
+    {
+        get
+        {
+            var selectedCount = GetSelectedQueueItems().Count;
+            var selectableCount = GradingQueue.Count(item => item.IsSelectable);
+            return selectedCount == 0
+                ? $"No submissions checked. Highlight one item or check up to {selectableCount} ready submission(s)."
+                : $"{selectedCount} submission(s) selected for agent grading.";
+        }
+    }
+
+    public string StartAgentGradingButtonText
+    {
+        get
+        {
+            var selectedCount = GetSelectedQueueItems().Count;
+            return selectedCount > 1
+                ? $"Start Agent Grading ({selectedCount})"
+                : "Start Agent Grading";
+        }
+    }
 
     public string BrowserChannel
     {
@@ -239,6 +267,18 @@ public sealed class MainPageViewModel : ObservableObject
 
     public bool IsIdle => !IsBusy;
 
+    public bool IsAgentGrading
+    {
+        get => isAgentGrading;
+        private set
+        {
+            if (SetProperty(ref isAgentGrading, value))
+            {
+                RaiseCommandStates();
+            }
+        }
+    }
+
     public bool IsAwaitingInput
     {
         get => isAwaitingInput;
@@ -256,6 +296,9 @@ public sealed class MainPageViewModel : ObservableObject
     public ICommand LoadSubmissionListCommand { get; }
     public ICommand PrepareGradingFilesCommand { get; }
     public ICommand RefreshGradingQueueCommand { get; }
+    public ICommand StartAgentGradingCommand { get; }
+    public ICommand SelectAllQueueItemsCommand { get; }
+    public ICommand ClearQueueSelectionCommand { get; }
     public ICommand OpenSelectedForGradingCommand { get; }
     public ICommand OpenPromptCommand { get; }
     public ICommand OpenRepoCommand { get; }
@@ -372,9 +415,15 @@ public sealed class MainPageViewModel : ObservableObject
 
     private Task RefreshGradingQueueAsync()
     {
+        foreach (var item in GradingQueue)
+        {
+            item.PropertyChanged -= OnQueueItemPropertyChanged;
+        }
+
         GradingQueue.Clear();
         foreach (var item in gradingRunService.LoadQueue(GradingRunnerOutPath))
         {
+            item.PropertyChanged += OnQueueItemPropertyChanged;
             GradingQueue.Add(item);
         }
 
@@ -384,6 +433,74 @@ public sealed class MainPageViewModel : ObservableObject
             : $"Loaded {GradingQueue.Count} prepared grading item(s).";
         OnPropertyChanged(nameof(GradingQueueHelp));
         return Task.CompletedTask;
+    }
+
+    private async Task RunSelectedAgentGradingAsync()
+    {
+        var queueItems = GetQueueItemsToGrade();
+        if (queueItems.Count == 0)
+        {
+            return;
+        }
+
+        IsBusy = true;
+        IsAgentGrading = true;
+        IsAwaitingInput = false;
+        AppendLog(string.Empty);
+        AppendLog($"> Start agent grading for {queueItems.Count} submission(s)");
+
+        try
+        {
+            var successCount = 0;
+            for (var i = 0; i < queueItems.Count; i++)
+            {
+                var item = queueItems[i];
+                SelectedQueueItem = item;
+                item.RuntimeStatus = "Running Codex grading agent...";
+                Status = $"Grading {item.DisplayName} ({i + 1} of {queueItems.Count})...";
+                AppendLog(string.Empty);
+                AppendLog($"> [{i + 1}/{queueItems.Count}] Start agent grading for {item.DisplayName}");
+
+                try
+                {
+                    var exitCode = await gradingRunService.RunAgentGradingAsync(item, HandleLog);
+                    if (exitCode == 0)
+                    {
+                        successCount++;
+                        item.RuntimeStatus = $"Agent grading complete. Report: {item.ReportPath}";
+                    }
+                    else
+                    {
+                        item.RuntimeStatus = $"Agent grading failed with exit code {exitCode}.";
+                    }
+
+                    AppendLog($"Agent grading exit code: {exitCode}");
+                }
+                catch (Exception ex)
+                {
+                    item.RuntimeStatus = $"Agent grading failed: {ex.Message}";
+                    AppendLog($"ERROR: {ex.Message}");
+                }
+            }
+
+            var failureCount = queueItems.Count - successCount;
+            Status = failureCount == 0
+                ? $"Finished grading {successCount} submission(s)."
+                : $"Finished grading {successCount} submission(s); {failureCount} failed.";
+        }
+        catch (Exception ex)
+        {
+            Status = "Agent grading run failed.";
+            AppendLog($"ERROR: {ex.Message}");
+        }
+        finally
+        {
+            OnPropertyChanged(nameof(SelectedQueueItemSummary));
+            OnPropertyChanged(nameof(QueueSelectionSummary));
+            OnPropertyChanged(nameof(StartAgentGradingButtonText));
+            IsAgentGrading = false;
+            IsBusy = false;
+        }
     }
 
     private void OpenSelectedForGrading()
@@ -558,6 +675,21 @@ public sealed class MainPageViewModel : ObservableObject
             refreshGradingQueue.RaiseCanExecuteChanged();
         }
 
+        if (StartAgentGradingCommand is AsyncCommand startAgentGrading)
+        {
+            startAgentGrading.RaiseCanExecuteChanged();
+        }
+
+        if (SelectAllQueueItemsCommand is Command selectAll)
+        {
+            selectAll.ChangeCanExecute();
+        }
+
+        if (ClearQueueSelectionCommand is Command clearSelection)
+        {
+            clearSelection.ChangeCanExecute();
+        }
+
         if (OpenSelectedForGradingCommand is Command openSelected)
         {
             openSelected.ChangeCanExecute();
@@ -591,10 +723,71 @@ public sealed class MainPageViewModel : ObservableObject
         OnPropertyChanged(nameof(SelectedCourseName));
         OnPropertyChanged(nameof(SelectedQueueItemSummary));
         OnPropertyChanged(nameof(GradingQueueHelp));
+        OnPropertyChanged(nameof(QueueSelectionSummary));
+        OnPropertyChanged(nameof(StartAgentGradingButtonText));
     }
 
     private bool CanOpenSelectedQueueItem()
         => SelectedQueueItem is not null && !SelectedQueueItem.HasError;
+
+    private bool CanStartSelectedQueueItem()
+        => GetQueueItemsToGrade().Count > 0
+            && !IsBusy
+            && !IsAgentGrading;
+
+    private void SelectAllQueueItems()
+    {
+        foreach (var item in GradingQueue.Where(item => item.IsSelectable))
+        {
+            item.IsSelected = true;
+        }
+    }
+
+    private void ClearQueueSelection()
+    {
+        foreach (var item in GradingQueue.Where(item => item.IsSelected))
+        {
+            item.IsSelected = false;
+        }
+    }
+
+    private bool CanSelectAllQueueItems()
+        => !IsBusy && GradingQueue.Any(item => item.IsSelectable && !item.IsSelected);
+
+    private bool CanClearQueueSelection()
+        => !IsBusy && GradingQueue.Any(item => item.IsSelected);
+
+    private List<GradingRunQueueItem> GetSelectedQueueItems()
+        => GradingQueue.Where(item => item.IsSelectable && item.IsSelected).ToList();
+
+    private List<GradingRunQueueItem> GetQueueItemsToGrade()
+    {
+        var selectedItems = GetSelectedQueueItems();
+        if (selectedItems.Count > 0)
+        {
+            return selectedItems;
+        }
+
+        return SelectedQueueItem is not null && SelectedQueueItem.IsSelectable
+            ? [SelectedQueueItem]
+            : [];
+    }
+
+    private void OnQueueItemPropertyChanged(object? sender, PropertyChangedEventArgs e)
+    {
+        if (e.PropertyName is nameof(GradingRunQueueItem.IsSelected) or nameof(GradingRunQueueItem.RuntimeStatus))
+        {
+            MainThread.BeginInvokeOnMainThread(() =>
+            {
+                if (sender is GradingRunQueueItem item && item == SelectedQueueItem)
+                {
+                    OnPropertyChanged(nameof(SelectedQueueItemSummary));
+                }
+
+                RaiseCommandStates();
+            });
+        }
+    }
 
     private static string GetHumanCommandName(IInsTkCommand command)
         => command switch
