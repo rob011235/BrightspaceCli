@@ -17,10 +17,14 @@
 
             if (!installer.IsOllamaInstalled())
             {
-                Console.WriteLine("Ollama is not installed.");
-                Console.WriteLine("Install Ollama, then run this tool again.");
-                Console.WriteLine($"Recommended model after install: {recommendedModel}");
-                return 1;
+                Console.WriteLine("Ollama is not installed. Attempting to install...");
+
+                var installed = await installer.InstallOllamaAsync();
+                if (!installed)
+                {
+                    Console.WriteLine("Failed to install Ollama.");
+                    return 1;
+                }
             }
 
             var launchPath = installer.GetBestLaunchPath();
