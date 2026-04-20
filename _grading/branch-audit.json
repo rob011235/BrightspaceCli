@@ -1,0 +1,342 @@
+[
+  {
+    "index": 0,
+    "student": "Lauryn Bonneville",
+    "activityName": "Program 6 - Authentication & Authorization Integration",
+    "assignmentKey": "program-program-6-authentication-authorization-integration",
+    "selectedBranch": "Program-6",
+    "currentBranch": "Program-6",
+    "originHead": "refs/remotes/origin/Program-6",
+    "branches": [
+      "Program-6",
+      "origin",
+      "origin/Program-6",
+      "origin/main"
+    ],
+    "repoPath": "C:\\grading\\repos\\Lauryn-Bonneville__program-program-6-authentication-authorization-integration"
+  },
+  {
+    "index": 1,
+    "student": "Dylan Ward",
+    "activityName": "Automate Creating Roles and a Default Admin",
+    "assignmentKey": "tutorial-automate-creating-roles-and-a-default-admin",
+    "selectedBranch": "main",
+    "currentBranch": "main",
+    "originHead": "refs/remotes/origin/main",
+    "branches": [
+      "main",
+      "origin",
+      "origin/dev",
+      "origin/main",
+      "origin/qa"
+    ],
+    "repoPath": "C:\\grading\\repos\\Dylan-Ward__tutorial-automate-creating-roles-and-a-default-admin"
+  },
+  {
+    "index": 2,
+    "student": "Dylan Ward",
+    "activityName": "User Management Data Classes",
+    "assignmentKey": "tutorial-user-management-data-classes",
+    "selectedBranch": "main",
+    "currentBranch": "main",
+    "originHead": "refs/remotes/origin/main",
+    "branches": [
+      "main",
+      "origin",
+      "origin/dev",
+      "origin/main",
+      "origin/qa"
+    ],
+    "repoPath": "C:\\grading\\repos\\Dylan-Ward__tutorial-user-management-data-classes"
+  },
+  {
+    "index": 3,
+    "student": "Dylan Ward",
+    "activityName": "Add User Management Page",
+    "assignmentKey": "tutorial-add-user-management-page",
+    "selectedBranch": "main",
+    "currentBranch": "main",
+    "originHead": "refs/remotes/origin/main",
+    "branches": [
+      "main",
+      "origin",
+      "origin/dev",
+      "origin/main",
+      "origin/qa"
+    ],
+    "repoPath": "C:\\grading\\repos\\Dylan-Ward__tutorial-add-user-management-page"
+  },
+  {
+    "index": 4,
+    "student": "Lauryn Bonneville",
+    "activityName": "Program 5: Database Persistence",
+    "assignmentKey": "program-program-5-database-persistence",
+    "selectedBranch": "Commit",
+    "currentBranch": "Commit",
+    "originHead": "refs/remotes/origin/Commit",
+    "branches": [
+      "Commit",
+      "origin/Commit",
+      "origin",
+      "origin/main"
+    ],
+    "repoPath": "C:\\grading\\repos\\Lauryn-Bonneville__program-program-5-database-persistence"
+  },
+  {
+    "index": 5,
+    "student": "Dylan Ward",
+    "activityName": "Secure Badges and Evaluator Pages",
+    "assignmentKey": "tutorial-secure-badges-and-evaluator-pages",
+    "selectedBranch": "main",
+    "currentBranch": "main",
+    "originHead": "refs/remotes/origin/main",
+    "branches": [
+      "main",
+      "origin",
+      "origin/dev",
+      "origin/main",
+      "origin/qa"
+    ],
+    "repoPath": "C:\\grading\\repos\\Dylan-Ward__tutorial-secure-badges-and-evaluator-pages"
+  },
+  {
+    "index": 6,
+    "student": "Dylan Ward",
+    "activityName": "Creating a web API",
+    "assignmentKey": "tutorial-creating-a-web-api",
+    "selectedBranch": "main",
+    "currentBranch": "main",
+    "originHead": "refs/remotes/origin/main",
+    "branches": [
+      "main",
+      "origin",
+      "origin/dev",
+      "origin/main",
+      "origin/qa"
+    ],
+    "repoPath": "C:\\grading\\repos\\Dylan-Ward__tutorial-creating-a-web-api"
+  },
+  {
+    "index": 7,
+    "student": "Dylan Ward",
+    "activityName": "Sharing Components Between Server and Client",
+    "assignmentKey": "tutorial-sharing-components-between-server-and-client",
+    "selectedBranch": "main",
+    "currentBranch": "main",
+    "originHead": "refs/remotes/origin/main",
+    "branches": [
+      "main",
+      "origin",
+      "origin/dev",
+      "origin/main",
+      "origin/qa"
+    ],
+    "repoPath": "C:\\grading\\repos\\Dylan-Ward__tutorial-sharing-components-between-server-and-client"
+  },
+  {
+    "index": 8,
+    "student": "Dylan Ward",
+    "activityName": "Moving Badges pages from Server to Client",
+    "assignmentKey": "tutorial-moving-badges-pages-from-server-to-client",
+    "selectedBranch": "main",
+    "currentBranch": "main",
+    "originHead": "refs/remotes/origin/main",
+    "branches": [
+      "main",
+      "origin",
+      "origin/dev",
+      "origin/main",
+      "origin/qa"
+    ],
+    "repoPath": "C:\\grading\\repos\\Dylan-Ward__tutorial-moving-badges-pages-from-server-to-client"
+  },
+  {
+    "index": 9,
+    "student": "Dylan Ward",
+    "activityName": "Using Data Transfer Objects",
+    "assignmentKey": "tutorial-using-data-transfer-objects",
+    "selectedBranch": "main",
+    "currentBranch": "main",
+    "originHead": "refs/remotes/origin/main",
+    "branches": [
+      "main",
+      "origin",
+      "origin/dev",
+      "origin/main",
+      "origin/qa"
+    ],
+    "repoPath": "C:\\grading\\repos\\Dylan-Ward__tutorial-using-data-transfer-objects"
+  },
+  {
+    "index": 10,
+    "student": "Dylan Ward",
+    "activityName": "Persisting Component State",
+    "assignmentKey": "tutorial-persisting-component-state",
+    "selectedBranch": "main",
+    "currentBranch": "main",
+    "originHead": "refs/remotes/origin/main",
+    "branches": [
+      "main",
+      "origin",
+      "origin/dev",
+      "origin/main",
+      "origin/qa"
+    ],
+    "repoPath": "C:\\grading\\repos\\Dylan-Ward__tutorial-persisting-component-state"
+  },
+  {
+    "index": 11,
+    "student": "Dylan Ward",
+    "activityName": "Fixing Render Issues",
+    "assignmentKey": "tutorial-fixing-render-issues",
+    "selectedBranch": "main",
+    "currentBranch": "main",
+    "originHead": "refs/remotes/origin/main",
+    "branches": [
+      "main",
+      "origin",
+      "origin/dev",
+      "origin/main",
+      "origin/qa"
+    ],
+    "repoPath": "C:\\grading\\repos\\Dylan-Ward__tutorial-fixing-render-issues"
+  },
+  {
+    "index": 12,
+    "student": "Lauryn Bonneville",
+    "activityName": "Program 3: Engulf & Devour Accounting Toolkit",
+    "assignmentKey": "program-program-3-engulf-devour-accounting-toolkit",
+    "selectedBranch": "commit",
+    "currentBranch": "commit",
+    "originHead": "refs/remotes/origin/commit",
+    "branches": [
+      "commit",
+      "origin",
+      "origin/commit",
+      "origin/main"
+    ],
+    "repoPath": "C:\\grading\\repos\\Lauryn-Bonneville__program-program-3-engulf-devour-accounting-toolkit"
+  },
+  {
+    "index": 13,
+    "student": "Branden Rastegari-Kirk",
+    "activityName": "Program 7: Blazor WebAssembly Conversion for Blog + Contact",
+    "assignmentKey": "program-program-7-blazor-webassembly-conversion-for-blog-contact",
+    "selectedBranch": "main",
+    "currentBranch": "main",
+    "originHead": "refs/remotes/origin/main",
+    "branches": [
+      "main",
+      "origin",
+      "origin/dev",
+      "origin/main",
+      "origin/program-five-dev",
+      "origin/program-four-dev",
+      "origin/program-six-dev",
+      "origin/program-three-dev"
+    ],
+    "repoPath": "C:\\grading\\repos\\Branden-Rastegari-Kirk__program-program-7-blazor-webassembly-conversion-for-blog-contact"
+  },
+  {
+    "index": 14,
+    "student": "Leslie Hinds",
+    "activityName": "Program 1: Web UI Fundamentals – Shapes, Forms, and Canvas",
+    "assignmentKey": "program-program-1-web-ui-fundamentals-shapes-forms-and-canvas",
+    "selectedBranch": "main",
+    "currentBranch": "main",
+    "originHead": "refs/remotes/origin/main",
+    "branches": [
+      "main",
+      "origin",
+      "origin/main"
+    ],
+    "repoPath": "C:\\grading\\repos\\Leslie-Hinds__program-program-1-web-ui-fundamentals-shapes-forms-and-canvas"
+  },
+  {
+    "index": 15,
+    "student": "Leslie Hinds",
+    "activityName": "Using GitHub with Visual Studio Blazor Application",
+    "assignmentKey": "tutorial-using-github-with-visual-studio-blazor-application",
+    "selectedBranch": "main",
+    "currentBranch": "main",
+    "originHead": "refs/remotes/origin/main",
+    "branches": [
+      "main",
+      "origin",
+      "origin/main"
+    ],
+    "repoPath": "C:\\grading\\repos\\Leslie-Hinds__tutorial-using-github-with-visual-studio-blazor-application"
+  },
+  {
+    "index": 16,
+    "student": "Chance Gomez",
+    "activityName": "Program 6 - Authentication & Authorization Integration",
+    "assignmentKey": "program-program-6-authentication-authorization-integration",
+    "selectedBranch": "main",
+    "currentBranch": "main",
+    "originHead": "refs/remotes/origin/main",
+    "branches": [
+      "main",
+      "origin/Authentication",
+      "origin/Contact-Form",
+      "origin/Dev",
+      "origin",
+      "origin/main"
+    ],
+    "repoPath": "C:\\grading\\repos\\Chance-Gomez__program-program-6-authentication-authorization-integration"
+  },
+  {
+    "index": 17,
+    "student": "Noah Moberly",
+    "activityName": "Using Data Transfer Objects",
+    "assignmentKey": "tutorial-using-data-transfer-objects",
+    "selectedBranch": "dev",
+    "currentBranch": "dev",
+    "originHead": "refs/remotes/origin/dev",
+    "branches": [
+      "dev",
+      "origin/F-Add-CNC-Calculator",
+      "origin/F-Razor-Syntax-Demo",
+      "origin/F-Rename-Server-and-Client-Projects",
+      "origin/F-Restyle-Site",
+      "origin/F-Secure-badges-and-evaluator-pages",
+      "origin/F-Server-Side-Rendering",
+      "origin/F-add-a-badge-detail-view-page",
+      "origin/F-add-about",
+      "origin/F-add-badge-delete-capability",
+      "origin/F-add-badge-edit-page",
+      "origin/F-add-badges-table",
+      "origin/F-add-cnc-nav-link",
+      "origin/F-add-confirm-dialog",
+      "origin/F-add-evaluators-to-database",
+      "origin/F-add-many-to-many-views",
+      "origin/F-add-model-for-badge",
+      "origin/F-add-shared-component-library",
+      "origin/F-add-user-management-pages",
+      "origin/F-add-validation-to-CNC-calculator",
+      "origin/F-add-validation-to-create-badge-page",
+      "origin/F-auth-tutorials",
+      "origin/F-convert-html-inputs-to-blazor-components-in-feed-rate-calc",
+      "origin/F-convert-to-DTOs",
+      "origin/F-create-a-list-view-for-the-badges",
+      "origin/F-create-a-web-api",
+      "origin/F-create-badge-input-page",
+      "origin/F-create-badges-data-access-layer",
+      "origin/F-create-badges-service",
+      "origin/F-create-cnc-calculators",
+      "origin/F-creating-roles-and-default-admin",
+      "origin/F-eval-list-view-and-edit-dialog",
+      "origin/F-event-handling-in-blazor-demo",
+      "origin/F-interactive-server",
+      "origin/F-moving-badge-pages",
+      "origin/F-subcomponents-demo",
+      "origin/F-update-home-page",
+      "origin",
+      "origin/dev",
+      "origin/main",
+      "origin/master",
+      "origin/qa"
+    ],
+    "repoPath": "C:\\grading\\repos\\Noah-Moberly__tutorial-using-data-transfer-objects"
+  }
+]
